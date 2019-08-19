@@ -17,20 +17,17 @@ pipelines:
           runtime:
             type: image
             image:
-              auto:
-                language: nodejs
-                versions:
-                  - 10.15.3
-#               custom:
-#                 name: drydock/u16node
-#                 tag: master
+#               auto:
+#                 language: nodejs
+#                 versions:
+#                   - 10.15.3
+              custom:
+                name: ankul/u16
+                tag: master
 #                 autoPull: false
         execution:
           onExecute:
-            - nvm list
-            - node --version 
-            - add_run_variables imageTag="master"
-
+            - printenv
 
 #       - name: go
 #         type: Bash
