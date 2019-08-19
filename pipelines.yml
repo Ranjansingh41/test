@@ -16,7 +16,7 @@ pipelines:
             - name: simple_test
           runtime:
             type: image
-            image:
+#             image:
 #               auto:
 #                 language: nodejs
 #                 versions:
