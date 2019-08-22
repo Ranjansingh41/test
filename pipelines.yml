@@ -1,72 +1,27 @@
 resources:
-  - name: simple_test
-    type: GitRepo
+  - name: jenkins1
+    type: BuildInfo
     configuration:
-      gitProvider: ranjan_github
-      path: Ranjansingh41/test 
-      
+      sourceArtifactory: art
+      buildName: test
+      buildNumber: 1
+ 
 pipelines:
-  - name: pipeline_ranjan
-    steps:
-      - name: node
+  - name: simple_pieplines
+    steps:          
+      - name: test_Jenkins
+        type: Jenkins
+        configuration:
+          integrations:
+            - name: jenkins
+          outputResources:
+            - name: jenkins1
+  
+      - name: stepB
         type: Bash
         configuration:
-          nodePool: on-demand-nodes
-          inputResources:
-            - name: simple_test
-          runtime:
-            type: image
-            image:
-              custom:
-                name: ankul/u16
-                tag: master
+          inputSteps:
+            - name: test_Jenkins
         execution:
           onExecute:
-            - printenv
-
-#       - name: go
-#         type: Bash
-#         configuration:
-#           inputSteps:
-#             - name: node
-#           runtime:
-#             type: image
-#             image:
-#               auto:
-#                 language: go
-#                 versions:
-#                   - 1.12.6
-# #               custom:
-# #                 name: drydock/u18go
-# #                 tag: master
-# #                 autoPull: false
-#         execution:
-#           onExecute:
-#             - source /root/.gvm/scripts/gvm
-#             - gvm list
-#             - go version
-#             - gvm use 1.11.11 
-#             - go version
-#             - gvm use 1.12.6
-#             - go version                
-#       - name: cpp
-#         type: Bash
-#         configuration:
-# #           nodePool: vijay_node           
-#           inputSteps:
-#             - name: go      
-#           runtime:
-#             type: image
-#             image:
-#               auto:
-#                 language: c
-#                 versions:
-#                   - 8.0.0
-# #               custom:
-# #                 name: drydock/u18cpp
-# #                 tag: master
-# #                 autoPull: true
-#         execution:
-#           onExecute:
-#             - gcc --version
-#             - clang --version
+            - echo "executing stepB..."
