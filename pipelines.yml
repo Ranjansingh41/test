@@ -1,9 +1,9 @@
-resources:
-  - name: simple_test
-    type: GitRepo
-    configuration:
-      gitProvider: ranjan_github
-      path: Ranjansingh41/test 
+# resources:
+#   - name: simple_test
+#     type: GitRepo
+#     configuration:
+#       gitProvider: ranjan_github
+#       path: Ranjansingh41/test 
       
 pipelines:
   - name: pipeline_ranjan
@@ -11,9 +11,9 @@ pipelines:
       - name: node
         type: Bash
         configuration:
-          nodePool: on-demand-nodes
-          inputResources:
-            - name: simple_test
+#           nodePool: on-demand-nodes
+#           inputResources:
+#             - name: simple_test
           runtime:
             type: image
             image:
