@@ -10,16 +10,16 @@ pipelines:
     steps:
       - name: node
         type: Bash
-        configuration:
+#         configuration:
 #           nodePool: on-demand-nodes
 #           inputResources:
 #             - name: simple_test
-          runtime:
-            type: image
-            image:
-              custom:
-                name: ankul/u16
-                tag: master
+#           runtime:
+#             type: image
+#             image:
+#               custom:
+#                 name: ankul/u16
+#                 tag: master
         execution:
           onExecute:
             - printenv
