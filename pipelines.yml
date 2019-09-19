@@ -15,7 +15,7 @@ pipelines:
           inputResources:
             - name: simple_test
           outputResources:
-            - name: simple_test
+            - name: simple_test1
           runtime:
             type: image
             image:
@@ -34,12 +34,12 @@ pipelines:
 #           runtime:
 #             type: image
 #             image:
-#               auto:
-#                 language: go
-#                 versions:
-#                   - 1.12.6
+# #               auto:
+# #                 language: go
+# #                 versions:
+# #                   - 1.12.6
 # #               custom:
-# #                 name: drydock/u18go
+# #                 name: dryd/u18go
 # #                 tag: master
 # #                 autoPull: false
 #         execution:
