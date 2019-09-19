@@ -52,7 +52,7 @@ pipelines:
      - name: gradle_build_steps
        type: GradleBuild
        configuration:
-         nodePool: ubuntu16        
+#          nodePool: ubuntu16        
          gradleCommand: clean artifactoryPublish -b build.gradle
          sourceLocation: gradle-examples/gradle-example-minimal
          configFileLocation: .
@@ -90,7 +90,7 @@ pipelines:
            - mv jfrog /usr/bin/jfrog
            - which jfrog
        configuration:
-         nodePool: ubuntu16       
+#          nodePool: ubuntu16       
          inputSteps:
            - name: gradle_build_steps
          outputResources:
