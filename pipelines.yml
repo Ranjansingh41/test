@@ -13,12 +13,12 @@ resources:
      buildName: full-gradle-native
      buildNumber: 1
      
- - name: promoted_build_info_gradles
-   type: BuildInfo
-   configuration:
-     sourceArtifactory: art
-     buildName: promotoed-full-gradle-native
-     buildNumber: 1
+#  - name: promoted_build_info_gradles
+#    type: BuildInfo
+#    configuration:
+#      sourceArtifactory: art
+#      buildName: promotoed-full-gradle-native
+#      buildNumber: 1
      
 #  - name: unsigned_release_bundle_gradles
 #    type: ReleaseBundle
