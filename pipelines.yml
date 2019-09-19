@@ -21,7 +21,7 @@ pipelines:
             image:
               custom:
                 name: ankul/u16
-#                 tag: master
+                tag: master
         execution:
           onExecute:
             - printenv
