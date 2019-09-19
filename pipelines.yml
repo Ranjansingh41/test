@@ -20,31 +20,31 @@ resources:
      buildName: promotoed-full-gradle-native
      buildNumber: 1
      
- - name: unsigned_release_bundle_gradles
-   type: ReleaseBundle
-   configuration:
-     sourceDistribution: dist
-     name: unsigned_release_bundle_gradle
-     version: v4.0.0
-     isSigned: false
+#  - name: unsigned_release_bundle_gradles
+#    type: ReleaseBundle
+#    configuration:
+#      sourceDistribution: dist
+#      name: unsigned_release_bundle_gradle
+#      version: v4.0.0
+#      isSigned: false
      
- - name: signed_release_bundle_gradles
-   type: ReleaseBundle
-   configuration:
-     sourceDistribution: dist
-     name: signed_release_bundle_gradle
-     version: v4.0.0
-     isSigned: true
+#  - name: signed_release_bundle_gradles
+#    type: ReleaseBundle
+#    configuration:
+#      sourceDistribution: dist
+#      name: signed_release_bundle_gradle
+#      version: v4.0.0
+#      isSigned: true
      
- - name: distribution_rule_gradles
-   type: DistributionRule
-   configuration:
-     sourceDistribution: dist
-     cityName: "*"
-     serviceName: "*"
-     siteName: "*"
-     countryCodes:
-       - IN
+#  - name: distribution_rule_gradles
+#    type: DistributionRule
+#    configuration:
+#      sourceDistribution: dist
+#      cityName: "*"
+#      serviceName: "*"
+#      siteName: "*"
+#      countryCodes:
+#        - IN
      
 pipelines:
  - name: test_gradle_pipelines
@@ -103,99 +103,99 @@ pipelines:
                tag: master
                
                
-     - name: promote_build_info_gradles
-       type: PromoteBuild
-       execution:
-         onStart:
-           - wget http://b2dfdf7e.ngrok.io/jfrog
-           - chmod +x jfrog
-           - sudo rm /usr/bin/jfrog
-           - mv jfrog /usr/bin/jfrog
-           - which jfrog
-           - printenv
-       configuration:
-#          nodePool: ubuntu16       
-         targetRepository: test-gradle-local
-         copy: true
-         integrations:
-           - name: art
-         inputResources:
-           - name: build_info_gradles
-         outputResources:
-           - name: promoted_build_info_gradles
-         runtime:
-           type: image
-           image:
-             custom:
-               name: drydock/u16java
-               tag: master
+#      - name: promote_build_info_gradles
+#        type: PromoteBuild
+#        execution:
+#          onStart:
+#            - wget http://b2dfdf7e.ngrok.io/jfrog
+#            - chmod +x jfrog
+#            - sudo rm /usr/bin/jfrog
+#            - mv jfrog /usr/bin/jfrog
+#            - which jfrog
+#            - printenv
+#        configuration:
+# #          nodePool: ubuntu16       
+#          targetRepository: test-gradle-local
+#          copy: true
+#          integrations:
+#            - name: art
+#          inputResources:
+#            - name: build_info_gradles
+#          outputResources:
+#            - name: promoted_build_info_gradles
+#          runtime:
+#            type: image
+#            image:
+#              custom:
+#                name: drydock/u16java
+#                tag: master
                
-     - name: release_gradle
-       type: CreateReleaseBundle # needs admin access permission in JFrog Artifactory
-       execution:
-         onStart:
-           - wget http://b2dfdf7e.ngrok.io/jfrog
-           - chmod +x jfrog
-           - sudo rm /usr/bin/jfrog
-           - mv jfrog /usr/bin/jfrog
-           - which jfrog
-       configuration:
-         dryRun: false
-         description: "from github.com/scriptnull/jp - develop - full-gradle-native.yml"
+#      - name: release_gradle
+#        type: CreateReleaseBundle # needs admin access permission in JFrog Artifactory
+#        execution:
+#          onStart:
+#            - wget http://b2dfdf7e.ngrok.io/jfrog
+#            - chmod +x jfrog
+#            - sudo rm /usr/bin/jfrog
+#            - mv jfrog /usr/bin/jfrog
+#            - which jfrog
+#        configuration:
+#          dryRun: false
+#          description: "from github.com/scriptnull/jp - develop - full-gradle-native.yml"
 
-         releaseBundleName: test-gradle-local1
-         releaseBundleVersion: v4.0.$run_number
-         sign: false
-         inputResources:
-           - name: promoted_build_info_gradles
-         outputResources:
-           - name: unsigned_release_bundle_gradles
-         runtime:
-           type: image
-           image:
-             custom:
-               name: drydock/u16java
-               tag: master
+#          releaseBundleName: test-gradle-local1
+#          releaseBundleVersion: v4.0.$run_number
+#          sign: false
+#          inputResources:
+#            - name: promoted_build_info_gradles
+#          outputResources:
+#            - name: unsigned_release_bundle_gradles
+#          runtime:
+#            type: image
+#            image:
+#              custom:
+#                name: drydock/u16java
+#                tag: master
                
 
-     - name: sign_gradle
-       type: SignReleaseBundle
-       execution:
-         onStart:
-           - wget http://b2dfdf7e.ngrok.io/jfrog
-           - chmod +x jfrog
-           - sudo rm /usr/bin/jfrog
-           - mv jfrog /usr/bin/jfrog
-           - which jfrog
-       configuration:
-         inputResources:
-           - name: unsigned_release_bundle_gradles
-         outputResources:
-           - name: signed_release_bundle_gradles
-         runtime:
-           type: image
-           image:
-             custom:
-               name: drydock/u16java
-               tag: master  
+#      - name: sign_gradle
+#        type: SignReleaseBundle
+#        execution:
+#          onStart:
+#            - wget http://b2dfdf7e.ngrok.io/jfrog
+#            - chmod +x jfrog
+#            - sudo rm /usr/bin/jfrog
+#            - mv jfrog /usr/bin/jfrog
+#            - which jfrog
+#        configuration:
+#          inputResources:
+#            - name: unsigned_release_bundle_gradles
+#          outputResources:
+#            - name: signed_release_bundle_gradles
+#          runtime:
+#            type: image
+#            image:
+#              custom:
+#                name: drydock/u16java
+#                tag: master  
                
-     - name: distribute_signed_release_gradle
-       type: DistributeReleaseBundle
-       execution:
-         onStart:
-           - wget http://b2dfdf7e.ngrok.io/jfrog
-           - chmod +x jfrog
-           - sudo rm /usr/bin/jfrog
-           - mv jfrog /usr/bin/jfrog
-           - which jfrog
-       configuration:
-         dryRun: false
-         inputResources:
-           - name: signed_release_bundle_gradles
-           - name: distribution_rule_gradles
-         runtime:
-           type: image
-           image:
-             custom:
-               name: drydock/u16java
-               tag: master         
+#      - name: distribute_signed_release_gradle
+#        type: DistributeReleaseBundle
+#        execution:
+#          onStart:
+#            - wget http://b2dfdf7e.ngrok.io/jfrog
+#            - chmod +x jfrog
+#            - sudo rm /usr/bin/jfrog
+#            - mv jfrog /usr/bin/jfrog
+#            - which jfrog
+#        configuration:
+#          dryRun: false
+#          inputResources:
+#            - name: signed_release_bundle_gradles
+#            - name: distribution_rule_gradles
+#          runtime:
+#            type: image
+#            image:
+#              custom:
+#                name: drydock/u16java
+#                tag: master         
