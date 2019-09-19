@@ -27,6 +27,8 @@ pipelines:
             - printen
           onExecute:
             - printenv
+          onFailure:
+            - echo "test fail"
 
 #       - name: go
 #         type: Bash
