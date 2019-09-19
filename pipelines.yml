@@ -29,6 +29,9 @@ pipelines:
             - printenv
           onFailure:
             - echo "test fail"
+          onComplete: #always
+            - echo "Cleaning up some stuff"
+
 
 #       - name: go
 #         type: Bash
