@@ -14,7 +14,7 @@ pipelines:
           nodePool: on-demand-nodes
           inputResources:
             - name: simple_test
-          outputResource
+          outputResource:
             - name: simple_test
           runtime:
             type: image
