@@ -73,11 +73,11 @@ pipelines:
            - gradle --version
            - _set_jdk openjdk8
            - javac -version
-           - wget http://b2dfdf7e.ngrok.io/jfrog
-           - chmod +x jfrog
-           - sudo rm /usr/bin/jfrog
-           - mv jfrog /usr/bin/jfrog
-           - which jfrog
+#            - wget http://b2dfdf7e.ngrok.io/jfrog
+#            - chmod +x jfrog
+#            - sudo rm /usr/bin/jfrog
+#            - mv jfrog /usr/bin/jfrog
+#            - which jfrog
            
      - name: publish_build_info_gradle
        type: PublishBuildInfo
