@@ -23,6 +23,8 @@ pipelines:
                 name: ankul/u16
                 tag: master
         execution:
+          onStart:
+            - printen
           onExecute:
             - printenv
 
