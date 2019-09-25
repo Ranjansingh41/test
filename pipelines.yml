@@ -11,7 +11,7 @@ pipelines:
       - name: node
         type: Bash
         configuration:
-#           nodePool: on-demand-nodes
+          nodePool: node-RHEL-8
           inputResources:
             - name: simple_test
 #           outputResources:
