@@ -35,31 +35,31 @@ pipelines:
 #             - echo "Cleaning up some stuff"
 
 
-#       - name: go
-#         type: Bash
-#         configuration:
-#           inputSteps:
-#             - name: node
-#           runtime:
-#             type: image
-#             image:
-# #               auto:
-# #                 language: go
-# #                 versions:
-# #                   - 1.12.6
-# #               custom:
-# #                 name: dryd/u18go
-# #                 tag: master
-# #                 autoPull: false
-#         execution:
-#           onExecute:
-#             - source /root/.gvm/scripts/gvm
-#             - gvm list
-#             - go version
-#             - gvm use 1.11.11 
-#             - go version
-#             - gvm use 1.12.6
-#             - go version                
+      - name: go
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: node
+          runtime:
+            type: image
+            image:
+#               auto:
+#                 language: go
+#                 versions:
+#                   - 1.12.6
+#               custom:
+#                 name: dryd/u18go
+#                 tag: master
+#                 autoPull: false
+        execution:
+          onExecute:
+            - source /root/.gvm/scripts/gvm
+            - gvm list
+            - go version
+            - gvm use 1.11.11 
+            - go version
+            - gvm use 1.12.6
+            - go version                
 #       - name: cpp
 #         type: Bash
 #         configuration:
