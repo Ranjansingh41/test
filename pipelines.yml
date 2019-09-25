@@ -38,9 +38,9 @@ pipelines:
         configuration:
           inputSteps:
             - name: node
-          runtime:
-            type: image
-            image:
+#           runtime:
+#             type: image
+#             image:
 #               auto:
 #                 language: go
 #                 versions:
