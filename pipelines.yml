@@ -13,7 +13,7 @@ pipelines:
         configuration:
 #           nodePool: node-RHEL-8
           integrations:
-            - name: ranjan_github   
+            - name: ranjan_githubs   
 #           inputResources:
 #             - name: simple_test
 #           outputResources:
