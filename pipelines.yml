@@ -21,7 +21,8 @@ pipelines:
             image:
               auto:
                 language: NodeJs
-                Version: 8.16.0
+                Version: 
+                 - 8.16.0
 #               custom:
 #                 name: ankul/u16
 #                 tag: master
