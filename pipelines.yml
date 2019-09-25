@@ -21,7 +21,7 @@ pipelines:
             image:
               auto:
                 language: NodeJs
-                Version: 
+                Versions: 
                  - 8.16.0
 #               custom:
 #                 name: ankul/u16
