@@ -11,7 +11,7 @@ pipelines:
       - name: node
         type: Bash
         configuration:
-          nodePool: node-RHEL-8
+#           nodePool: node-RHEL-8
           integrations: ranjan_github
             - name:   
 #           inputResources:
@@ -27,7 +27,7 @@ pipelines:
         execution:
 #           onStart:
 #             - printen
-#           onExecute:
+          onExecute:
             - printenv
 #           onFailure:
 #             - echo "test fail"
