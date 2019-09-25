@@ -11,9 +11,9 @@ pipelines:
       - name: node
         type: Bash
         configuration:
-          nodePool: node-RHEL-8
-          inputResources:
-            - name: simple_test
+#           nodePool: node-RHEL-8
+#           inputResources:
+#             - name: simple_test
 #           outputResources:
 #             - name: simple_test1
           runtime:
@@ -23,14 +23,14 @@ pipelines:
                 name: ankul/u16
                 tag: master
         execution:
-          onStart:
-            - printen
-          onExecute:
+#           onStart:
+#             - printen
+#           onExecute:
             - printenv
-          onFailure:
-            - echo "test fail"
-          onComplete: #always
-            - echo "Cleaning up some stuff"
+#           onFailure:
+#             - echo "test fail"
+#           onComplete: #always
+#             - echo "Cleaning up some stuff"
 
 
 #       - name: go
