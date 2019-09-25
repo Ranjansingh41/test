@@ -20,9 +20,9 @@ pipelines:
             type: image
             image:
               auto:
-                language: NodeJs
+                language: go
                 Versions: 
-                 - 8.16.0
+                 - 1.12.6
 #               custom:
 #                 name: ankul/u16
 #                 tag: master
