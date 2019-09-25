@@ -37,7 +37,7 @@ pipelines:
         type: Bash
         configuration:
           inputSteps:
-            - name: node
+            - name: nodes
 #           runtime:
 #             type: image
 #             image:
