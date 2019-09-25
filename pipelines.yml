@@ -12,8 +12,8 @@ pipelines:
         type: Bash
         configuration:
 #           nodePool: node-RHEL-8
-          integrations: ranjan_github
-            - name:   
+          integrations:
+            - name: ranjan_github   
 #           inputResources:
 #             - name: simple_test
 #           outputResources:
