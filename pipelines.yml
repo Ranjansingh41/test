@@ -18,14 +18,14 @@ pipelines:
 #             - name: simple_test1
           runtime:
             type: image
-            image:
-#               auto:
-#                 language: go
-#                 Versions: 
-#                  - 1.12.6
-              custom:
-                name: ankul/u16
-                tag: master
+#             image:
+# #               auto:
+# #                 language: go
+# #                 Versions: 
+# #                  - 1.12.6
+#               custom:
+#                 name: ankul/u16
+#                 tag: master
         execution:
 #           onStart:
 #             - printen
