@@ -50,7 +50,7 @@ pipelines:
 #                 versions:
 #                   - 1.12.6
               custom:
-                name: dryd/u18go
+                name: drydock/u18go
                 tag: master
                 autoPull: false
         execution:
