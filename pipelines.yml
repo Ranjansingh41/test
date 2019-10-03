@@ -12,8 +12,8 @@ pipelines:
         type: Bash
         configuration:
 #           nodePool: node-RHEL-8 
-#           inputResources:
-#             - name: simple_test
+          inputResources:
+            - name: simple_test
 #           outputResources:
 #             - name: simple_test1
           runtime:
