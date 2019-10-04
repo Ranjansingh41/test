@@ -2,7 +2,7 @@ resources:
   - name: image_test
     type: Image
     configuration:
-       registry: docker
+       registry: google
        sourceRepository: docker-local  # required if Docker registry is Artifactory
 #        region: <string> # required if registry is AWS
        imageName: ranjansingh/python
