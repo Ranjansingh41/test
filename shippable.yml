@@ -5,7 +5,7 @@ resources:
        registry: docker
        sourceRepository: docker-local  # required if Docker registry is Artifactory
 #        region: <string> # required if registry is AWS
-       imageName: ranjansingh/python
+       imageName: ranjansingh/python2
        imageTag: app 
 #        autoPull: <boolean> (default false)
 
