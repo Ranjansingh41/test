@@ -3,7 +3,7 @@ resources:
     type: Image
     configuration:
        registry: docker
-       sourceRepository: docker-local-test  # required if Docker registry is Artifactory
+       sourceRepository: docker-local  # required if Docker registry is Artifactory
 #        region: <string> # required if registry is AWS
        imageName: ranjansingh/python
        imageTag: app 
