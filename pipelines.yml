@@ -5,5 +5,5 @@ resources:
       sourceArtifactory: deepika_art
       repository: helm-remote
       chart: consul
-      version: 1.0.0
+#       version: 1.0.0
   
