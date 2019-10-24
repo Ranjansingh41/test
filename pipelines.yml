@@ -3,7 +3,7 @@ resources:
     type: HelmChart
     configuration: 
       sourceArtifactory: deepika_art
-      repository: helm-remote
-      #chart: consul
+      repository: helm-remote1
+      chart: consul
       version: 1.0.0
   
