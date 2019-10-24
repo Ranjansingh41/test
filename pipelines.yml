@@ -4,6 +4,6 @@ resources:
     configuration: 
       sourceArtifactory: deepika_art
       repository: helm-remote1
-      chart: consul1
-      version: 1.0.0
+      chart: consul
+      version: 1.0.3
   
