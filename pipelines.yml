@@ -2,7 +2,7 @@ resources:
   - name: r_github 
     type: GitRepo
     configuration:
-      gitProvider: i_GitHub
+      gitProvider: i_github
       path: Ranjansingh41/u16all
 
 # resources:
