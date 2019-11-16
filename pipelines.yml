@@ -3,7 +3,7 @@ resources:
     type: GitRepo
     configuration:
       gitProvider: i_GitHub
-      path: Ranjansingh41/test
+      path: Ranjansingh41/u16all
 
 # resources:
 #   - name: simple_test
