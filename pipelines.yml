@@ -1,9 +1,16 @@
 resources:
-  - name: r_github 
+  - name: r_bitbucket
     type: GitRepo
     configuration:
-      gitProvider: i_GitHub
-      path: Ranjansingh41/u16all
+      gitProvider: i_bitbucket1
+      path: shiptest-rc-me/vijay-tests
+
+# resources:
+#   - name: r_github 
+#     type: GitRepo
+#     configuration:
+#       gitProvider: i_GitHub
+#       path: Ranjansingh41/u16all
 
 # resources:
 #   - name: simple_test
