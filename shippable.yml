@@ -1,5 +1,5 @@
 resources:
-  - name: image_test
+  - name: imagetest
     type: Image
     configuration:
        registry: google
