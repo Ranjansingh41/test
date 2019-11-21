@@ -17,7 +17,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: image_test
+            - name: imagetest
           runtime:
             type: image
             image:
