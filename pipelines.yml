@@ -72,7 +72,7 @@ pipelines:
           onExecute:
             - source /root/.gvm/scripts/gvm
             - gvm list
-             - go versions
+             - go 
 #             - gvm use 1.11.11 
 #             - go version
 #             - gvm use 1.12.6
