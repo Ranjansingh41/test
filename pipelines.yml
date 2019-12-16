@@ -25,7 +25,7 @@ pipelines:
       - name: node
         type: Bash
         configuration:
-          timeoutSeconds: 20
+#           timeoutSeconds: 20
           inputResources:
             - name: r_github 
 #           outputResources:
@@ -44,7 +44,7 @@ pipelines:
 #           onStart:
 #             - printen
           onExecute:
-            - sleep 60
+            - printenv
 #           onFailure:
 #             - echo "test fail"
 #           onComplete: #always
