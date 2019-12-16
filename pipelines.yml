@@ -70,9 +70,9 @@ pipelines:
                 autoPull: false
         execution:
           onExecute:
-            - source /root/.gvm/scripts/gvm
+            - source /root/.gvm/scripts/gvms
             - gvm list
-             - go 
+            - go 
 #             - gvm use 1.11.11 
 #             - go version
 #             - gvm use 1.12.6
