@@ -55,7 +55,7 @@ pipelines:
         type: Bash
         configuration:
           inputSteps:
-            - name: r_github 
+            - name: node
           runtime:
             type: image
             image:
@@ -82,7 +82,7 @@ pipelines:
         configuration:
 #           nodePool: vijay_node           
           inputSteps:
-            - name: r_github 
+            - name: go
           runtime:
             type: image
             image:
