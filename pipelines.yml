@@ -72,13 +72,13 @@ pipelines:
           onExecute:
             - source /root/.gvm/scripts/gvm
             - gvm list
-             - go version
+             - go versions
 #             - gvm use 1.11.11 
 #             - go version
 #             - gvm use 1.12.6
 #             - go version 
           onSuccess:
-            - echo "Job well done!
+            - echo "Job well done!"
             
       - name: cpp
         type: Bash
