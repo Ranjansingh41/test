@@ -83,7 +83,7 @@ pipelines:
         configuration:
           priority: 3        
           inputSteps:
-            - name: go
+            - name: node
           runtime:
             type: image
             image:
