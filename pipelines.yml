@@ -81,7 +81,7 @@ pipelines:
       - name: cpp
         type: Bash
         configuration:
-          priority: 1        
+          priority: 10        
           inputSteps:
             - name: node
           runtime:
