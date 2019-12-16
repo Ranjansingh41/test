@@ -25,7 +25,7 @@ pipelines:
       - name: node
         type: Bash
         configuration:
-#           nodePool: node-RHEL-8 
+          priority: 1
           inputResources:
             - name: r_github 
 #           outputResources:
@@ -54,6 +54,7 @@ pipelines:
       - name: go
         type: Bash
         configuration:
+          priority: 2
           inputSteps:
             - name: node
           runtime:
@@ -80,7 +81,7 @@ pipelines:
       - name: cpp
         type: Bash
         configuration:
-#           nodePool: vijay_node           
+          priority: 3        
           inputSteps:
             - name: go
           runtime:
