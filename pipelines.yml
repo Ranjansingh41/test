@@ -25,7 +25,7 @@ pipelines:
       - name: node
         type: Bash
         configuration:
-          priority: 1
+          priority: 3
           inputResources:
             - name: r_github 
 #           outputResources:
@@ -81,7 +81,7 @@ pipelines:
       - name: cpp
         type: Bash
         configuration:
-          priority: 3        
+          priority: 1        
           inputSteps:
             - name: node
           runtime:
