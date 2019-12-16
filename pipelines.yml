@@ -44,7 +44,7 @@ pipelines:
 #           onStart:
 #             - printen
           onExecute:
-            - printenv
+            - sleep 60
 #           onFailure:
 #             - echo "test fail"
 #           onComplete: #always
