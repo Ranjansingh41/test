@@ -71,11 +71,11 @@ pipelines:
           onExecute:
             - source /root/.gvm/scripts/gvm
             - gvm list
-            - go version
-            - gvm use 1.11.11 
-            - go version
-            - gvm use 1.12.6
-            - go version 
+#             - go version
+#             - gvm use 1.11.11 
+#             - go version
+#             - gvm use 1.12.6
+#             - go version 
             
       - name: cpp
         type: Bash
@@ -87,7 +87,7 @@ pipelines:
             type: image
             image:
               auto:
-                language: c
+                language: cpp
                 versions:
                   - 8.0.0
 #               custom:
