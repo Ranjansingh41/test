@@ -27,7 +27,7 @@ pipelines:
         configuration:
 #           nodePool: node-RHEL-8 
           inputResources:
-            - name: simple_test
+            - name: r_github 
 #           outputResources:
 #             - name: simple_test1
           runtime:
@@ -55,7 +55,7 @@ pipelines:
         type: Bash
         configuration:
           inputSteps:
-            - name: node
+            - name: r_github 
           runtime:
             type: image
             image:
@@ -82,7 +82,7 @@ pipelines:
         configuration:
 #           nodePool: vijay_node           
           inputSteps:
-            - name: go      
+            - name: r_github 
           runtime:
             type: image
             image:
