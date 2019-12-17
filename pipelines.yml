@@ -39,9 +39,9 @@ pipelines:
 #                 versions: 
 #                   - "11"
               custom:
-                name: drydock/u16pytall
+                name: drydock/u16
                 tag: master
-                autoPull: false
+                autoPull: true
         execution:
 #           onStart:
 #             - printen
