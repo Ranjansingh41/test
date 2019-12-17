@@ -37,7 +37,7 @@ pipelines:
               auto:
                 language: java
                 versions: 
-                  - 11
+                  - 11.0.4
 #               custom:
 #                 name: ankul/u16
 #                 tag: master
