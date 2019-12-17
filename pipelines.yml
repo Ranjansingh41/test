@@ -39,7 +39,7 @@ pipelines:
 #                 versions: 
 #                   - "11"
               custom:
-                name: drydock/u16
+                name: drydock/u16phpall
                 tag: master
                 autoPull: false
         execution:
