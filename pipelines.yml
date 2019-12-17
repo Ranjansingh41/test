@@ -22,7 +22,7 @@ resources:
 pipelines:
   - name: pipeline_test
     steps:
-      - name: node
+      - name: cpp
         type: Bash
         configuration:
 #           timeoutSeconds: 20
