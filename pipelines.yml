@@ -35,9 +35,9 @@ pipelines:
             type: image
             image:
               auto:
-                language: go
+                language: java
                 versions: 
-                  - 1.11.11
+                  - openjdk8
 #               custom:
 #                 name: ankul/u16
 #                 tag: master
