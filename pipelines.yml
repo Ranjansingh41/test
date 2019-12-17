@@ -33,13 +33,13 @@ pipelines:
           runtime:
             type: image
             image:
-# #               auto:
-# #                 language: go
-# #                 Versions: 
-# #                  - 1.12.6
-              custom:
-                name: ankul/u16
-                tag: master
+              auto:
+                language: cpp
+                Versions: 
+                  - 8.0.0
+#               custom:
+#                 name: ankul/u16
+#                 tag: master
         execution:
 #           onStart:
 #             - printen
@@ -51,53 +51,53 @@ pipelines:
 #             - echo "Cleaning up some stuff"
 
 
-      - name: go
-        type: Bash
-        configuration:
-          priority: 2
-          inputSteps:
-            - name: node
-          runtime:
-            type: image
-            image:
-#               auto:
-#                 language: go
-#                 versions:
-#                   - 1.12.6
-              custom:
-                name: drydock/u18go
-                tag: master
-                autoPull: false
-        execution:
-          onExecute:
-            - source /root/.gvm/scripts/gvms
-            - gvm list
-            - go 
-#             - gvm use 1.11.11 
-#             - go version
-#             - gvm use 1.12.6
-#             - go version 
-          onSuccess:
-            - echo "Job well done!"
-            
-      - name: cpp
-        type: Bash
-        configuration:
-          priority: 10        
-          inputSteps:
-            - name: node
-          runtime:
-            type: image
-            image:
-              auto:
-                language: cpp
-                versions:
-                  - 8.0.0
+#       - name: go
+#         type: Bash
+#         configuration:
+#           priority: 2
+#           inputSteps:
+#             - name: node
+#           runtime:
+#             type: image
+#             image:
+# #               auto:
+# #                 language: go
+# #                 versions:
+# #                   - 1.12.6
 #               custom:
-#                 name: drydock/u18cpp
+#                 name: drydock/u18go
 #                 tag: master
-#                 autoPull: true
-        execution:
-          onExecute:
-            - gcc --version
-            - clang --version
+#                 autoPull: false
+#         execution:
+#           onExecute:
+#             - source /root/.gvm/scripts/gvms
+#             - gvm list
+#             - go 
+# #             - gvm use 1.11.11 
+# #             - go version
+# #             - gvm use 1.12.6
+# #             - go version 
+#           onSuccess:
+#             - echo "Job well done!"
+            
+#       - name: cpp
+#         type: Bash
+#         configuration:
+#           priority: 10        
+#           inputSteps:
+#             - name: node
+#           runtime:
+#             type: image
+#             image:
+#               auto:
+#                 language: cpp
+#                 versions:
+#                   - 8.0.0
+# #               custom:
+# #                 name: drydock/u18cpp
+# #                 tag: master
+# #                 autoPull: true
+#         execution:
+#           onExecute:
+#             - gcc --version
+#             - clang --version
