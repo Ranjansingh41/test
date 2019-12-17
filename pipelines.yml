@@ -41,7 +41,7 @@ pipelines:
               custom:
                 name: drydock/u16
                 tag: master
-                autoPull: true
+                autoPull: false
         execution:
 #           onStart:
 #             - printen
