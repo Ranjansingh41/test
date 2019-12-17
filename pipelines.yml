@@ -39,14 +39,14 @@ pipelines:
 #                 versions: 
 #                   - "11"
               custom:
-                name: drydock/u16all
+                name: drydock/u16pytall
                 tag: master
                 autoPull: false
         execution:
 #           onStart:
 #             - printen
           onExecute:
-            - printenv
+            - python --version
 #           onFailure:
 #             - echo "test fail"
 #           onComplete: #always
