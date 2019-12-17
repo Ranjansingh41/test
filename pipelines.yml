@@ -35,7 +35,7 @@ pipelines:
             image:
               auto:
                 language: cpp
-                Versions: 
+                versions: 
                   - 8.0.0
 #               custom:
 #                 name: ankul/u16
