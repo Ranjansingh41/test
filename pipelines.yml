@@ -20,9 +20,9 @@ resources:
 #       path: Ranjansingh41/test 
       
 pipelines:
-  - name: pipeline_ranjan
+  - name: pipeline_test
     steps:
-      - name: node
+      - name: cpp
         type: Bash
         configuration:
 #           timeoutSeconds: 20
