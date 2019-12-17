@@ -35,9 +35,9 @@ pipelines:
             type: image
             image:
               auto:
-                language: node
+                language: java
                 versions: 
-                  - 8.0.0
+                  - "11"
 #               custom:
 #                 name: ankul/u16
 #                 tag: master
