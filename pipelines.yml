@@ -34,13 +34,14 @@ pipelines:
           runtime:
             type: image
             image:
-              auto:
-                language: java
-                versions: 
-                  - "11"
-#               custom:
-#                 name: ankul/u16
-#                 tag: master
+#               auto:
+#                 language: java
+#                 versions: 
+#                   - "11"
+              custom:
+                name: drydock/u16all
+                tag: master
+                autoPull: false
         execution:
 #           onStart:
 #             - printen
