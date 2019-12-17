@@ -26,7 +26,7 @@ pipelines:
         type: Bash
         configuration:
 #           timeoutSeconds: 20
-          nodePool: u18node
+#           nodePool: u18node
           inputResources:
             - name: r_github 
 #           outputResources:
