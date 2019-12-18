@@ -20,38 +20,20 @@ resources:
 #       path: Ranjansingh41/test 
       
 pipelines:
-  - name: pipeline_test
+  - name: pipelinetest
     steps:
-      - name: cpp
+      - name: node
         type: Bash
         configuration:
-#           timeoutSeconds: 20
-#           nodePool: u18node
           inputResources:
             - name: r_github 
-#           outputResources:
-#             - name: simple_test1
           runtime:
-            type: image
-            image:
-#               auto:
-#                 language: java
-#                 versions: 
-#                   - "11"
-              custom:
-                name: drydock/u16all
-                tag: master
-                autoPull: false
+            type: host            
         execution:
-#           onStart:
-#             - printen
           onExecute:
-            - python --version
-#           onFailure:
-#             - echo "test fail"
-#           onComplete: #always
-#             - echo "Cleaning up some stuff"
-
+            - printenv12
+          onFailure:
+            - echo "uh oh, something went wrong"  
 
 #       - name: go
 #         type: Bash
