@@ -41,7 +41,7 @@ pipelines:
               custom:
                 name: drydock/u16phpall125
                 tag: master
-                autoPull: false
+                autoPull: true
         execution:
 #           onStart:
 #             - printen
