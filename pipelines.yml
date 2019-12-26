@@ -1,3 +1,21 @@
+pipelines:
+  - name: pipelinetest
+    steps:
+      - name: test
+        type: Bash
+        configuration:
+          #nodePool: u16
+          integrations:
+            - name: aws
+            #- name: gcp
+            #- name: docker
+          runtime:
+            type: host            
+        execution:
+          onExecute:
+            - printenv
+            
+
 # resources:
 #   - name: r_bitbucket
 #     type: GitRepo
@@ -5,12 +23,12 @@
 #       gitProvider: i_bitbucket1
 #       path: shiptest-rc-me/vijay-tests
 
-resources:
-  - name: r_gitlab
-    type: GitRepo
-    configuration:
-      gitProvider: I_GitLab
-      path: jfbeta/test_automation
+# resources:
+#   - name: r_gitlab
+#     type: GitRepo
+#     configuration:
+#       gitProvider: I_GitLab
+#       path: jfbeta/test_automation
       
 #   - name: r_github 
 #     type: GitRepo
