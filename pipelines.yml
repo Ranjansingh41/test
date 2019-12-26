@@ -6,82 +6,88 @@
 #       path: shiptest-rc-me/vijay-tests
 
 resources:
-  - name: r_github 
+  - name: r_gitlab
     type: GitRepo
     configuration:
-      gitProvider: i_GitHub
-      path: Ranjansingh41/u16all
-
-# resources:
-#   - name: simple_test
+      gitProvider: i_gitlab
+      path: jfbeta/test_automation
+      
+#   - name: r_github 
 #     type: GitRepo
 #     configuration:
-#       gitProvider: ranjan_github
-#       path: Ranjansingh41/test 
-      
-pipelines:
-  - name: pipelinetest
-    steps:
-      - name: node
-        type: Bash
-        configuration:
-          inputResources:
-            - name: r_github 
-          runtime:
-            type: host            
-        execution:
-          onExecute:
-            - printenv12
-          onFailure:
-            - echo "uh oh, something went wrong"  
+#       gitProvider: i_GitHub
+#       path: Ranjansingh41/u16all
 
-#       - name: go
+# # resources:
+# #   - name: simple_test
+# #     type: GitRepo
+# #     configuration:
+# #       gitProvider: ranjan_github
+# #       path: Ranjansingh41/test 
+      
+# pipelines:
+#   - name: pipelinetest
+#     steps:
+#       - name: node
 #         type: Bash
 #         configuration:
-#           priority: 2
-#           inputSteps:
-#             - name: node
+#           inputResources:
+#             - name: r_github 
 #           runtime:
-#             type: image
-#             image:
-# #               auto:
-# #                 language: go
-# #                 versions:
-# #                   - 1.12.6
-#               custom:
-#                 name: drydock/u18go
-#                 tag: master
-#                 autoPull: false
+#             type: host            
 #         execution:
 #           onExecute:
-#             - source /root/.gvm/scripts/gvms
-#             - gvm list
-#             - go 
-# #             - gvm use 1.11.11 
-# #             - go version
-# #             - gvm use 1.12.6
-# #             - go version 
-#           onSuccess:
-#             - echo "Job well done!"
-            
-#       - name: cpp
-#         type: Bash
-#         configuration:
-#           priority: 10        
-#           inputSteps:
-#             - name: node
-#           runtime:
-#             type: image
-#             image:
-#               auto:
-#                 language: cpp
-#                 versions:
-#                   - 8.0.0
+#             - printenv12
+#           onFailure:
+#             - echo "uh oh, something went wrong"  
+
+# #       - name: go
+# #         type: Bash
+# #         configuration:
+# #           priority: 2
+# #           inputSteps:
+# #             - name: node
+# #           runtime:
+# #             type: image
+# #             image:
+# # #               auto:
+# # #                 language: go
+# # #                 versions:
+# # #                   - 1.12.6
 # #               custom:
-# #                 name: drydock/u18cpp
+# #                 name: drydock/u18go
 # #                 tag: master
-# #                 autoPull: true
-#         execution:
-#           onExecute:
-#             - gcc --version
-#             - clang --version
+# #                 autoPull: false
+# #         execution:
+# #           onExecute:
+# #             - source /root/.gvm/scripts/gvms
+# #             - gvm list
+# #             - go 
+# # #             - gvm use 1.11.11 
+# # #             - go version
+# # #             - gvm use 1.12.6
+# # #             - go version 
+# #           onSuccess:
+# #             - echo "Job well done!"
+            
+# #       - name: cpp
+# #         type: Bash
+# #         configuration:
+# #           priority: 10        
+# #           inputSteps:
+# #             - name: node
+# #           runtime:
+# #             type: image
+# #             image:
+# #               auto:
+# #                 language: cpp
+# #                 versions:
+# #                   - 8.0.0
+# # #               custom:
+# # #                 name: drydock/u18cpp
+# # #                 tag: master
+# # #                 autoPull: true
+# #         execution:
+# #           onExecute:
+# #             - gcc --version
+# #             - clang --version
