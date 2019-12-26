@@ -9,7 +9,7 @@ resources:
   - name: r_gitlab
     type: GitRepo
     configuration:
-      gitProvider: i_gitlab
+      gitProvider: I_GitLab
       path: jfbeta/test_automation
       
 #   - name: r_github 
