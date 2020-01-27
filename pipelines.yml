@@ -1,52 +1,52 @@
 resources:
-  - name: mvnBuild_infoo
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: art
-      buildName: mvn_sample_build
-      buildNumber: 9
-  - name: mvnBuild_infoScaneds
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: art
-      buildName: mvn_scan_varsha
-      buildNumber: 2
+#   - name: mvnBuild_infoo
+#     type: BuildInfo
+#     configuration:
+#       sourceArtifactory: art
+#       buildName: mvn_sample_build
+#       buildNumber: 9
+#   - name: mvnBuild_infoScaneds
+#     type: BuildInfo
+#     configuration:
+#       sourceArtifactory: art
+#       buildName: mvn_scan_varsha
+#       buildNumber: 2
       
-  - name: mvnBuild_infopromoted01
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: art
-      buildName: mvn_promote_build_varsha
-      buildNumber: 3
+#   - name: mvnBuild_infopromoted01
+#     type: BuildInfo
+#     configuration:
+#       sourceArtifactory: art
+#       buildName: mvn_promote_build_varsha
+#       buildNumber: 3
       
-  - name: unsigned_mvn_release_bundles
-    type: ReleaseBundle
-    configuration:
-      sourceDistribution: dist
-      name: mvn_release_bundle_unsigned_varsha
-      version: v1.1.1
-      isSigned: false
+#   - name: unsigned_mvn_release_bundles
+#     type: ReleaseBundle
+#     configuration:
+#       sourceDistribution: dist
+#       name: mvn_release_bundle_unsigned_varsha
+#       version: v1.1.1
+#       isSigned: false
   
-  - name: signed_mvn_release_bundles
-    type: ReleaseBundle
-    configuration:
-      sourceDistribution: varsha_distribution
-      name: mvn_release_bundle_signed_varsha
-      version: v1.2.0
-      isSigned: true
+#   - name: signed_mvn_release_bundles
+#     type: ReleaseBundle
+#     configuration:
+#       sourceDistribution: varsha_distribution
+#       name: mvn_release_bundle_signed_varsha
+#       version: v1.2.0
+#       isSigned: true
   
-  - name: mvn_distribution_rules
-    type: DistributionRule
-    configuration:
-      sourceDistribution: dist
-      cityName: "*"
-      serviceName: "*"
-      siteName: "*"
-      countryCodes:
-#         - GB #edge node -> intend EU
-       # - CN #edge node
-       - IN #artifactory
-       # - US #artifactory
+#   - name: mvn_distribution_rules
+#     type: DistributionRule
+#     configuration:
+#       sourceDistribution: dist
+#       cityName: "*"
+#       serviceName: "*"
+#       siteName: "*"
+#       countryCodes:
+# #         - GB #edge node -> intend EU
+#        # - CN #edge node
+#        - IN #artifactory
+#        # - US #artifactory
        
   - name: mvn_repo04
     type: GitRepo
@@ -69,8 +69,8 @@ pipelines:
           inputResources:
             - name: mvn_repo04
           integrations:
-            - name: art
-            - name: varsha_slack
+            - name: ranjanart
+#             - name: varsha_slack
           runtime:            
             type: image
             image:
@@ -95,71 +95,71 @@ pipelines:
           ########## java installation done
             - javac -version
             - mvn --version
-          onSuccess:
-            - send_notification varsha_slack
+#           onSuccess:
+#             - send_notification varsha_slack
             
-      - name: mvnBuild_publishs
-        type: PublishBuildInfo
-        configuration:
-#           nodePool: ubuntu16
-          integrations:
-            - name: varsha_slack
-          inputSteps:
-            - name: mvnBuild_sample
-          outputResources:
-            - name: mvnBuild_infoo
-        execution:
-          onSuccess:
-            - send_notification varsha_slack
+#       - name: mvnBuild_publishs
+#         type: PublishBuildInfo
+#         configuration:
+# #           nodePool: ubuntu16
+#           integrations:
+#             - name: varsha_slack
+#           inputSteps:
+#             - name: mvnBuild_sample
+#           outputResources:
+#             - name: mvnBuild_infoo
+#         execution:
+#           onSuccess:
+#             - send_notification varsha_slack
       
-      - name: mvn_build_scan
-        type: XrayScan
-        configuration:
-          nodePool: ubuntu16
-          #waitUntilFinish: false
-          inputResources:
-            - name: mvnBuild_infoo  
-          outputResources:
-            - name: mvnBuild_infoScaneds
+#       - name: mvn_build_scan
+#         type: XrayScan
+#         configuration:
+#           nodePool: ubuntu16
+#           #waitUntilFinish: false
+#           inputResources:
+#             - name: mvnBuild_infoo  
+#           outputResources:
+#             - name: mvnBuild_infoScaneds
                 
-      - name: mvn_build_promote
-        type: PromoteBuild
-        configuration:
-#           nodePool: ubuntu16
-          targetRepository: test-maven-local # required 
-          includeDependencies: true    # default false
-          status: "promote success" # for mvn_build_promoted" # optional
-          comment: "maven build should be promoted from varsha-local. maven build should be promoted from varsha-local. maven build should be promoted from varsha-local. maven build should be promoted from varsha-local" # for mvn_build_promoted" # optional
-          copy: true #optional - no need to have delete access it wont delete from base repo just moves copy to target repo
-          inputResources:
-            - name: mvnBuild_infoo #required
-          outputResources:
-            - name: mvnBuild_infopromoted01 #required
-      - name: mvn_release_bundle_unsigned
-        type: CreateReleaseBundle
-        configuration:
-#           nodePool: ubuntu16
-          dryRun: false 
-          description: "This is to test mvn build"
-          releaseBundleName: mvn_release_bundle_varsha
-          releaseBundleVersion: v1.1.1
-          sign: false
-          inputResources:
-            - name: mvnBuild_infopromoted01
-          outputResources:
-            - name: unsigned_mvn_release_bundles
-      - name: signed_release_mvn_bundle
-        type: SignReleaseBundle
-        configuration:
-#           nodePool: ubuntu16
-          inputResources:
-            - name: unsigned_mvn_release_bundles
-          outputResources:
-            - name: signed_mvn_release_bundles
-      - name: mvn_distribute_signed_release
-        type: DistributeReleaseBundle
-        configuration:
-#           nodePool: ubuntu16
-          inputResources:
-            - name: signed_mvn_release_bundles
-            - name: mvn_distribution_rules
+#       - name: mvn_build_promote
+#         type: PromoteBuild
+#         configuration:
+# #           nodePool: ubuntu16
+#           targetRepository: test-maven-local # required 
+#           includeDependencies: true    # default false
+#           status: "promote success" # for mvn_build_promoted" # optional
+#           comment: "maven build should be promoted from varsha-local. maven build should be promoted from varsha-local. maven build should be promoted from varsha-local. maven build should be promoted from varsha-local" # for mvn_build_promoted" # optional
+#           copy: true #optional - no need to have delete access it wont delete from base repo just moves copy to target repo
+#           inputResources:
+#             - name: mvnBuild_infoo #required
+#           outputResources:
+#             - name: mvnBuild_infopromoted01 #required
+#       - name: mvn_release_bundle_unsigned
+#         type: CreateReleaseBundle
+#         configuration:
+# #           nodePool: ubuntu16
+#           dryRun: false 
+#           description: "This is to test mvn build"
+#           releaseBundleName: mvn_release_bundle_varsha
+#           releaseBundleVersion: v1.1.1
+#           sign: false
+#           inputResources:
+#             - name: mvnBuild_infopromoted01
+#           outputResources:
+#             - name: unsigned_mvn_release_bundles
+#       - name: signed_release_mvn_bundle
+#         type: SignReleaseBundle
+#         configuration:
+# #           nodePool: ubuntu16
+#           inputResources:
+#             - name: unsigned_mvn_release_bundles
+#           outputResources:
+#             - name: signed_mvn_release_bundles
+#       - name: mvn_distribute_signed_release
+#         type: DistributeReleaseBundle
+#         configuration:
+# #           nodePool: ubuntu16
+#           inputResources:
+#             - name: signed_mvn_release_bundles
+#             - name: mvn_distribution_rules
