@@ -1,111 +1,335 @@
+resources:
+      
+  - name: gitresource
+    type: GitRepo
+    configuration:
+      gitProvider: github
+      path: Ranjansingh41/test   
+      files:  # optional
+        include: pipelines.sh
+        exclude: readme
+      branches:  # optional
+        include: master 
+        exclude: readme
+      tags:  # optional
+        include: v*
+        exclude: m*  
+      buildOn:  # optional
+         commit: true
+#          pullRequestCreate: true
+#          pullRequestClose: true
+#          releaseCreate: true
+#          tagCreate: false
+#       shallowDepth: 10  # optional 
+
+  - name: gitres
+    type: GitRepo
+    configuration:
+      gitProvider: github
+      path: Ranjansingh41/test   
+      files:  # optional
+#         include: pipelines.sh
+        exclude: readme
+      branches:  # optional
+        include: master 
+        exclude: readme
+      buildOn:  # optional
+         commit: false
+#          pullRequestCreate: true
+#          pullRequestClose: true
+#          releaseCreate: true
+#          tagCreate: false
+      shallowDepth: 10  # optional 
+
+  - name: gitpullcreatetrue
+    type: GitRepo
+    configuration:
+      gitProvider: github
+      path: Ranjansingh41/test      
+      files:  # optional
+#         include: pipelines.sh
+        exclude: readme
+      branches:  # optional
+        include: master 
+#         exclude: test
+      buildOn:  # optional
+          commit: false
+          pullRequestCreate: true
+#          releaseCreate: true
+#          tagCreate: false
+      shallowDepth: 10  # optional 
+
+  - name: gitpullcreatefalse
+    type: GitRepo
+    configuration:
+      gitProvider: github
+      path: Ranjansingh41/test      
+      files:  # optional
+#         include: pipelines.sh
+        exclude: readme
+      branches:  # optional
+        include: master
+#         exclude: readme
+      buildOn:  # optional
+          commit: false
+          pullRequestCreate: false
+#          releaseCreate: true
+#          tagCreate: false
+      shallowDepth: 10  # optional 
+      
+  - name: gitpullclosetrue
+    type: GitRepo
+    configuration:
+      gitProvider: github
+      path: Ranjansingh41/test     
+      files:  # optional
+#         include: pipelines.sh
+        exclude: readme
+      branches:  # optional
+        include: master
+        exclude: readme
+      buildOn:  # optional
+          commit: false
+#          pullRequestCreate: true
+          pullRequestClose: true
+#          releaseCreate: true
+#          tagCreate: false
+      shallowDepth: 10  # optional   
+      
+  - name: gitpullclosefalse
+    type: GitRepo
+    configuration:
+      gitProvider: github
+      path: Ranjansingh41/test      
+      files:  # optional
+#         include: pipelines.sh
+        exclude: readme
+      branches:  # optional
+        include: master
+        exclude: readme
+      buildOn:  # optional
+#          commit: false
+#          pullRequestCreate: true
+         pullRequestClose: false
+#          releaseCreate: true
+#          tagCreate: false
+      shallowDepth: 10  # optional     
+      
+  - name: gittagcreatetrue
+    type: GitRepo
+    configuration:
+      gitProvider: github
+      path: Ranjansingh41/test      
+      files:  # optional
+#         include: pipelines.sh
+        exclude: readme
+      branches:  # optional
+        include: master
+        exclude: readme
+      buildOn:  # optional
+          commit: false
+#          pullRequestCreate: true
+#          pullRequestClose: false
+#          releaseCreate: true
+          tagCreate: true
+      shallowDepth: 10  # optional        
+
+  - name: gittagcreatefalse
+    type: GitRepo
+    configuration:
+      gitProvider: github
+      path: Ranjansingh41/test      
+      files:  # optional
+#         include: pipelines.sh
+        exclude: readme
+      branches:  # optional
+        include: master
+        exclude: readme
+      buildOn:  # optional
+          commit: false
+#          pullRequestCreate: true
+#          pullRequestClose: false
+#          releaseCreate: 
+          tagCreate: false
+      shallowDepth: 10  # optional 
+
+  - name: gitreleasecreatetrue
+    type: GitRepo
+    configuration:
+      gitProvider: github
+      path: Ranjansingh41/test      
+      files:  # optional
+#         include: pipelines.sh
+        exclude: readme
+      branches:  # optional
+        include: master
+        exclude: readme
+      buildOn:  # optional
+          commit: false
+#          pullRequestCreate: true
+#          pullRequestClose: false
+          releaseCreate: true
+#          tagCreate: true
+      shallowDepth: 10  # optional        
+
+  - name: gitreleasecreatefalse
+    type: GitRepo
+    configuration:
+      gitProvider: github
+      path: Ranjansingh41/test      
+      files:  # optional
+#         include: pipelines.sh
+        exclude: readme
+      branches:  # optional
+        include: master
+        exclude: readme
+      buildOn:  # optional
+          commit: false
+#          pullRequestCreate: true
+#          pullRequestClose: false
+          releaseCreate: false
+#          tagCreate: false
+      shallowDepth: 10  # optiona
+
 pipelines:
-  - name: pipelinetest
+
+  - name: pipelines_true
+  
     steps:
-      - name: test
+      - name: s_BashTriggerTrue
         type: Bash
         configuration:
-          #nodePool: u16
-          integrations:
-            - name: aws
-            #- name: gcp
-            #- name: docker
-          runtime:
-            type: host            
+          environmentVariables:
+            env1: value1
+            env2: value2
+          inputResources:
+            - name: gitresource
         execution:
+          onExecute:
+            - printenv 
+
+  - name: pipelines_False
+    steps:
+      - name: s_BashTriggerFalse
+        type: Bash
+        configuration:
+          environmentVariables:
+            env1: value1
+            env2: value2
+          inputResources:
+            - name: gitres
+        execution:              
           onExecute:
             - printenv
             
-
-# resources:
-#   - name: r_bitbucket
-#     type: GitRepo
-#     configuration:
-#       gitProvider: i_bitbucket1
-#       path: shiptest-rc-me/vijay-tests
-
-# resources:
-#   - name: r_gitlab
-#     type: GitRepo
-#     configuration:
-#       gitProvider: I_GitLab
-#       path: jfbeta/test_automation
-      
-#   - name: r_github 
-#     type: GitRepo
-#     configuration:
-#       gitProvider: i_GitHub
-#       path: Ranjansingh41/u16all
-
-# # resources:
-# #   - name: simple_test
-# #     type: GitRepo
-# #     configuration:
-# #       gitProvider: ranjan_github
-# #       path: Ranjansingh41/test 
-      
-# pipelines:
-#   - name: pipelinetest
-#     steps:
-#       - name: node
-#         type: Bash
-#         configuration:
-#           inputResources:
-#             - name: r_github 
-#           runtime:
-#             type: host            
-#         execution:
-#           onExecute:
-#             - printenv12
-#           onFailure:
-#             - echo "uh oh, something went wrong"  
-
-# #       - name: go
-# #         type: Bash
-# #         configuration:
-# #           priority: 2
-# #           inputSteps:
-# #             - name: node
-# #           runtime:
-# #             type: image
-# #             image:
-# # #               auto:
-# # #                 language: go
-# # #                 versions:
-# # #                   - 1.12.6
-# #               custom:
-# #                 name: drydock/u18go
-# #                 tag: master
-# #                 autoPull: false
-# #         execution:
-# #           onExecute:
-# #             - source /root/.gvm/scripts/gvms
-# #             - gvm list
-# #             - go 
-# # #             - gvm use 1.11.11 
-# # #             - go version
-# # #             - gvm use 1.12.6
-# # #             - go version 
-# #           onSuccess:
-# #             - echo "Job well done!"
+  - name: pipelines_Pullcreatetrue
+    steps:
+      - name: s_BashTriggercreatetrue
+        type: Bash
+        configuration:
+          environmentVariables:
+            env1: value1
+            env2: value2
+          inputResources:
+            - name: gitpullcreatetrue
+        execution:              
+          onExecute:
+            - printenv     
             
-# #       - name: cpp
-# #         type: Bash
-# #         configuration:
-# #           priority: 10        
-# #           inputSteps:
-# #             - name: node
-# #           runtime:
-# #             type: image
-# #             image:
-# #               auto:
-# #                 language: cpp
-# #                 versions:
-# #                   - 8.0.0
-# # #               custom:
-# # #                 name: drydock/u18cpp
-# # #                 tag: master
-# # #                 autoPull: true
-# #         execution:
-# #           onExecute:
-# #             - gcc --version
-# #             - clang --version
+  - name: pipelines_pullclosetrue
+    steps:
+      - name: s_BashTriggerclosetrue
+        type: Bash
+        configuration:
+          environmentVariables:
+            env1: value1
+            env2: value2
+          inputResources:
+            - name: gitpullclosetrue
+        execution:              
+          onExecute:
+            - printenv 
+            
+  - name: pipelines_Pullcreatefalse
+    steps:
+      - name: s_BashTriggercreatefalse
+        type: Bash
+        configuration:
+          environmentVariables:
+            env1: value1
+            env2: value2
+          inputResources:
+            - name: gitpullcreatefalse
+        execution:              
+          onExecute:
+            - printenv     
+            
+  - name: pipelines_pullclosefalse
+    steps:
+      - name: s_BashTriggerclosefalse
+        type: Bash
+        configuration:
+          environmentVariables:
+            env1: value1
+            env2: value2
+          inputResources:
+            - name: gitpullclosefalse
+        execution:              
+          onExecute:
+            - printenv        
+
+  - name: pipelines_tagcreatefalse
+    steps:
+      - name: s_Bashtagcreatefalse
+        type: Bash
+        configuration:
+          environmentVariables:
+            env1: value1
+            env2: value2
+          inputResources:
+            - name: gittagcreatefalse
+        execution:              
+          onExecute:
+            - printenv     
+            
+  - name: pipelines_tagcreatetrue
+    steps:
+      - name: s_Bashtagcreatetrue
+        type: Bash
+        configuration:
+          environmentVariables:
+            env1: value1
+            env2: value2
+          inputResources:
+            - name: gittagcreatetrue
+        execution:              
+          onExecute:
+            - printenv  
+            
+  - name: pipelines_releasecreatefalse
+    steps:
+      - name: s_Bashreleasecreatefalse
+        type: Bash
+        configuration:
+          environmentVariables:
+            env1: value1
+            env2: value2
+          inputResources:
+            - name: gitreleasecreatefalse
+        execution:              
+          onExecute:
+            - printenv     
+            
+  - name: pipelines_releasecreatetrue
+    steps:
+      - name: s_Bashreleasecreatetrue
+        type: Bash
+        configuration:
+          environmentVariables:
+            env1: value1
+            env2: value2
+          inputResources:
+            - name: gitreleasecreatetrue
+        execution:              
+          onExecute:
+            - printenv              
