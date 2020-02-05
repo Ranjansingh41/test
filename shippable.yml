@@ -1,37 +1,41 @@
 resources:
-  - name: imagetest
-    type: Image
+  - name: auto_gitRepo
+    type: GitRepo
     configuration:
-       registry: googgle
-       sourceRepository: docker-local  # required if Docker registry is Artifactory
-#        region: <string> # required if registry is AWS
-       imageName: ranjansingh/python
-       imageTag: app 
-#        autoPull: <boolean> (default false)
-
-      
-pipelines:
-  - name: pipeline_ranjan1
-    steps:
-      - name: node
-        type: Bash
-        configuration:
-          inputResources:
-            - name: imagetest
-          runtime:
-            type: image
-            image:
-# #               auto:
-# #                 language: nodejs
-# #                 versions:
-# #                   - 10.15.3
-              custom:
-                name: ankul/u16
-                tag: master
-#                 autoPull: false
-        execution:
-          onExecute:
-            - printenv
-#             - nvm list
-#             - jfrog --version
-#             - kubectl version --client
+      path: PIP/automation
+      gitProvider: jfBitbucket
+      branches:
+        include: ^master$
+        
+name: test_automation
+steps:
+  - name: tag_automation_phase_2
+    type: Bash
+    configuration:
+      affinityGroup: milestoneBuild
+#       integrations:
+#         - name: test_generic
+      inputResources:
+        - name: auto_gitRepo
+          trigger: false
+#       inputSteps:
+#         - name: tag_automation_phase_1
+    execution:
+      onStart:
+        - >-
+          restore_pipeline_files jsonfile
+          $res_auto_gitRepo_resourcePath/tests/conf.json
+        - pushd $res_auto_gitRepo_resourcePath
+        - >-
+          export
+          testCases="[\"core/testHarness/setup.js\",\"core/steps/Bash/LanguageImages.js\"]"
+        - cd tests
+        - ./test.sh
+        - >-
+          add_pipeline_files $res_auto_gitRepo_resourcePath/tests/conf.json
+          jsonfile
+        - cat $res_auto_gitRepo_resourcePath/tests/conf.json
+ 
+          add_pipeline_files $res_auto_gitRepo_resourcePath/tests/conf.json
+          jsonfile
+        - cat $res_auto_gitRepo_resourcePath/tests/conf.json
