@@ -16,3 +16,12 @@ pipelines:
         execution:
           onExecute:
             - echo $"hello"
+      - name: ag_step_3
+        type: Bash
+        configuration:
+          affinityGroup: together
+          inputSteps:
+             - name: ag_step_2
+        execution:
+          onExecute:
+            - echo $"hello"      
