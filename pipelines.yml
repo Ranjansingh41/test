@@ -1,27 +1,27 @@
 pipelines:
     steps:
-      - name: ag_step_1
+      - name: agstep1
         type: Bash
         configuration:
           affinityGroup: together
         execution:
           onExecute:
             - echo $"hi"
-      - name: ag_step_2
+      - name: agstep2
         type: Bash
         configuration:
           affinityGroup: together
           inputSteps:
-             - name: ag_step_1
+             - name: agstep1
         execution:
           onExecute:
             - echo $"hello"
-      - name: ag_step_3
+      - name: agstep3
         type: Bash
         configuration:
           affinityGroup: together
           inputSteps:
-             - name: ag_step_2
+             - name: agstep2
         execution:
           onExecute:
             - echo $"hello"      
