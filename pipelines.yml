@@ -1,4 +1,5 @@
 pipelines:
+  - name: pipelinesag
     steps:
       - name: agstep1
         type: Bash
