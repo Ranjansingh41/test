@@ -3,7 +3,7 @@ resources:
     type: GitRepo
     configuration:
       gitProvider: github
-      path: ~ranjanks/test
+      path: Ranjansingh41/test
 
 pipelines:
   - name: pipelines
