@@ -2,7 +2,7 @@ resources:
   - name: test1234
     type: GitRepo
     configuration:
-      gitProvider: bbs
+      gitProvider: github
       path: ~ranjanks/test
 
 pipelines:
