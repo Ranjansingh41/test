@@ -6,16 +6,15 @@
 #       path: Ranjansingh41/test
 
 pipelines:
-  - name: pipelines
+  - name: pipelines_S_PS_Generic_0050
     steps:
-      - name: S_Bash1
+      - name: S_Bash_0050
         type: Bash
-        configuration:
-          integrations:
-            - name: github
         execution:
           onExecute:
-            - echo "executing step..."
+            - echo "onExecute"
+          onStart:
+            - echo "onStart"
             
 #       - name: S_Bash3
 #         type: Bash
