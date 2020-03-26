@@ -5,16 +5,16 @@
 #       gitProvider: github
 #       path: Ranjansingh41/test
 
-# pipelines:
-#   - name: pipelines_S_PS_Generic_0050
-#     steps:
-#       - name: S_Bash_0050
-#         type: Bash
-#         execution:
-#           onExecute:
-#             - echo "onExecute"
-#           onStart:
-#             - echo "onStart"
+pipelines:
+  - name: pipelines_S_PS_Generic_0050
+    steps:
+      - name: S_Bash_0050
+        type: Bash
+        execution:
+          onExecute:
+            - echo "onExecute"
+          onStart:
+            - echo "onStart"
 pipelines:
   - name: pipeline_automation
     steps:
@@ -28,13 +28,13 @@ pipelines:
             - echo "hi"
 
             
-#       - name: S_Bash3
-#         type: Bash
-#         configuration:
-#           inputResources:
-#             - name: test1234
-#         execution:
-#           onExecute:
-#             - echo "executing step..."
+      - name: S_Bash3
+        type: Bash
+        configuration:
+          inputResources:
+            - name: test1234
+        execution:
+          onExecute:
+            - echo "executing step..."
             
           
