@@ -15,7 +15,7 @@ pipelines:
             - name: test1234
         execution:
           onExecute:
-            - echo "executing step..."
+            - echo "hi"
 #       - name: S_Bash2
 #         type: Bash
 #         configuration:
@@ -32,7 +32,7 @@ pipelines:
             - name: test1234
         execution:
           onExecute:
-            - echo "executing step..."
+            - echo "hi"
 #       - name: S_Bash4
 #         type: Bash
 #         configuration:
