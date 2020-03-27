@@ -25,14 +25,14 @@ pipelines:
 #           onExecute:
 #             - echo "executing step..."
             
-      - name: S_Bash3
-        type: Bash
-        configuration:
-          inputResources:
-            - name: test1234
-        execution:
-          onExecute:
-            - echo "hi"
+#       - name: S_Bash3
+#         type: Bash
+#         configuration:
+#           inputResources:
+#             - name: test1234
+#         execution:
+#           onExecute:
+#             - echo "hi"
 #       - name: S_Bash4
 #         type: Bash
 #         configuration:
