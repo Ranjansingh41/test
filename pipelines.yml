@@ -16,7 +16,7 @@ pipelines:
           onExecute:
 #             - dotnetcore
             - clang --version 
-            - if($(clang --version) -ne "*9.0.0*"){
+            - if($(clang --version) -ne "*clang version 9.0.0 (tags/RELEASE_900/final)*"){
               Write-Error "Stop" -ErrorAction Stop
               }
 #             - source /root/.gvm/scripts/gvm
