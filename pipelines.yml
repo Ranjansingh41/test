@@ -21,7 +21,7 @@ pipelines:
             - gcc --version
 #             - go version
 #             - java -version
-            - if($(clang --version) -ne "clang version 9.0.0 (tags/RELEASE_900/final)Target: x86_64-pc-windows-msvc Thread model: posixInstalledDir: C:\Program Files\LLVM\bin"){
+            - if($(clang --version) -ne "clang version 9.0.0"){
               Write-Error "Stop" -ErrorAction Stop
               }
 #             - |
