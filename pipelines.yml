@@ -11,13 +11,13 @@ pipelines:
               auto:
                 language: java
                 versions:
-                  - 8
+                  - 13
         execution:
           onExecute:
             - java -version
-            - if($(java -version) -ne "openjdk version "1.8.0_232""){
-              Write-Error "Stop" -ErrorAction Stop
-              }
+#             - if($(java -version) -ne "openjdk version "1.8.0_232""){
+#               Write-Error "Stop" -ErrorAction Stop
+#               }
 #             - |
 #               [[ "$(node --version)" == *"10.18.0"* ]]
 #             - gci env:*
