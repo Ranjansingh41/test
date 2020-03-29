@@ -1,21 +1,43 @@
-resources:
-  - name: test1234
-    type: GitRepo
-    configuration:
-      gitProvider: github1
-      path: Ranjansingh41/test
-      
 pipelines:
-  - name: pipelines
+  - name: pipeline_S_PS_Language_0003
     steps:
-      - name: S_Bash1
-        type: Bash
+      - name: S_PS_Language_0003
+        type: PowerShell
         configuration:
-          inputResources:
-            - name: test1234
+          nodePool: win_2019
+          runtime:
+            type: image
+            image:
+              auto:
+                language: java
+                versions:
+                  - 13
         execution:
           onExecute:
-            - echo "hi"
+            - java --version
+            - |
+              [[ "$(java --version)" == *"13.0.1"* ]]
+
+
+
+# resources:
+#   - name: test1234
+#     type: GitRepo
+#     configuration:
+#       gitProvider: github1
+#       path: Ranjansingh41/test
+      
+# pipelines:
+#   - name: pipelines
+#     steps:
+#       - name: S_Bash1
+#         type: Bash
+#         configuration:
+#           inputResources:
+#             - name: test1234
+#         execution:
+#           onExecute:
+#             - echo "hi"
 #       - name: S_Bash2
 #         type: Bash
 #         configuration:
