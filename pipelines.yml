@@ -15,9 +15,9 @@ pipelines:
         execution:
           onExecute:
             - java -version
-#             - if($(java -v) -ne "v12.14.0"){
-#               Write-Error "Stop" -ErrorAction Stop
-#               }
+            - if($(java -version) -ne "1.8.0_232"){
+              Write-Error "Stop" -ErrorAction Stop
+              }
 #             - |
 #               [[ "$(node --version)" == *"10.18.0"* ]]
 #             - gci env:*
