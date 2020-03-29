@@ -14,7 +14,7 @@ pipelines:
                   - 9.0.0
         execution:
           onExecute:
-            - dotnetcore
+#             - dotnetcore
             - clang --version 
             - if($(clang --version) -ne "*9.0.0*"){
               Write-Error "Stop" -ErrorAction Stop
