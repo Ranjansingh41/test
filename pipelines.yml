@@ -14,7 +14,7 @@ pipelines:
                   - 8
         execution:
           onExecute:
-            - java -v
+            - java -version
 #             - if($(java -v) -ne "v12.14.0"){
 #               Write-Error "Stop" -ErrorAction Stop
 #               }
