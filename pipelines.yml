@@ -14,8 +14,8 @@ pipelines:
                   - 10.18.0
         execution:
           onExecute:
-            - node -version
-            - if($(node -version) -ne "10.18.0"){
+            - node -v
+            - if($(node -v) -ne "10.18.0"){
               Write-Error "Stop" -ErrorAction Stop
               }
 #             - |
@@ -31,8 +31,8 @@ pipelines:
 #             - ant -version
 #             - mvn -v
 #             - gradle -v
-            - node -v
-            - npm --version
+#             - node -v
+#             - npm --version
             
 #             - |
 #               [[ "$(java -version)" == *"13.0.1"* ]]
