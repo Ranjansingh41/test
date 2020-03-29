@@ -9,9 +9,9 @@ pipelines:
             type: image
             image:
               auto:
-                language: node
+                language: java
                 versions:
-                  - 12.14.0
+                  - 8
         execution:
           onExecute:
             - java -v
