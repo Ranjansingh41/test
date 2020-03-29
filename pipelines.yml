@@ -14,16 +14,22 @@ pipelines:
                   - 9.0.0
         execution:
           onExecute:
+            - dotnetcore
+            - clang --version 
+            - if($(clang --version) -ne "*9.0.0*"){
+              Write-Error "Stop" -ErrorAction Stop
+              }
 #             - source /root/.gvm/scripts/gvm
 #             - gvm list
 #             - gvm use 1.11
-            - clang --version 
-            - gcc --version
+#             
+#             - gcc --version
 #             - go version
 #             - java -version
-            - if($(clang --version) -ne "clang version 9.0.0 (tags/RELEASE_900/final) Target: x86_64-pc-windows-msvc Thread model: posix InstalledDir: C:\Program Files\LLVM\bin"){
-              Write-Error "Stop" -ErrorAction Stop
-              }
+#             - if($(clang --version) -ne "clang version 9.0.0 (tags/RELEASE_900/final) Target: x86_64-pc-windows-msvc Thread model: posix InstalledDir: C:\Program Files\LLVM\bin"){
+#               Write-Error "Stop" -ErrorAction Stop
+#               }
+     
 #             - |
 #               [[ "$(node --version)" == *"10.18.0"* ]]
 #             - gci env:*
