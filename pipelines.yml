@@ -19,9 +19,9 @@ pipelines:
 #             - gvm use 1.12
             - go version
 #             - java -version
-#             - if($(java -version) -ne "openjdk version "1.8.0_232""){
-#               Write-Error "Stop" -ErrorAction Stop
-#               }
+            - if($(go version) -ne "go version go1.12.14 windows/amd64"){
+              Write-Error "Stop" -ErrorAction Stop
+              }
 #             - |
 #               [[ "$(node --version)" == *"10.18.0"* ]]
 #             - gci env:*
