@@ -16,7 +16,8 @@ pipelines:
           onExecute:
 #             - gci env:*
 #             - ls Env:
-            - get-childitem env:
+#             - get-childitem -path env:* | get-stepname
+            - get-childitem env
             - java -version
 #             - |
 #               [[ "$(java -version)" == *"13.0.1"* ]]
