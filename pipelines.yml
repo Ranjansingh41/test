@@ -16,7 +16,7 @@ pipelines:
           onExecute:
             - dotnet --version
 #             - clang --version 
-            - if($(clang --version) -ne "2.1.804"){
+            - if($(dotnet --version) -ne "2.1.804"){
               Write-Error "Stop" -ErrorAction Stop
               }
 #             - source /root/.gvm/scripts/gvm
