@@ -17,11 +17,13 @@ pipelines:
 #             - source /root/.gvm/scripts/gvm
 #             - gvm list
 #             - gvm use 1.11
-            - go version
+            - clang --version 
+            - gcc --version
+#             - go version
 #             - java -version
-            - if($(go version) -ne "go version go1.13.7 windows/amd64"){
-              Write-Error "Stop" -ErrorAction Stop
-              }
+#             - if($(go version) -ne "go version go1.13.7 windows/amd64"){
+#               Write-Error "Stop" -ErrorAction Stop
+#               }
 #             - |
 #               [[ "$(node --version)" == *"10.18.0"* ]]
 #             - gci env:*
