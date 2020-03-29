@@ -18,8 +18,8 @@ pipelines:
 #             - ls Env:
 #             - get-childitem -path env:* | get-stepname
             - ([guid]$value1 -eq [guid]$value2)
-            - "java -version[]" == "13.0.1[]"
-            - get-childitem env
+#             - "java -version[]" == "13.0.1[]"
+#             - get-childitem env
             - java -version
 #             - |
 #               [[ "$(java -version)" == *"13.0.1"* ]]
