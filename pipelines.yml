@@ -33,7 +33,7 @@ pipelines:
 #             
 #             - gcc --version
             - go version
-            - if($(go version) -ne "go version go1.11.13 windows/amd64"){
+            - if($(go version) -ne "go version go1.12.14 windows/amd64"){
               Write-Error "Stop" -ErrorAction Stop
               }
 #             - java -version
