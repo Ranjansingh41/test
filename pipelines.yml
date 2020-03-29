@@ -21,6 +21,9 @@ pipelines:
 #             - "java -version[]" == "13.0.1[]"
 #             - get-childitem env
             - java -version
+            - ant -version
+            - mvn -v
+            - gradle -v
 #             - |
 #               [[ "$(java -version)" == *"13.0.1"* ]]
 
