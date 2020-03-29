@@ -2,7 +2,7 @@ pipelines:
   - name: pipeline_S_PS_Language_0003
     steps:
       - name: S_PS_Language_0003
-        type: PowerShell
+        type: Bash
         configuration:
           nodePool: u16 #win_2019
           runtime:
