@@ -14,10 +14,10 @@ pipelines:
                   - 12.14.0
         execution:
           onExecute:
-            - node -v
-            - if($(node -v) -ne "v12.14.0"){
-              Write-Error "Stop" -ErrorAction Stop
-              }
+            - java -v
+#             - if($(java -v) -ne "v12.14.0"){
+#               Write-Error "Stop" -ErrorAction Stop
+#               }
 #             - |
 #               [[ "$(node --version)" == *"10.18.0"* ]]
 #             - gci env:*
