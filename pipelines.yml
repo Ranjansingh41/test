@@ -9,16 +9,15 @@ pipelines:
             type: image
             image:
               auto:
-                language: dotnetcore
+                language: java
                 versions:
-                  - 3.1
+                  - 11
         execution:
           onExecute:
-            - dotnet --version
-#             - clang --version 
-            - if($(dotnet --version) -ne "3.1.102"){
-              Write-Error "Stop" -ErrorAction Stop
-              }
+            - java --version
+#             - if($(dotnet --version) -ne "3.1.102"){
+#               Write-Error "Stop" -ErrorAction Stop
+#               }
 #             - source /root/.gvm/scripts/gvm
 #             - gvm list
 #             - gvm use 1.11
