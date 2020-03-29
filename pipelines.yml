@@ -2,9 +2,9 @@ pipelines:
   - name: pipeline_S_PS_Language_0003
     steps:
       - name: S_PS_Language_0003
-        type: Bash
+        type: PowerShell
         configuration:
-          nodePool: u16 #win_2019
+          nodePool: win_2019
           runtime:
             type: image
             image:
@@ -14,9 +14,9 @@ pipelines:
                   - 10.18.0
         execution:
           onExecute:
-            - node --version
-            - |
-              [[ "$(node --version)" == *"10.18.0"* ]]
+            - node -version
+#             - |
+#               [[ "$(node --version)" == *"10.18.0"* ]]
 #             - gci env:*
 #             - ls Env:
 #             - get-childitem -path env:* | get-stepname
@@ -28,8 +28,9 @@ pipelines:
 #             - ant -version
 #             - mvn -v
 #             - gradle -v
-#             - node -v
-#             - npm --version
+            - node -v
+            - npm --version
+            
 #             - |
 #               [[ "$(java -version)" == *"13.0.1"* ]]
 
