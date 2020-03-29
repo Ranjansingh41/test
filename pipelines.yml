@@ -14,9 +14,9 @@ pipelines:
                   - 13
         execution:
           onExecute:
-            - java --version
+            - java -version
             - |
-              [[ "$(java --version)" == *"13.0.1"* ]]
+              [[ "$(java -version)" == *"13.0.1"* ]]
 
 
 
