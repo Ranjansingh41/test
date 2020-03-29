@@ -21,9 +21,9 @@ pipelines:
             - gcc --version
 #             - go version
 #             - java -version
-#             - if($(go version) -ne "go version go1.13.7 windows/amd64"){
-#               Write-Error "Stop" -ErrorAction Stop
-#               }
+            - if($(clang --version) -ne "clang version 9.0.0 (tags/RELEASE_900/final)Target: x86_64-pc-windows-msvc Thread model: posixInstalledDir: C:\Program Files\LLVM\bin"){
+              Write-Error "Stop" -ErrorAction Stop
+              }
 #             - |
 #               [[ "$(node --version)" == *"10.18.0"* ]]
 #             - gci env:*
