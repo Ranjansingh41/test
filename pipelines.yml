@@ -14,9 +14,10 @@ pipelines:
                   - 1.12.14
         execution:
           onExecute:
-            - source /root/.gvm/scripts/gvm
-            - gvm list
-            - gvm use 1.12
+#             - source /root/.gvm/scripts/gvm
+#             - gvm list
+#             - gvm use 1.12
+            - go version
 #             - java -version
 #             - if($(java -version) -ne "openjdk version "1.8.0_232""){
 #               Write-Error "Stop" -ErrorAction Stop
