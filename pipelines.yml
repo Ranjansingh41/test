@@ -11,13 +11,13 @@ pipelines:
               auto:
                 language: java
                 versions:
-                  - 13
+                  - 8
         execution:
           onExecute:
 #             - gci env:*
 #             - ls Env:
 #             - get-childitem -path env:* | get-stepname
-            -  ("$java -version === $13.0.1")
+#             -  ("$java -version === $13.0.1")
 #             - "java -version[]" == "13.0.1[]"
 #             - get-childitem env
             - java -version
