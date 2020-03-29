@@ -9,12 +9,15 @@ pipelines:
             type: image
             image:
               auto:
-                language: java
+                language: go
                 versions:
-                  - 13
+                  - 1.12.14
         execution:
           onExecute:
-            - java -version
+            - source /root/.gvm/scripts/gvm
+            - gvm list
+            - gvm use 1.12
+#             - java -version
 #             - if($(java -version) -ne "openjdk version "1.8.0_232""){
 #               Write-Error "Stop" -ErrorAction Stop
 #               }
