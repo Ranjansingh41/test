@@ -14,7 +14,7 @@ pipelines:
                   - 13
         execution:
           onExecute:
-            - printenv 
+            - get-childitem -path env:* | get-member 
             - java -version
 #             - |
 #               [[ "$(java -version)" == *"13.0.1"* ]]
