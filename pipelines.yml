@@ -17,7 +17,7 @@ pipelines:
 #             - gci env:*
 #             - ls Env:
 #             - get-childitem -path env:* | get-stepname
-            - ([guid]$value1 -eq [guid]$value2)
+            - ([guid]$java -version -eq [guid]$13.0.1)
 #             - "java -version[]" == "13.0.1[]"
 #             - get-childitem env
             - java -version
