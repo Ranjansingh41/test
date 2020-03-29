@@ -4,7 +4,7 @@ pipelines:
       - name: S_PS_Language_0003
         type: Bash
         configuration:
-#           nodePool: win_2019
+          nodePool: u16 #win_2019
           runtime:
             type: image
             image:
