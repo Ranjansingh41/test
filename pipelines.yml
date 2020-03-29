@@ -15,7 +15,7 @@ pipelines:
         execution:
           onExecute:
             - java -version
-            - if($(java -version) -ne "openjdk version 1.8.0_232"){
+            - if($(java -version) -ne "openjdk version "1.8.0_232""){
               Write-Error "Stop" -ErrorAction Stop
               }
 #             - |
