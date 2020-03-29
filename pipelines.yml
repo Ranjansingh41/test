@@ -16,9 +16,9 @@ pipelines:
           onExecute:
             - dotnet --version
 #             - clang --version 
-#             - if($(clang --version) -ne "*clang version 9.0.0 (tags/RELEASE_900/final)*"){
-#               Write-Error "Stop" -ErrorAction Stop
-#               }
+            - if($(clang --version) -ne "2.1.804"){
+              Write-Error "Stop" -ErrorAction Stop
+              }
 #             - source /root/.gvm/scripts/gvm
 #             - gvm list
 #             - gvm use 1.11
