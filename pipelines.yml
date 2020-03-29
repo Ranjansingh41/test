@@ -4,7 +4,7 @@ pipelines:
       - name: S_PS_Language_0003
         type: PowerShell
         configuration:
-          nodePool: win_2019
+          nodePool: u16 #win_2019
           runtime:
             type: image
             image:
@@ -14,14 +14,14 @@ pipelines:
                   - 1.11.11
         execution:
           onExecute:
-#             - source /root/.gvm/scripts/gvm
-#             - gvm list
-#             - gvm use 1.12
+            - source /root/.gvm/scripts/gvm
+            - gvm list
+            - gvm use 1.11
             - go version
 #             - java -version
-            - if($(go version) -ne "go version go1.11.11 windows/amd64"){
-              Write-Error "Stop" -ErrorAction Stop
-              }
+#             - if($(go version) -ne "go version go1.11.11 windows/amd64"){
+#               Write-Error "Stop" -ErrorAction Stop
+#               }
 #             - |
 #               [[ "$(node --version)" == *"10.18.0"* ]]
 #             - gci env:*
