@@ -9,24 +9,24 @@ pipelines:
             type: image
             image:
               auto:
-                language: go
+                language: java
                 versions:
-                  - 1.12.14
+                  - 11
         execution:
           onExecute:
 #             - dotnet --version
 #              - if($(dotnet --version) -ne "3.1.102"){
 #                Write-Error "Stop" -ErrorAction Stop
 #                }
-#             - java -version
+            - java -version
 #             - if($(java -version) -ne "openjdk 11.0.2 2019-01-15 OpenJDK Runtime Environment 18.9 (build 11.0.2+9) OpenJDK 64-Bit Server VM 18.9 (build 11.0.2+9, mixed mode)"){
 #               Write-Error "Stop" -ErrorAction Stop
-#               }
+              }
 #             - if($(java -version) -Like "*openjdk version "11.0.2" 2019-01-15*"){ write-output "working" }
 #               else { Write-Error "Stop" -ErrorAction Stop} 
-#             - if($(java --version) -ne "11.0.2"){
-#               Write-Error "Stop" -ErrorAction Stop
-#               }
+            - if($(java --version) -ne "*11.0.2*"){ write-output "working" } else {
+              Write-Error "Stop" -ErrorAction Stop
+              }
 #             - source /root/.gvm/scripts/gvm
 #             - gvm list
 #             - gvm use 1.11
