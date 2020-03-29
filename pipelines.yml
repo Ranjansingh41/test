@@ -14,9 +14,9 @@ pipelines:
                   - 13
         execution:
           onExecute:
-            - gci env:*
-            - ls Env:
-            - get-childitem -path env:* | get-member 
+#             - gci env:*
+#             - ls Env:
+            - get-childitem env:
             - java -version
 #             - |
 #               [[ "$(java -version)" == *"13.0.1"* ]]
