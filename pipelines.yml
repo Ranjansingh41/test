@@ -71,12 +71,12 @@
 
 
 
-resources:
-  - name: test1234
-    type: GitRepo
-    configuration:
-      gitProvider: git_ranjan
-      path: Ranjansingh41/test
+# resources:
+#   - name: test1234
+#     type: GitRepo
+#     configuration:
+#       gitProvider: git_ranjan
+#       path: Ranjansingh41/test
       
 pipelines:
   - name: pipelines
@@ -92,7 +92,7 @@ pipelines:
 #             env2: value2
 #           timeoutSeconds: -5000
           integrations: # optional
-#             - name:  git_ranjan
+            - name:  git_ranjan2
           nodePool: win_2019
 #           outputResources: # optional
 #             - name: myOutputResource1 
@@ -107,8 +107,8 @@ pipelines:
 #                 name: node
 #                 tag: 8.17.0
 #                 registry : ranjandocker
-          inputResources:
-            - name: test1234
+#           inputResources:
+#             - name: test1234
         execution:
           onExecute:
             - Get-Variable | format-table
