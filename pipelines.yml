@@ -84,6 +84,7 @@ pipelines:
       - name: S_Bash1
         type: PowerShell
         configuration:
+          nodePool: win_2019
           inputResources:
             - name: test1234
         execution:
