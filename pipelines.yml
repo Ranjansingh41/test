@@ -90,14 +90,15 @@ pipelines:
           nodePool: win_2019
           runtime:
             type: image
-            image:
-              auto:
-                language: node
-                versions:
-                  - 10.18.0
-#               custom:
-#                 name: node
-#                 tag: 8.17.0    
+#             image:
+#               auto:
+#                 language: node
+#                 versions:
+#                   - 10.18.0
+              custom:
+                name: node
+                tag: 8.17.0
+                registry : usindia
           inputResources:
             - name: test1234
         execution:
