@@ -85,7 +85,7 @@ pipelines:
 #         type: image
     steps:
       - name: S_Bash1
-        type: PowerShell
+#         type: PowerShell
         configuration:
           nodePool: win_2019
 #           outputResources: # optional
@@ -105,7 +105,7 @@ pipelines:
             - name: test1234
         execution:
           onExecute:
-            - node --version#write-output "executing step..."
+            - write-output "executing step..."
 #           onFailure:
 #             - write-output  "hello"
           onSuccess:
