@@ -87,7 +87,10 @@ pipelines:
       - name: S_Bash1
         type: PowerShell
         configuration:
-          timeoutSeconds: -5000
+          environmentVariables: # optional
+            env1: value1
+            env2: value2
+#           timeoutSeconds: -5000
           nodePool: win_2019
 #           outputResources: # optional
 #             - name: myOutputResource1 
@@ -106,7 +109,7 @@ pipelines:
             - name: test1234
         execution:
           onExecute:
-#             - sleep 1m
+            - Get-Variable | format-table
             - write-output "executing step..."
 #           onFailure:
 #             - write-output  "hello"
