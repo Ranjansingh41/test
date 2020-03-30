@@ -9,12 +9,16 @@ pipelines:
             type: image
             image:
               auto:
-                language: cpp
+                language: node
                 versions:
-                  - 8.0.0
+                  - 10.18.0
         execution:
           onExecute:
-#             - dotnet --version
+            - node -v
+            - if($(node -v) -ne "v10.18.0"){
+              Write-Error "Stop" -ErrorAction Stop
+              }
+            - dotnet --version
 #              - if($(dotnet --version) -ne "3.1.102"){
 #                Write-Error "Stop" -ErrorAction Stop
 #                }
