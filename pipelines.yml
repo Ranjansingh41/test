@@ -94,6 +94,7 @@ pipelines:
       - name: S_Bash2
         type: Bash
         configuration:
+          nodePool: win_2019
           inputSteps:
             - name: S_Bash1
         execution:
