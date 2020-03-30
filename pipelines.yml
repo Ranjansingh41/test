@@ -88,13 +88,15 @@ pipelines:
         type: PowerShell
         configuration:
           nodePool: win_2019
-          runtime:
-            type: host
-            image:
-              auto:
-                language: node
-                versions:
-                  - 10.18.0
+          outputResources: # optional
+#             - name: myOutputResource1 
+#           runtime:
+#             type: host
+#             image:
+#               auto:
+#                 language: node
+#                 versions:
+#                   - 10.18.0
 #               custom:
 #                 name: node
 #                 tag: 8.17.0
