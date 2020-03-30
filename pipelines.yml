@@ -1,33 +1,33 @@
-pipelines:
-  - name: pipeline_S_PS_Language_0003
-    steps:
-      - name: S_PS_Language_0003
-        type: PowerShell
-        configuration:
-          nodePool: win_2019
-          runtime:
-            type: image
-            image:
-              auto:
-                language: node
-                versions:
-                  - 10.18.0
-        execution:
-          onExecute:
-            - node -v
-            - if($(node -v) -ne "v10.18.0"){
-              Write-Error "Stop" -ErrorAction Stop
-              }
-            - dotnet --version
+# pipelines:
+#   - name: pipeline_S_PS_Language_0003
+#     steps:
+#       - name: S_PS_Language_0003
+#         type: PowerShell
+#         configuration:
+#           nodePool: win_2019
+#           runtime:
+#             type: image
+#             image:
+#               auto:
+#                 language: node
+#                 versions:
+#                   - 10.18.0
+#         execution:
+#           onExecute:
+#             - node -v
+#             - if($(node -v) -ne "v10.18.0"){
+#               Write-Error "Stop" -ErrorAction Stop
+#               }
+#             - dotnet --version
 #              - if($(dotnet --version) -ne "3.1.102"){
 #                Write-Error "Stop" -ErrorAction Stop
 #                }
-            - clang --version
+#             - clang --version
 #             - if($(java -version) -ne "openjdk 11.0.2 2019-01-15 OpenJDK Runtime Environment 18.9 (build 11.0.2+9) OpenJDK 64-Bit Server VM 18.9 (build 11.0.2+9, mixed mode)"){
 #               Write-Error "Stop" -ErrorAction Stop
 #               }
-            - if($(clang --version) -Like "clang version 8.0.0 tags/RELEASE_900/final Target x86_64-pc-windows-msvc Thread model posix InstalledDir C\Program Files\LLVM\bin")
-              { Write-Error "Stop" -ErrorAction Stop} 
+#             - if($(clang --version) -Like "clang version 8.0.0 tags/RELEASE_900/final Target x86_64-pc-windows-msvc Thread model posix InstalledDir C\Program Files\LLVM\bin")
+#               { Write-Error "Stop" -ErrorAction Stop} 
 #             - if($(java --version) -ne "*11.0.2*"){ write-output "working" } else {
 #               Write-Error "Stop" -ErrorAction Stop
 #               } 
@@ -71,24 +71,24 @@ pipelines:
 
 
 
-# resources:
-#   - name: test1234
-#     type: GitRepo
-#     configuration:
-#       gitProvider: github1
-#       path: Ranjansingh41/test
+resources:
+  - name: test1234
+    type: GitRepo
+    configuration:
+      gitProvider: github1
+      path: Ranjansingh41/test
       
-# pipelines:
-#   - name: pipelines
-#     steps:
-#       - name: S_Bash1
-#         type: Bash
-#         configuration:
-#           inputResources:
-#             - name: test1234
-#         execution:
-#           onExecute:
-#             - echo "hi"
+pipelines:
+  - name: pipelines
+    steps:
+      - name: S_Bash1
+        type: Bash
+        configuration:
+          inputResources:
+            - name: test1234
+        execution:
+          onExecute:
+            - echo "hi"
 #       - name: S_Bash2
 #         type: Bash
 #         configuration:
