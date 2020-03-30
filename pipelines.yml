@@ -75,7 +75,7 @@ resources:
   - name: test1234
     type: GitRepo
     configuration:
-      gitProvider: github1
+      gitProvider: github
       path: Ranjansingh41/test
       
 pipelines:
