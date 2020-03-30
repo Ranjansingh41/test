@@ -105,8 +105,10 @@ pipelines:
             - name: test1234
         execution:
           onExecute:
-            - node --version#write-output "executing step..."
-          onFailure:
+            - write-output "executing step..."
+#           onFailure:
+#             - write-output  "hello"
+          onSuccess:
             - write-output  "hello"
             
 #       - name: S_Bash2
