@@ -90,7 +90,7 @@ pipelines:
           nodePool: win_2019
           runtime:
             type: image
-#             image:
+            image:
 #               auto:
 #                 language: node
 #                 versions:
