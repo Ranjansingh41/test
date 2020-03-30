@@ -86,7 +86,7 @@ pipelines:
         configuration:
           nodePool: win_2019
           runtime:
-            type: image
+            type: host
 #             image:
 #               auto:
 #                 language: node
