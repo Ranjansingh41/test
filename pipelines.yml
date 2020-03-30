@@ -71,12 +71,12 @@
 
 
 
-# resources:
-#   - name: test1234
-#     type: GitRepo
-#     configuration:
-#       gitProvider: git_ranjan
-#       path: Ranjansingh41/test
+resources:
+  - name: test1234
+    type: GitRepo
+    configuration:
+      gitProvider: git_ranjan
+      path: Ranjansingh41/test
       
 pipelines:
   - name: pipelines
@@ -88,15 +88,18 @@ pipelines:
         type: PowerShell
         configuration:
           nodePool: win_2019
-#           runtime:
-#             type: host
-#             image:
-#               auto:
-#                 language: node
-#                 versions:
-#                   - 10.18.0
-#           inputResources:
-#             - name: test1234
+          runtime:
+            type: image
+            image:
+              auto:
+                language: node
+                versions:
+                  - 10.18.0
+              custom:
+                name: node
+                tag: 8.17.0    
+          inputResources:
+            - name: test1234
         execution:
           onExecute:
             - write-output "executing step..."
