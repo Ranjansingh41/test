@@ -106,7 +106,7 @@ pipelines:
             - name: test1234
         execution:
           onExecute:
-            - - sleep 1m
+            - sleep 1m
             - write-output "executing step..."
 #           onFailure:
 #             - write-output  "hello"
