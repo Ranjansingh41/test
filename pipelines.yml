@@ -105,7 +105,7 @@ pipelines:
             - name: test1234
         execution:
           onExecute:
-            - write-output "executing step..."
+            - node --version#write-output "executing step..."
 #           onFailure:
 #             - write-output  "hello"
           onSuccess:
