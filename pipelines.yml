@@ -80,9 +80,9 @@ resources:
       
 pipelines:
   - name: pipelines
-    configuration:
-      runtime:       
-        type: image
+#     configuration:
+#       runtime:       
+#         type: image
     steps:
       - name: S_Bash1
         type: PowerShell
@@ -95,9 +95,9 @@ pipelines:
                 language: node
                 versions:
                   - 10.18.0
-              custom:
-                name: node
-                tag: 8.17.0    
+#               custom:
+#                 name: node
+#                 tag: 8.17.0    
           inputResources:
             - name: test1234
         execution:
