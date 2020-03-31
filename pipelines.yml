@@ -96,10 +96,10 @@ pipelines:
 #                 versions:
 #                   - 10.18.0
               custom:
-                name: u16node
-                tag: 0.9.0
-                sourceRepository: docker-local
-                registry : ranjan_art
+                name: gcr.io/ship-rc/ubuntu
+                tag: latest
+#                 sourceRepository: docker-local
+                registry : ranjan_gcp
 #                 region: us-east-1
                 autoPull: true
         execution:
