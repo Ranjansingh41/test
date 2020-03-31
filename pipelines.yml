@@ -99,14 +99,14 @@ pipelines:
           runtime:
             type: image
 #             image:
-#               auto:
+              auto:
 #                 language: node
 #                 versions:
 #                   - 10.18.0
               custom:
                 name: ubuntu
                 tag: latest
-                registry : 
+                registry : aws_test
                 region: us-east-1
                 autoPull: true
 #           inputResources:
