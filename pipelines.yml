@@ -90,7 +90,7 @@ pipelines:
           nodePool: u16dynamic
           runtime:
             type: image
-#             image:
+            image:
 #               auto:
 #                 language: node
 #                 versions:
