@@ -112,6 +112,9 @@ pipelines:
         execution:
           onExecute:
             - Get-Variable | format-table
+            - if($step_runtime -ne "host"){
+              Write-Error "Stop" -ErrorAction Stop
+              }
 #             - write-output "executing step..."
 #           onFailure:
 #             - write-output  "hello"
