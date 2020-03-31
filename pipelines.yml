@@ -87,15 +87,7 @@ pipelines:
       - name: test
         type: Bash
         configuration:
-#           environmentVariables: # optional
-#             env1: value1
-#             env2: value2
-#           timeoutSeconds: -5000
-#           integrations: # optional
-#             - name:  git_ranjan2
           nodePool: u16dynamic
-#           outputResources: # optional
-#             - name: myOutputResource1 
           runtime:
             type: image
 #             image:
@@ -109,14 +101,13 @@ pipelines:
                 registry : aws_test
                 region: us-east-1
                 autoPull: true
-#           inputResources:
-#             - name: test1234
         execution:
           onExecute:
-            - Get-Variable | format-table
-            - if($step_runtime -ne "host"){
-              Write-Error "Stop" -ErrorAction Stop
-              }
+            - echo "hi"
+#             - Get-Variable | format-table
+#             - if($step_runtime -ne "host"){
+#               Write-Error "Stop" -ErrorAction Stop
+#               }
 #             - write-output "executing step..."
 #           onFailure:
 #             - write-output  "hello"
