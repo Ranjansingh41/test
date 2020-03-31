@@ -85,9 +85,9 @@ pipelines:
 #         type: image
     steps:
       - name: test
-        type: Bash
+        type: PowerShell
         configuration:
-          nodePool: az_node_dummy
+          nodePool: win_2019
           runtime:
             type: image
             image:
