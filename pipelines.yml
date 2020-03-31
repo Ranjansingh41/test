@@ -96,10 +96,11 @@ pipelines:
 #                 versions:
 #                   - 10.18.0
               custom:
-                name: ubuntu
-                tag: latest
-                registry : aws_test
-                region: us-east-1
+                name: u16node
+                tag: 10.16.0
+                sourceRepository: docker-local
+                registry : art
+#                 region: us-east-1
                 autoPull: true
         execution:
           onExecute:
