@@ -87,7 +87,7 @@ pipelines:
       - name: test
         type: PowerShell
         configuration:
-          nodePool: c7dynamic
+          nodePool: u16dynamic
           runtime:
             type: image
             image:
