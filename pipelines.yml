@@ -87,7 +87,7 @@ pipelines:
       - name: test
         type: Bash
         configuration:
-          nodePool: u16dynamic
+          nodePool: az_node_dummy
           runtime:
             type: image
             image:
