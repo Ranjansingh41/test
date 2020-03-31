@@ -85,27 +85,27 @@ pipelines:
 #         type: image
     steps:
       - name: test
-        type: Bash
+        type: PowerShell
         configuration:
-          nodePool: u16dynamic
+          nodePool: win1
           runtime:
-            type: image
-            image:
+            type: host
+#             image:
 #               auto:
 #                 language: node
 #                 versions:
 #                   - 10.18.0
-              custom:
-                name: gcr.io/ship-rc/ubuntu
-                tag: latest
-#                 sourceRepository: docker-local
-                registry : ranjan_gcp
-#                 region: us-east-1
-                autoPull: true
+#               custom:
+#                 name: gcr.io/ship-rc/ubuntu
+#                 tag: latest
+# #                 sourceRepository: docker-local
+#                 registry : ranjan_gcp
+# #                 region: us-east-1
+#                 autoPull: true
         execution:
           onExecute:
-            - echo "hi"
-#             - Get-Variable | format-table
+#             - echo "hi"
+            - Get-Variable | format-table
 #             - if($step_runtime -ne "host"){
 #               Write-Error "Stop" -ErrorAction Stop
 #               }
