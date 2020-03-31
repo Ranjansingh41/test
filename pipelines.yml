@@ -99,7 +99,7 @@ pipelines:
           runtime:
             type: image
 #             image:
-              auto:
+#               auto:
 #                 language: node
 #                 versions:
 #                   - 10.18.0
