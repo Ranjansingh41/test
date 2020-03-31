@@ -97,7 +97,7 @@ pipelines:
 #                   - 10.18.0
               custom:
                 name: u16node
-                tag: 10.16.0
+                tag: master
                 sourceRepository: docker-local
                 registry : art
 #                 region: us-east-1
