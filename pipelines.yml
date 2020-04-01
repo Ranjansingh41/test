@@ -1,3 +1,29 @@
+pipelines:
+  - name: pipeline_automation
+    configuration:
+      runtime:
+        type: host
+    steps:
+      - name: S_Bash_0068
+        type: Bash
+        configuration:
+          runtime:
+            type: image
+            image:
+              auto:
+                language: node
+                versions:
+                  - 10.18.0
+        execution:
+          onExecute:
+            - |
+              [[ "$step_image_name:$step_image_tag" == "docker.bintray.io/jfrog/pipelines-u16node:10.18.0" ]]
+            - node --version
+            - |
+              [[ "$(node --version)" == *"10.18.0"* ]]
+           
+
+
 # pipelines:
 #   - name: pipeline_S_PS_Language_0003
 #     steps:
@@ -78,14 +104,14 @@
 #       gitProvider: git_ranjan
 #       path: Ranjansingh41/test
       
-pipelines:
-  - name: pipelines
-#     configuration:
-#       runtime:       
-#         type: image
-    steps:
-      - name: test
-        type: Bash
+# pipelines:
+#   - name: pipelines
+# #     configuration:
+# #       runtime:       
+# #         type: image
+#     steps:
+#       - name: test
+#         type: Bash
 #         configuration:
 #           nodePool: win1
 #           runtime:
