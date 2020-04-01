@@ -104,6 +104,7 @@ pipelines:
 #                 autoPull: true
         execution:
           onExecute:
+            - node --version
             - echo "hi"
 #             - Get-Variable | format-table
 #             - if($step_runtime -ne "host"){
