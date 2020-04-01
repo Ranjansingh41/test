@@ -85,11 +85,11 @@ pipelines:
 #         type: image
     steps:
       - name: test
-        type: PowerShell
-        configuration:
-          nodePool: win1
-          runtime:
-            type: host
+        type: Bash
+#         configuration:
+#           nodePool: win1
+#           runtime:
+#             type: host
 #             image:
 #               auto:
 #                 language: node
@@ -104,8 +104,8 @@ pipelines:
 #                 autoPull: true
         execution:
           onExecute:
-#             - echo "hi"
-            - Get-Variable | format-table
+            - echo "hi"
+#             - Get-Variable | format-table
 #             - if($step_runtime -ne "host"){
 #               Write-Error "Stop" -ErrorAction Stop
 #               }
