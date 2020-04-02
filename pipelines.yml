@@ -99,7 +99,7 @@ pipelines:
         configuration:
           nodePool: u18dynamic
           runtime:
-            type: host
+            type: image
             image:
 #               auto:
 #                 language: node
