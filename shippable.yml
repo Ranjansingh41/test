@@ -16,10 +16,10 @@ pipelines:
 #                 versions:
 #                   - 10.18.0
               custom:
-                name: gcr.io/ship-rc/ubuntu
+                name: ubuntu      #gcr.io/ship-rc/ubuntu
                 tag: latest
-                sourceRepository: docker-local
-                registry : gcp
+#                 sourceRepository: docker-local
+                registry : aws
 #                 region: us-east-1
                 autoPull: true
         execution:
