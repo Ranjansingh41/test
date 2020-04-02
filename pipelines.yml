@@ -97,7 +97,7 @@ pipelines:
       - name: test
         type: Bash
         configuration:
-          nodePool: u18dynamic
+#           nodePool: u18dynamic
           runtime:
             type: image
             image:
@@ -106,10 +106,10 @@ pipelines:
 #                 versions:
 #                   - 10.18.0
               custom:
-                name:  pipe-master.jfrog.info:8082/artifactory/docker-local/hello/latest
+                name: gcr.io/ship-rc/ubuntu
                 tag: latest
-                sourceRepository: docker-local
-                registry : art
+#                 sourceRepository: docker-local
+                registry : gcp
                 #region: us-east-1
                 autoPull: true
         execution:
