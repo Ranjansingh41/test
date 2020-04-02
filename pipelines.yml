@@ -109,7 +109,7 @@ pipelines:
                 name: gcr.io/ship-rc/ubuntu
                 tag: latest
 #                 sourceRepository: docker-local
-                registry : ranjan_gcp
+                registry : art
 #                 region: us-east-1
                 autoPull: true
         execution:
