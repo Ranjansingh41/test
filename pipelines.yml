@@ -97,7 +97,7 @@ pipelines:
       - name: test
         type: Bash
         configuration:
-          nodePool: u18dynamic
+          nodePool: u18-us-west-2-dynamic
           runtime:
             type: image
             image:
@@ -106,11 +106,11 @@ pipelines:
 #                 versions:
 #                   - 10.18.0
               custom:
-                name: latest
+                name: ubuntu
                 tag: latest
-                sourceRepository: docker-local
-                registry : art
-#                 region: us-east-1
+#                 sourceRepository: docker-local
+                registry : aws
+                region: us-east-1
                 autoPull: true
         execution:
           onExecute:
