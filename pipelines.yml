@@ -97,7 +97,7 @@ pipelines:
       - name: test
         type: Bash
         configuration:
-          nodePool: c7-westus-dynamic
+          nodePool: u18dynamic
           runtime:
             type: image
             image:
@@ -109,7 +109,7 @@ pipelines:
                 name: gcr.io/ship-rc/ubuntu
                 tag: latest
 #                 sourceRepository: docker-local
-                registry : gcp
+                registry : art
 #                 region: us-east-1
                 autoPull: true
         execution:
