@@ -106,7 +106,7 @@ pipelines:
 #                 versions:
 #                   - 10.18.0
               custom:
-                name: pipe-master.jfrog.info:8082/artifactory/docker-local/hello
+                name: docker-registry-domain/ pipe-master.jfrog.info:8082/artifactory/docker-local/hello:latest
                 tag: latest
                 sourceRepository: docker-local
                 registry : art
