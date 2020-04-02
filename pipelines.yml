@@ -97,7 +97,7 @@ pipelines:
       - name: test
         type: Bash
         configuration:
-#           nodePool: u18dynamic
+          nodePool: c7test
           runtime:
             type: image
             image:
@@ -108,8 +108,8 @@ pipelines:
               custom:
                 name: ubuntu      #gcr.io/ship-rc/ubuntu
                 tag: latest
-#                 sourceRepository: docker-local
-                registry : ranjan_aws
+                sourceRepository: docker-local
+                registry : art
                 region: us-east-1
                 autoPull: true
         execution:
