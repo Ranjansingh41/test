@@ -111,7 +111,7 @@ pipelines:
                 sourceRepository: docker-local
                 registry : art
                 #region: us-east-1
-                autoPull: true
+                autoPull: true/latest
         execution:
           onExecute:
             - echo "Hi"
