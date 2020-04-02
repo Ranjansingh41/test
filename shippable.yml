@@ -1,41 +1,27 @@
-resources:
-  - name: auto_gitRepo
-    type: GitRepo
-    configuration:
-      path: PIP/automation
-      gitProvider: jfBitbucket
-      branches:
-        include: ^master$
-        
-name: test_automation
-steps:
-  - name: tag_automation_phase_2
-    type: Bash
-    configuration:
-      affinityGroup: milestoneBuild
-#       integrations:
-#         - name: test_generic
-      inputResources:
-        - name: auto_gitRepo
-          trigger: false
-#       inputSteps:
-#         - name: tag_automation_phase_1
-    execution:
-      onStart:
-        - >-
-          restore_pipeline_files jsonfile
-          $res_auto_gitRepo_resourcePath/tests/conf.json
-        - pushd $res_auto_gitRepo_resourcePath
-        - >-
-          export
-          testCases="[\"core/testHarness/setup.js\",\"core/steps/Bash/LanguageImages.js\"]"
-        - cd tests
-        - ./test.sh
-        - >-
-          add_pipeline_files $res_auto_gitRepo_resourcePath/tests/conf.json
-          jsonfile
-        - cat $res_auto_gitRepo_resourcePath/tests/conf.json
- 
-          add_pipeline_files $res_auto_gitRepo_resourcePath/tests/conf.json
-          jsonfile
-        - cat $res_auto_gitRepo_resourcePath/tests/conf.json
+pipelines:
+  - name: pipelinestest
+#     configuration:
+#       runtime:       
+#         type: image
+    steps:
+      - name: test
+        type: Bash
+        configuration:
+          nodePool: u18-us-west-2-dynamic
+          runtime:
+            type: image
+            image:
+#               auto:
+#                 language: node
+#                 versions:
+#                   - 10.18.0
+              custom:
+                name: gcr.io/ship-rc/ubuntu
+                tag: latest
+                sourceRepository: docker-local
+                registry : gcp
+#                 region: us-east-1
+                autoPull: true
+        execution:
+          onExecute:
+            - echo "Hi"
