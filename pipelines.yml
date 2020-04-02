@@ -1,13 +1,13 @@
-pipelines:
-  - name: pipeline_automation
-    steps:
-      - name: S_Bash_0061
-        type: Bash
-        execution:
-          onExecute:
-            - java --version
-          onFailure:
-            - echo "Job well done!"
+# pipelines:
+#   - name: pipeline_automation
+#     steps:
+#       - name: S_Bash_0061
+#         type: Bash
+#         execution:
+#           onExecute:
+#             - java --version
+#           onFailure:
+#             - echo "Job well done!"
 # pipelines:
 #   - name: pipeline_S_PS_Language_0003
 #     steps:
@@ -88,33 +88,33 @@ pipelines:
 #       gitProvider: git_ranjan
 #       path: Ranjansingh41/test
       
-# pipelines:
-#   - name: pipelines
-# #     configuration:
-# #       runtime:       
-# #         type: image
-#     steps:
-#       - name: test
-#         type: Bash
-#         configuration:
-#           nodePool: win1
-#           runtime:
-#             type: host
-#             image:
+pipelines:
+  - name: pipelines
+#     configuration:
+#       runtime:       
+#         type: image
+    steps:
+      - name: test
+        type: Bash
+        configuration:
+          nodePool: u18dynamic
+          runtime:
+            type: host
+            image:
 #               auto:
 #                 language: node
 #                 versions:
 #                   - 10.18.0
-#               custom:
-#                 name: gcr.io/ship-rc/ubuntu
-#                 tag: latest
-# #                 sourceRepository: docker-local
-#                 registry : ranjan_gcp
-# #                 region: us-east-1
-#                 autoPull: true
-#         execution:
-#           onExecute:
-#             - node --version
+              custom:
+                name: hell0
+                tag: latest
+                sourceRepository: docker-local
+                registry : art
+#                 region: us-east-1
+                autoPull: true
+        execution:
+          onExecute:
+            - node --version
 #             - |
 #               [[ "$step_image_name:$step_image_tag" == "docker.bintray.io/jfrog/pipelines-u16node:10.18.0" ]]
 #             - node --version
