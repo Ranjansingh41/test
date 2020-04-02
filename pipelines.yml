@@ -106,7 +106,7 @@ pipelines:
 #                 versions:
 #                   - 10.18.0
               custom:
-                name: hello
+                name: latest
                 tag: latest
                 sourceRepository: docker-local
                 registry : art
