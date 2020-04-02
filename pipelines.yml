@@ -109,7 +109,7 @@ pipelines:
                 name: ubuntu
                 tag: latest
 #                 sourceRepository: docker-local
-                registry : aws
+                registry : AWS
                 region: us-east-1
                 autoPull: true
         execution:
