@@ -108,9 +108,9 @@ pipelines:
               custom:
                 name: ubuntu    #gcr.io/ship-rc/ubuntu
                 tag: latest
-                sourceRepository: docker-local
-                registry : art
-#                 region: us-east-1
+#                 sourceRepository: docker-local
+                registry : aws
+                region: us-east-1
                 autoPull: true
         execution:
           onExecute:
