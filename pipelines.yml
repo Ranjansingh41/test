@@ -89,7 +89,7 @@
 #       path: Ranjansingh41/test
       
 pipelines:
-  - name: pipelines
+  - name: pipelinestest
 #     configuration:
 #       runtime:       
 #         type: image
