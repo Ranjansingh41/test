@@ -109,8 +109,8 @@ pipelines:
                 name: gcr.io/ship-rc/ubuntu
                 tag: latest
 #                 sourceRepository: docker-local
-                registry : ranjan_aws
-                region: us-east-1
+                registry : ranjan_gcp
+#                 region: us-east-1
                 autoPull: true
         execution:
           onExecute:
