@@ -97,7 +97,7 @@ pipelines:
       - name: test
         type: Bash
         configuration:
-          nodePool: c7-westus-dynamic
+          nodePool: u16dynamic
           runtime:
             type: image
             image:
