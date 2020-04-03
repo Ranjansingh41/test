@@ -1,13 +1,24 @@
-# pipelines:
-#   - name: pipeline_automation
-#     steps:
-#       - name: S_Bash_0061
-#         type: Bash
-#         execution:
-#           onExecute:
-#             - java --version
-#           onFailure:
-#             - echo "Job well done!"
+pipelines:
+  - name: pipeline_automation
+    steps:
+      - name: S_Bash_0061
+        type: Bash
+        configuration:
+          nodePool: win_2019
+          environmentVariables:
+            key: values
+            test: key
+        execution:
+          onExecute:
+            - write-output "Hi"
+            - Get-Variable | format-table
+#             - if($int_s_artifactory_url -eq $null){
+#               Write-Error "Stop" -ErrorAction Stop
+#               }
+#            - if($int_s_artifactory_url -eq $null){
+#               Write-Error "Stop" -ErrorAction Stop
+#               }   
+           
 # pipelines:
 #   - name: pipeline_S_PS_Language_0003
 #     steps:
@@ -88,33 +99,33 @@
 #       gitProvider: git_ranjan
 #       path: Ranjansingh41/test
       
-pipelines:
-  - name: pipelinestest
-#     configuration:
-#       runtime:       
-#         type: image
-    steps:
-      - name: test
-        type: Bash
-        configuration:
-          nodePool: c7test
-          runtime:
-            type: image
-            image:
-#               auto:
-#                 language: node
-#                 versions:
-#                   - 10.18.0
-              custom:
-                name: ubuntu      #gcr.io/ship-rc/ubuntu
-                tag: latest
-#                 sourceRepository: docker-local
-                registry : AWS
-                region: us-east-1
-                autoPull: true
-        execution:
-          onExecute:
-            - echo "Hi"
+# pipelines:
+#   - name: pipelinestest
+# #     configuration:
+# #       runtime:       
+# #         type: image
+#     steps:
+#       - name: test
+#         type: Bash
+#         configuration:
+#           nodePool: c7test
+#           runtime:
+#             type: image
+#             image:
+# #               auto:
+# #                 language: node
+# #                 versions:
+# #                   - 10.18.0
+#               custom:
+#                 name: ubuntu      #gcr.io/ship-rc/ubuntu
+#                 tag: latest
+# #                 sourceRepository: docker-local
+#                 registry : AWS
+#                 region: us-east-1
+#                 autoPull: true
+#         execution:
+#           onExecute:
+#             - echo "Hi"
 #             - |
 #               [[ "$step_image_name:$step_image_tag" == "docker.bintray.io/jfrog/pipelines-u16node:10.18.0" ]]
 #             - node --version
