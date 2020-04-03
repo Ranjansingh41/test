@@ -12,12 +12,12 @@ pipelines:
           onExecute:
             - write-output "Hi"
             - Get-Variable | format-table
-#             - if($int_s_artifactory_url -eq $null){
-#               Write-Error "Stop" -ErrorAction Stop
-#               }
-#            - if($int_s_artifactory_url -eq $null){
-#               Write-Error "Stop" -ErrorAction Stop
-#               }   
+            - if($key -eq $values){
+              Write-Error "Stop" -ErrorAction Stop
+              }
+           - if($test -eq $key){
+              Write-Error "Stop" -ErrorAction Stop
+              }   
            
 # pipelines:
 #   - name: pipeline_S_PS_Language_0003
