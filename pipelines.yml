@@ -10,9 +10,9 @@ pipelines:
 #             test: key
         execution:
           onExecute:
-            - write-output "onExecute"
+            - echo "onExecute"
           onCancel:
-            - write-output "onCancel"
+            - echo "onCancel"
               
 
 # pipelines:
