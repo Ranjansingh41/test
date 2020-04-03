@@ -9,10 +9,11 @@ pipelines:
 #             key: values
 #             test: key
         execution:
+          onStart:
+            - echo "onStart"
           onExecute:
             - echo "onExecute"
-          onCancel:
-            - echo "onCancel"
+          
               
 
 # pipelines:
