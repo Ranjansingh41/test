@@ -1,5 +1,5 @@
 pipelines:
-  - name: pipeline_automation
+  - name: pipelinetest
     steps:
       - name: test
         type: Bash
