@@ -1,7 +1,7 @@
 pipelines:
   - name: pipeline_automation
     steps:
-      - name: S_Bash_0061
+      - name: test
         type: PowerShell
         configuration:
           nodePool: win_2019
