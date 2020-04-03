@@ -11,11 +11,10 @@ pipelines:
         execution:
           onExecute:
             - Get-Variable | format-table
-#             - dotnet --version
-#             - if($(dotnet --version) -ne "3.1.102"){
-#               Write-Error "Stop" -ErrorAction Stop
-#               }
-           
+            - if($Host -ne "System.Management.Automation.Internal.Host.In..."){
+              Write-Error "Stop" -ErrorAction Stop
+              }
+
 # pipelines:
 #   - name: pipeline_S_PS_Language_0003
 #     steps:
