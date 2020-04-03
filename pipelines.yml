@@ -11,13 +11,10 @@ pipelines:
         execution:
           onExecute:
             - write-output "Hi"
-            - Get-Variable | format-table
-            - if($key -eq $values){
+            - dotnet --version
+            - if($(dotnet --version) -ne "3.1.102"){
               Write-Error "Stop" -ErrorAction Stop
               }
-            - if($test -eq $key){
-              Write-Error "Stop" -ErrorAction Stop
-              }   
            
 # pipelines:
 #   - name: pipeline_S_PS_Language_0003
