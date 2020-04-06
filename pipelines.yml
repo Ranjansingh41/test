@@ -3,8 +3,8 @@ pipelines:
     steps:
       - name: test
         type: Bash
-#         configuration:
-#           nodePool: u16
+        configuration:
+          nodePool: win_2019
 #           runtime:
 #             type: image
 #             image:
