@@ -4,17 +4,16 @@ pipelines:
       - name: test
         type: Bash
         configuration:
-#           nodePool: win_2019
-#           runtime:
-#             type: image
-#             image:
-#               custom:
-#                 name: drydock/u16nodalls
-#                 tag: master
-#                 registry: i_dockerRegistry
+          runtime:
+            type: image
+            image:
+              custom:
+                name: node
+                tag: latest
+                sourceRepository: test-generic-local
+                registry: art
+                autoPull: true
         execution:
-          onStart:
-            - echo "Hi"
           onExecute:
             - echo "hi"
 #             - if($step_image_name  -ne "docker.bintray.io/jfrog/pipelines-w19dotnetcore"){
