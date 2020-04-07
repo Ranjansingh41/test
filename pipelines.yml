@@ -8,7 +8,7 @@ pipelines:
             type: image
             image:
               custom:
-                name: node
+                name: helloworld
                 tag: latest
                 sourceRepository: test-generic-local
                 registry: ranjan_art
