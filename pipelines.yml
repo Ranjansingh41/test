@@ -11,7 +11,7 @@ pipelines:
                 name: node
                 tag: latest
                 sourceRepository: test-generic-local
-                registry: art
+                registry: ranjan_art
                 autoPull: true
         execution:
           onExecute:
