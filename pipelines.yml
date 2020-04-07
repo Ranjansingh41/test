@@ -2,9 +2,9 @@ pipelines:
   - name: pipelinetest
     steps:
       - name: test
-        type: PowerShell
+        type: Bash
         configuration:
-          nodePool: win_2019
+#           nodePool: win_2019
 #           runtime:
 #             type: image
 #             image:
