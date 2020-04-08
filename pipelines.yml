@@ -8,9 +8,9 @@ pipelines:
             type: image
             image:
               custom:
-                name: helloworld
+                name: node
                 tag: latest
-                sourceRepository: test-generic-local
+                sourceRepository: docker-local
                 registry: ranjan_art
                 autoPull: true
         execution:
