@@ -10,7 +10,7 @@ pipelines:
             image:
               custom:
                 name: node
-#                 tag: latest
+                tag: latest
                 sourceRepository: docker-local
                 registry: ranjan_art
                 autoPull: true
