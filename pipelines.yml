@@ -3,17 +3,17 @@ pipelines:
     steps:
       - name: test
         type: Bash
-        configuration:
-          nodePool: u16
-          runtime:
-            type: image
-            image:
-              custom:
-                name: node
-                tag: latest
-                sourceRepository: docker-local
-                registry: ranjan_art
-                autoPull: true
+#         configuration:
+#           nodePool: u16
+#           runtime:
+#             type: image
+#             image:
+#               custom:
+#                 name: node
+#                 tag: latest
+#                 sourceRepository: docker-local
+#                 registry: ranjan_art
+#                 autoPull: true
         execution:
           onExecute:
             - echo "hi"
