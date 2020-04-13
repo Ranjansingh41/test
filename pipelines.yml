@@ -16,7 +16,7 @@ pipelines:
 #                 autoPull: true
         execution:
           onExecute:
-            - echo "hi"
+            - echo $step_url
 #             - if($step_image_name  -ne "docker.bintray.io/jfrog/pipelines-w19dotnetcore"){
 #               Write-Error "Stop" -ErrorAction Stop
 #               } 
