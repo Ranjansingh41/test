@@ -1,28 +1,42 @@
+resources:
+  - name: artifactory_goo
+    type: GitRepo
+    configuration:
+      path: ranjansingh41/artifactory-go-example
+      branches:
+        include: master
+      gitProvider: ranjan_github
+      
 pipelines:
-  - name: pipelinetest
+  - name: go_builds
+    configuration:   
+      runtime:       
+        type: image
+        image:
+          custom:
+            name: vijaydocker1991/u18node
+            tag: gotesting
+            options: " "   
     steps:
-      - name: test
-        type: Bash
-#         configuration:
-#           nodePool: u16
-#           runtime:
-#             type: image
-#             image:
-#               custom:
-#                 name: node
-#                 tag: latest
-#                 sourceRepository: docker-local
-#                 registry: ranjan_art
-#                 autoPull: true
+      - name: build_goo
+        type: GoBuild
+        configuration:
+          nodePool: ubuntu16
+          sourceLocation: .
+          repository: test-go-local
+          outputLocation: tmp
+          outputFile: helloranjan
+          inputResources:
+            - name: artifactory_go
+          integrations:
+            - name: art
         execution:
-          onExecute:
-            - echo $step_url
-          onSuccess:
-            - java --version
-#             - if($step_image_name  -ne "docker.bintray.io/jfrog/pipelines-w19dotnetcore"){
-#               Write-Error "Stop" -ErrorAction Stop
-#               } 
-          
+          onStart:
+            - wget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz
+            - sudo tar -C /usr/local -xzf go1.12.5.linux-amd64.tar.gz
+            - export PATH=$PATH:/usr/local/go/bin
+            - go version 
+            - jfrog --version
               
 
 # pipelines:
