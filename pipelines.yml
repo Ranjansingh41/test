@@ -46,7 +46,7 @@ pipelines:
       - name: build_goo
         type: GoBuild
         configuration:
-          nodePool: ubuntu16
+#           nodePool: ubuntu16
           sourceLocation: .
           repository: test-go-local
           outputLocation: tmp
