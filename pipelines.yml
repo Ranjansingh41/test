@@ -17,6 +17,8 @@ pipelines:
         execution:
           onExecute:
             - echo $step_url
+          onSuccess
+            - java --version
 #             - if($step_image_name  -ne "docker.bintray.io/jfrog/pipelines-w19dotnetcore"){
 #               Write-Error "Stop" -ErrorAction Stop
 #               } 
