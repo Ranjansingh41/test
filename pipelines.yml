@@ -1,14 +1,39 @@
-resources:
-  - name: artifactory_goo
-    type: GitRepo
-    configuration:
-      path: ranjansingh41/artifactory-go-example
-      branches:
-        include: master
-      gitProvider: ranjan_github
-      
 pipelines:
-  - name: go_builds
+  - name: pipelinetest1
+    steps:
+      - name: test1
+        type: Bash
+#         configuration:
+#           integrations: # optional
+#             - name: varsha_slack
+#           nodePool: u16
+#           runtime:
+#             type: image
+#             image:
+#               custom:
+#                 name: node
+#                 tag: latest
+#                 sourceRepository: docker-local
+#                 registry: ranjan_art
+#                 autoPull: true
+        execution:
+          onExecute:
+            - echo $step_url
+#           onSuccess:
+#             - send_notification Demo_slack
+
+
+# resources:
+#   - name: artifactory_goo
+#     type: GitRepo
+#     configuration:
+#       path: ranjansingh41/artifactory-go-example
+#       branches:
+#         include: master
+#       gitProvider: ranjan_github
+      
+# pipelines:
+#   - name: go_builds
 #     configuration:   
 #       runtime:       
 #         type: image
@@ -17,26 +42,26 @@ pipelines:
 #             name: vijaydocker1991/u18node
 #             tag: gotesting
 #             options: " "   
-    steps:
-      - name: build_goo
-        type: Bash #GoBuild
-        configuration:
+#     steps:
+#       - name: build_goo
+#         type: Bash #GoBuild
+#         configuration:
 #           nodePool: ubuntu16
 #           sourceLocation: .
 #           repository: test-go-local
 #           outputLocation: tmp
 #           outputFile: helloranjan
-          inputResources:
-            - name: artifactory_goo
+#           inputResources:
+#             - name: artifactory_goo
 #           integrations:
 #             - name: art
-        execution:
-          onStart:
-            - wget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz
-            - sudo tar -C /usr/local -xzf go1.12.5.linux-amd64.tar.gz
-            - export PATH=$PATH:/usr/local/go/bin
-            - go version 
-            - jfrog --version
+#         execution:
+#           onStart:
+#             - wget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz
+#             - sudo tar -C /usr/local -xzf go1.12.5.linux-amd64.tar.gz
+#             - export PATH=$PATH:/usr/local/go/bin
+#             - go version 
+#             - jfrog --version
               
 
 # pipelines:
