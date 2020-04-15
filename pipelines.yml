@@ -19,7 +19,7 @@ pipelines:
             options: " "   
     steps:
       - name: build_goo
-        type: GoBuild
+        type: Bash
         configuration:
 #           nodePool: ubuntu16
           sourceLocation: .
