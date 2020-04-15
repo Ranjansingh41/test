@@ -5,7 +5,7 @@ resources:
       path: ranjansingh41/artifactory-go-example
       branches:
         include: master
-      gitProvider: ranjan_github
+      gitProvider: github
       
 pipelines:
   - name: go_builds
