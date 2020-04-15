@@ -22,10 +22,10 @@ pipelines:
         type: Bash
         configuration:
 #           nodePool: ubuntu16
-          sourceLocation: .
-          repository: test-go-local
-          outputLocation: tmp
-          outputFile: helloranjan
+#           sourceLocation: .
+#           repository: test-go-local
+#           outputLocation: tmp
+#           outputFile: helloranjan
           inputResources:
             - name: artifactory_goo
           integrations:
