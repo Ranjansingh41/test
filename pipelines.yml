@@ -19,13 +19,13 @@ pipelines:
             options: " "   
     steps:
       - name: build_goo
-        type: Bash
+        type: GoBuild
         configuration:
 #           nodePool: ubuntu16
-#           sourceLocation: .
-#           repository: test-go-local
-#           outputLocation: tmp
-#           outputFile: helloranjan
+          sourceLocation: .
+          repository: test-go-local
+          outputLocation: tmp
+          outputFile: helloranjan
           inputResources:
             - name: artifactory_goo
           integrations:
