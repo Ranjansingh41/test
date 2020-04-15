@@ -9,27 +9,27 @@ resources:
       
 pipelines:
   - name: go_builds
-    configuration:   
-      runtime:       
-        type: image
-        image:
-          custom:
-            name: vijaydocker1991/u18node
-            tag: gotesting
-            options: " "   
+#     configuration:   
+#       runtime:       
+#         type: image
+#         image:
+#           custom:
+#             name: vijaydocker1991/u18node
+#             tag: gotesting
+#             options: " "   
     steps:
       - name: build_goo
-        type: GoBuild
+        type: Bash #GoBuild
         configuration:
 #           nodePool: ubuntu16
-          sourceLocation: .
-          repository: test-go-local
-          outputLocation: tmp
-          outputFile: helloranjan
+#           sourceLocation: .
+#           repository: test-go-local
+#           outputLocation: tmp
+#           outputFile: helloranjan
           inputResources:
             - name: artifactory_goo
-          integrations:
-            - name: art
+#           integrations:
+#             - name: art
         execution:
           onStart:
             - wget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz
