@@ -5,7 +5,7 @@ resources:
       path: ranjansingh41/artifactory-go-example
       branches:
         include: master
-      gitProvider: github
+      gitProvider: ranjan_github
       
 pipelines:
   - name: go_builds
@@ -21,13 +21,13 @@ pipelines:
       - name: build_goo
         type: GoBuild
         configuration:
-          nodePool: ubuntu16
+#           nodePool: ubuntu16
           sourceLocation: .
           repository: test-go-local
           outputLocation: tmp
           outputFile: helloranjan
           inputResources:
-            - name: artifactory_go
+            - name: artifactory_goo
           integrations:
             - name: art
         execution:
