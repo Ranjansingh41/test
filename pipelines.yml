@@ -44,7 +44,7 @@ pipelines:
 #             options: " "   
     steps:
       - name: build_goo
-        type: Bash
+        type: DockerBuild
         configuration:
 #           nodePool: ubuntu16
 #           sourceLocation: .
