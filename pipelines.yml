@@ -14,7 +14,7 @@ pipelines:
                 name: ubantutest
                 tag: latest
 #                 sourceRepository: docker-local
-                registry: aws
+                registry: ranjan_aws
                 region: us-east-1
                 autoPull: true
         execution:
