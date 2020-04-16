@@ -6,7 +6,7 @@ pipelines:
         configuration:
 #           integrations: # optional
 #             - name: varsha_slack
-#           nodePool: u16
+          nodePool: u16
           runtime:
             type: image
             image:
