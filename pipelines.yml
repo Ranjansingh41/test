@@ -4,7 +4,7 @@ pipelines:
       - name: test1
         type: Bash
         configuration:
-          integrations: # optional
+#           integrations: # optional
 #             - name: varsha_slack
 #           nodePool: u16
           runtime:
