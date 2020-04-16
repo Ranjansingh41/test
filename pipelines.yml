@@ -19,6 +19,7 @@ pipelines:
                 autoPull: true
         execution:
           onExecute:
+            - aws --version
             - echo $step_url
 #           onSuccess:
 #             - send_notification Demo_slack
