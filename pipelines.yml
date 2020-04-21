@@ -3,23 +3,23 @@ pipelines:
     steps:
       - name: test1
         type: Bash
-        configuration:
+#         configuration:
 #           integrations: # optional
 #             - name: varsha_slack
 #           nodePool: u16
-          runtime:
-            type: image
-            image:
-              custom:
-                name: ubantutest
-                tag: latest
-#                 sourceRepository: docker-local
-                registry: aws
-                region: us-east-1
-                autoPull: true
+#           runtime:
+#             type: image
+#             image:
+#               custom:
+#                 name: ubantutest
+#                 tag: latest
+# #                 sourceRepository: docker-local
+#                 registry: aws
+#                 region: us-east-1
+#                 autoPull: true
         execution:
           onExecute:
-            - aws --version
+#             - aws --version
             - echo $step_url
 #           onSuccess:
 #             - send_notification Demo_slack
