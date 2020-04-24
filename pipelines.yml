@@ -1,7 +1,7 @@
 pipelines:
   - name: pipeline_automation
     steps:
-      - name:  test
+      - name: S_Bash_0426
         type: Bash
         configuration:
           runtime:   
