@@ -207,3 +207,34 @@ pipelines:
         execution:
           onExecute:
             - echo "executing step..."
+            
+      - name: S_Bash5
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: S_Bash4
+        execution:
+          onExecute:
+            - echo "executing step..."
+      - name: S_Bash6
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: S_Bash5
+        execution:
+          onExecute:
+            - echo "executing step..."
+      - name: S_Bash7
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: S_Bash6
+        execution:
+          onExecute:
+            - echo "executing step..."
+      
+            
+     
+      
+            
+            
