@@ -10,6 +10,7 @@ pipelines:
               custom:
                 name: node
                 tag: latest 
+                sourceRepository: docker-local
                 registry: ranjan_art
         execution:
           onExecute:
