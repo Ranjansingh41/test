@@ -8,7 +8,7 @@ pipelines:
             type: image
             image: 
               custom:
-                name: docker-local/node
+                name: docker-local/node/latest
                 tag: latest 
                 sourceRepository: docker-local
                 registry: ranjan_art
