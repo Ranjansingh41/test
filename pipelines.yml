@@ -1,24 +1,19 @@
 pipelines:
-  - name: pipeline_automation
+  - name: pipelinetest
     steps:
-      - name: S_Bash_0426
+      - name: Test
         type: Bash
         configuration:
           runtime:   
             type: image
             image: 
               custom:
-                name: gcr.io/ship-rc/ubuntu
+                name: node
                 tag: latest 
-                registry: ranjan_gcp
+                registry: ranjan_art
         execution:
           onExecute:
             - echo "executing step..."
-            - |
-              [ "$step_image_name" == "gcr.io/ship-rc/ubuntu" ]
-            - |
-              [ "$step_image_tag" == "latest" ]
-
 
 # resources:
 #   - name: artifactory_goo
