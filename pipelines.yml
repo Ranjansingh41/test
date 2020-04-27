@@ -8,7 +8,7 @@ pipelines:
             type: image
             image: 
               custom:
-                name: pipe-master.jfrog.info:8082/artifactory/docker-local/node/latest
+                name: pipe-master.jfrog.info:8082/artifactory/docker-local/node
                 tag: latest 
                 sourceRepository: docker-local
                 registry: ranjan_art
