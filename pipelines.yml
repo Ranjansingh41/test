@@ -1,20 +1,20 @@
 pipelines:
   - name: pipelinetest
     steps:
-      - name: Test
-        type: Bash
-        configuration:
-          runtime:   
-            type: image
-            image: 
-              custom:
-                name: pipe-master.jfrog.info:8082/docker-local/node
-                tag: latest 
-                sourceRepository: docker-local
-                registry: ranjan_art
-        execution:
-          onExecute:
-            - echo "executing step..."
+#       - name: Test
+#         type: Bash
+#         configuration:
+#           runtime:   
+#             type: image
+#             image: 
+#               custom:
+#                 name: pipe-master.jfrog.info:8082/docker-local/node
+#                 tag: latest 
+#                 sourceRepository: docker-local
+#                 registry: ranjan_art
+#         execution:
+#           onExecute:
+#             - echo "executing step..."
 
 # resources:
 #   - name: artifactory_goo
@@ -191,19 +191,19 @@ pipelines:
 #           onExecute:
 #             - echo "executing step..."
             
-#       - name: S_Bash3
-#         type: Bash
+      - name: S_Bash3
+        type: Bash
 #         configuration:
 #           inputResources:
 #             - name: test1234
-#         execution:
-#           onExecute:
-#             - echo "hi"
-#       - name: S_Bash4
-#         type: Bash
-#         configuration:
-#           inputSteps:
-#             - name: S_Bash3
-#         execution:
-#           onExecute:
-#             - echo "executing step..."
+        execution:
+          onExecute:
+            - echo "hi"
+      - name: S_Bash4
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: S_Bash3
+        execution:
+          onExecute:
+            - echo "executing step..."
