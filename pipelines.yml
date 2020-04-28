@@ -2,7 +2,7 @@ resources:
   - name: test1234
     type: GitRepo
     configuration:
-      gitProvider: git_ranjan
+      gitProvider: ranjan_github
       path: Ranjansingh41/test
 
 pipelines:
