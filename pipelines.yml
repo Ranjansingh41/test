@@ -17,18 +17,18 @@ resources:
     files:
     include: \webhook\/file\b
     
-# pipelines:
-#   - name: pipelinetest
-#     steps:
-#       - name: Test
-#         type: Bash
-#         configuration:
-#           inputResources: # optional
-#             - name: git1
-#             - name: git2
-#         execution:
-#           onExecute:
-#             - echo "executing step..."    
+pipelines:
+  - name: pipelinetest
+    steps:
+      - name: Test
+        type: Bash
+        configuration:
+          inputResources: # optional
+            - name: git1
+            - name: git2
+        execution:
+          onExecute:
+            - echo "executing step..."    
 
 
 # resources:
