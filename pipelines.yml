@@ -5,7 +5,7 @@ resources:
       path: Ranjansingh41/test
       gitProvider: github
       branches:
-      include: master
+        include: master
     
   - name: git2
     type: GitRepo
@@ -13,9 +13,9 @@ resources:
       path: Ranjansingh41/test
       gitProvider: github
       branches:
-      include: master
+        include: master
       files:
-      include: ^shippable.yml$
+        include: ^shippable.yml$
     
 pipelines:
   - name: pipelinetest
