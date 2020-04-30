@@ -15,7 +15,7 @@ resources:
       branches:
       include: master
       files:
-      include: \webhook\/file\b
+      include: ^shippable.yml$
     
 pipelines:
   - name: pipelinetest
@@ -25,7 +25,7 @@ pipelines:
         configuration:
           inputResources: # optional
             - name: test167
-#             - name: git2
+            - name: git2
         execution:
           onExecute:
             - echo "executing step........."    
