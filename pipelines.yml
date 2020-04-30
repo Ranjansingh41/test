@@ -28,7 +28,7 @@ pipelines:
 #             - name: git2
         execution:
           onExecute:
-            - echo "executing step......"    
+            - echo "executing step........."    
 
 
 # resources:
