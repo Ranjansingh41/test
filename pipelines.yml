@@ -1,5 +1,5 @@
 resources:
-  - name: git1
+  - name: test167
     type: GitRepo
     configuration:
     path: Ranjansingh41/test
@@ -24,7 +24,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources: # optional
-            - name: git1
+            - name: test167
 #             - name: git2
         execution:
           onExecute:
