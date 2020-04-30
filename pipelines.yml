@@ -4,18 +4,18 @@ resources:
     configuration:
       path: Ranjansingh41/test
       gitProvider: github
-#       branches:
-#       include: master
+      branches:
+      include: master
     
-#   - name: git2
-#     type: GitRepo
-#     configuration:
-#     path: Ranjansingh41/test
-#     gitProvider: github
-#     branches:
-#     include: master
-#     files:
-#     include: \webhook\/file\b
+  - name: git2
+    type: GitRepo
+    configuration:
+      path: Ranjansingh41/test
+      gitProvider: github
+      branches:
+      include: master
+      files:
+      include: \webhook\/file\b
     
 pipelines:
   - name: pipelinetest
