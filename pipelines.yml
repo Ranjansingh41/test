@@ -1,31 +1,31 @@
-resources:
-  - name: test167
-    type: GitRepo
-    configuration:
-      path: Ranjansingh41/test
-      gitProvider: github
-      branches:
-        include: master
+# resources:
+#   - name: test167
+#     type: GitRepo
+#     configuration:
+#       path: Ranjansingh41/test
+#       gitProvider: github
+#       branches:
+#         include: master
     
-  - name: git2
-    type: GitRepo
-    configuration:
-      path: Ranjansingh41/test
-      gitProvider: github
-      branches:
-        include: master
-      files:
-        include: ^shippable.yml$
+#   - name: git2
+#     type: GitRepo
+#     configuration:
+#       path: Ranjansingh41/test
+#       gitProvider: github
+#       branches:
+#         include: master
+#       files:
+#         include: ^shippable.yml$
     
 pipelines:
   - name: pipelinetest
     steps:
       - name: Test
         type: Bash
-        configuration:
-          inputResources: # optional
-            - name: test167
-            - name: git2
+#         configuration:
+#           inputResources: # optional
+#             - name: test167
+#             - name: git2
         execution:
           onExecute:
             - echo "executing step........."    
