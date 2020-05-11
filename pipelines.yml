@@ -1,9 +1,9 @@
-# resources:
-#   - name: test167
-#     type: GitRepo
-#     configuration:
-#       path: Ranjansingh41/test
-#       gitProvider: github
+resources:
+  - name: test167
+    type: GitRepo
+    configuration:
+      path: Ranjansingh41/test
+      gitProvider: github
 #       branches:
 #         include: master
     
@@ -22,9 +22,9 @@ pipelines:
     steps:
       - name: Test
         type: Bash
-#         configuration:
-#           inputResources: # optional
-#             - name: test167
+        configuration:
+          inputResources: # optional
+            - name: test167
 #             - name: git2
         execution:
           onExecute:
