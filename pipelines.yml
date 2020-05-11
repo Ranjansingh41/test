@@ -3,7 +3,7 @@ resources:
     type: GitRepo
     configuration:
       path: Ranjansingh41/test
-      gitProvider: github
+      gitProvider: ranjan_github
 #       branches:
 #         include: master
     
