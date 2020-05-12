@@ -1,8 +1,30 @@
 resources:
-  - name: test1671
+  - name: S_Bash_0004_propertyBag
     type: PropertyBag
-    configuration:     
-      "": ""
+    configuration:
+      "key1": "value1"
+
+pipelines:
+  - name: pipelines_S_Bash_propertyBag_0004
+    steps:
+      - name: S_Bash_propertyBag_0004
+        type: Bash
+        configuration:
+          inputResources:
+            - name: S_Bash_0004_propertyBag
+        execution:
+          onExecute:
+            - echo "executing step..."
+            - write_output S_Bash_0004_propertyBag "value1=$run_id"
+
+
+
+
+# resources:
+#   - name: test1671
+#     type: PropertyBag
+#     configuration:     
+#       "": ""
       
 #   - name: test1671
 #     type: GitRepo
@@ -22,18 +44,18 @@ resources:
 #       files:
 #         include: ^shippable.yml$
     
-pipelines:
-  - name: pipelinetest
-    steps:
-      - name: Test
-        type: Bash
-        configuration:
-          inputResources: # optional
-            - name: test1671
-#             - name: git2
-        execution:
-          onExecute:
-            - echo "executing step........."    
+# pipelines:
+#   - name: pipelinetest
+#     steps:
+#       - name: Test
+#         type: Bash
+#         configuration:
+#           inputResources: # optional
+#             - name: test1671
+# #             - name: git2
+#         execution:
+#           onExecute:
+#             - echo "executing step........."    
 
 
 # resources:
