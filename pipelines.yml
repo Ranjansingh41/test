@@ -17,6 +17,7 @@ pipelines:
             - printenv
             - echo "executing step..."
             - $property1
+            - echo $property1
             
 
 
