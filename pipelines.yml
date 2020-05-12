@@ -1,9 +1,14 @@
 resources:
   - name: test1671
-    type: GitRepo
-    configuration:
-      path: Ranjansingh41/test
-      gitProvider: ranjan_github
+    type: PropertyBag
+    configuration:     
+      "ranjan": "123dyh"
+      
+#   - name: test1671
+#     type: GitRepo
+#     configuration:
+#       path: Ranjansingh41/test
+#       gitProvider: ranjan_github
 #       branches:
 #         include: master
     
