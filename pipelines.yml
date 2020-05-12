@@ -16,8 +16,8 @@ pipelines:
           onExecute:
             - printenv
             - echo "executing step..."
-            - write_output S_Bash_0004_propertyBag "test=$run_id"
-            - echo $key5
+            - $property1
+            
 
 
 
