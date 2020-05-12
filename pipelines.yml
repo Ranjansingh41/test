@@ -11,7 +11,7 @@ pipelines:
         type: Bash
         configuration:
           outputResources:
-            - name: S_Bash_0004_propertyBag
+            - name: S_Bash_0004
         execution:
           onExecute:
             - printenv
