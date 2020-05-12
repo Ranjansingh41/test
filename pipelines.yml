@@ -17,6 +17,7 @@ pipelines:
             - printenv
             - echo "executing step..."
             - $key1
+            - $key5
 
 
 
