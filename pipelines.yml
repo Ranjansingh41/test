@@ -2,7 +2,7 @@ resources:
   - name: test1671
     type: PropertyBag
     configuration:     
-      "ranjan": "123dyh"
+      "": ""
       
 #   - name: test1671
 #     type: GitRepo
