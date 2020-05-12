@@ -18,7 +18,7 @@ pipelines:
             - echo "executing step..."
             - $property1
             - $property2
-            - echo $property1
+            - echo "$property1"
             
 
 
