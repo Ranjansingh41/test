@@ -16,8 +16,8 @@ pipelines:
           onExecute:
             - printenv
             - echo "executing step..."
-            - $key1
-            - $key5
+            - echo $key1
+            - echo $key5
 
 
 
