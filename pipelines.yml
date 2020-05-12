@@ -15,7 +15,7 @@ pipelines:
         execution:
           onExecute:
             - echo "executing step..."
-            - write_output S_Bash_0004_propertyBag "key1=$run_id"
+            - $key1
 
 
 
