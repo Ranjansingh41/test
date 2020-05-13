@@ -18,4 +18,4 @@ pipelines:
             - echo "$property1"
             - echo "$property2"
             - |
-              [ ! -z "$res_S_Bash_0007_propertyBag_property1"  ]
+              [ ! -z "$res_S_Bash_0007_propertyBag_property2"  ]
