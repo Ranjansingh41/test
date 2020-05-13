@@ -9,7 +9,8 @@ pipelines:
     steps:
       - name: S_Bash_propertyBag
         type: Bash
-#         configuration:
+        configuration:
+          nodePool: ranjan_window
 #           inputResources:
 #             - name: S_Bash_0007_propertyBag
         execution:
