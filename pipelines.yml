@@ -15,7 +15,7 @@ pipelines:
 #             - name: S_Bash_0007_propertyBag
         execution:
           onExecute:
-            - printenv
+            - write-output "executing step..."
 #             - echo "$property1"
 #             - echo "$property2"
 #             - |
