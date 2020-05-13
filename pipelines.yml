@@ -14,8 +14,8 @@ pipelines:
         type: PowerShell
         configuration:
           nodePool: ranjan_window
-          inputSteps:
-            - name: S_Bash5
+#           inputSteps:
+#             - name: S_Bash5
         execution:
           onExecute:
             - write-output "executing step..."
@@ -23,8 +23,8 @@ pipelines:
         type: PowerShell
         configuration:
           nodePool: ranjan_window
-          inputSteps:
-            - name: S_Bash6
+#           inputSteps:
+#             - name: S_Bash6
         execution:
           onExecute:
             - write-output "executing step..."
