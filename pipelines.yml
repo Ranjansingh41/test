@@ -1,21 +1,52 @@
+pipelines:
+  - name: pipelines_S_Bash
+    steps:
+      - name: S_Bash5
+        type: PowerShell
+        configuration:
+          nodePool: ranjan_window
+#            inputSteps:
+#             - name: S_Bash4
+        execution:
+          onExecute:
+            - write-output "executing step..."
+      - name: S_Bash6
+        type: PowerShell
+        configuration:
+          nodePool: ranjan_window
+          inputSteps:
+            - name: S_Bash5
+        execution:
+          onExecute:
+            - write-output "executing step..."
+      - name: S_Bash7
+        type: PowerShell
+        configuration:
+          nodePool: ranjan_window
+          inputSteps:
+            - name: S_Bash6
+        execution:
+          onExecute:
+            - write-output "executing step..."
+
 # resources:
 #   - name: S_Bash_0007_propertyBag
 #     type: PropertyBag
 #     configuration:
 #       property1: "test"
 
-pipelines:
-  - name: pipelines_S_Bash
-    steps:
-      - name: S_Bash_propertyBag
-        type: PowerShell
-        configuration:
-          nodePool: ranjan_window
-#           inputResources:
-#             - name: S_Bash_0007_propertyBag
-        execution:
-          onExecute:
-            - write-output "executing step..."
+# pipelines:
+#   - name: pipelines_S_Bash
+#     steps:
+#       - name: S_Bash_propertyBag
+#         type: PowerShell
+#         configuration:
+#           nodePool: ranjan_window
+# #           inputResources:
+# #             - name: S_Bash_0007_propertyBag
+#         execution:
+#           onExecute:
+#             - write-output "executing step..."
 #             - echo "$property1"
 #             - echo "$property2"
 #             - |
