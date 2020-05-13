@@ -15,6 +15,6 @@ pipelines:
         execution:
           onExecute:
             - printenv
-            - echo "executing step..."
+            - echo "property1"
             - |
               [ ! -z "$res_S_Bash_0007_propertyBag_property1"  ]
