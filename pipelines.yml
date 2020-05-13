@@ -4,7 +4,7 @@ pipelines:
       - name: S_Bash5
         type: PowerShell
         configuration:
-          nodePool: ranjan_window
+          nodePool: ranjan_win
 #            inputSteps:
 #             - name: S_Bash4
         execution:
