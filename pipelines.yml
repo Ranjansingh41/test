@@ -8,7 +8,7 @@ pipelines:
   - name: pipelines_S_Bash
     steps:
       - name: S_Bash_propertyBag
-        type: Bash
+        type: PowerShell
         configuration:
           nodePool: ranjan_window
 #           inputResources:
