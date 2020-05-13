@@ -16,9 +16,9 @@ pipelines:
           onExecute:
             - printenv
             - echo "executing step..."
-            - $property1
+#             - $property1
 #             - $property2
-            - echo $property1
+#             - echo $property1
             
 
 
