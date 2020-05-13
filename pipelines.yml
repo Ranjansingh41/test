@@ -19,15 +19,15 @@ pipelines:
         execution:
           onExecute:
             - write-output "executing step..."
-      - name: S_Bash7
-        type: PowerShell
-        configuration:
-          nodePool: ranjan_window
-#           inputSteps:
-#             - name: S_Bash6
-        execution:
-          onExecute:
-            - write-output "executing step..."
+#       - name: S_Bash7
+#         type: PowerShell
+#         configuration:
+#           nodePool: ranjan_window
+# #           inputSteps:
+# #             - name: S_Bash6
+#         execution:
+#           onExecute:
+#             - write-output "executing step..."
 
 # resources:
 #   - name: S_Bash_0007_propertyBag
