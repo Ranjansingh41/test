@@ -30,14 +30,14 @@
 #             - write-output "executing step..."
 
   
-resources:  
-  - name: image_google
-    type: Image
-    configuration:
-       registry: gcp
-       imageName: gcr.io/ship-rc/ubuntu
-       imageTag: latest
-       autoPull: true  
+# resources:  
+#   - name: image
+#     type: Image
+#     configuration:
+#        registry: gcp
+#        imageName: gcr.io/ship-rc/ubuntu
+#        imageTag: latest
+#        autoPull: true  
 
 
 #   - name: git2
@@ -54,15 +54,15 @@ resources:
 pipelines:
   - name: pipelines_S_Bash
     steps:
-      - name: S_Bash_propertyBag
-        type: Bash
+      - name: test_aws
+        type: PowesShell
         configuration:
-#           nodePool: ranjan_window
-          inputResources:
-            - name: image_google
+          nodePool: test_win_aws
+#           inputResources:
+#             - name: image_google
         execution:
           onExecute:
-            - echo "Hi"
+            - write-output "executing step..."
 #             - printenv
 #             - echo "$property1"
 #             - echo "$property2"
