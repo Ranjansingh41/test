@@ -35,19 +35,19 @@ pipelines:
 #     configuration:
 #       property1: "test"
 
-# pipelines:
-#   - name: pipelines_S_Bash
-#     steps:
-#       - name: S_Bash_propertyBag
-#         type: PowerShell
-#         configuration:
+pipelines:
+  - name: pipelines_S_Bash
+    steps:
+      - name: S_Bash_propertyBag
+        type: Bash
+        configuration:
 #           nodePool: ranjan_window
-# #           inputResources:
-# #             - name: S_Bash_0007_propertyBag
-#         execution:
-#           onExecute:
-#             - write-output "executing step..."
-#             - echo "$property1"
-#             - echo "$property2"
-#             - |
-#               [ ! -z "$res_S_Bash_0007_propertyBag_property2"  ]
+#           inputResources:
+#             - name: S_Bash_0007_propertyBag
+        execution:
+          onExecute:
+            - printenv
+            - echo "$property1"
+            - echo "$property2"
+            - |
+              [ ! -z "$property1" ]
