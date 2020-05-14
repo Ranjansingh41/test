@@ -31,12 +31,13 @@
 
   
 resources:  
-  - name: my_releaseBundle
-    type: ReleaseBundle
+  - name: image_google
+    type: Image
     configuration:
-      name: myRel
-      version: v1.0
-      isSigned: false  
+       registry: google
+       imageName: gcr.io/ship-rc/ubuntu
+       imageTag: latest
+       autoPull: true  
 
 
 #   - name: git2
@@ -58,7 +59,7 @@ pipelines:
         configuration:
 #           nodePool: ranjan_window
           inputResources:
-            - name:  my_releaseBundle
+            - name: image_google
         execution:
           onExecute:
             - echo "Hi"
