@@ -29,12 +29,21 @@
 #           onExecute:
 #             - write-output "executing step..."
 
-resources:
-  - name: git2
-    type: GitRepo
+  
+resources:  
+  - name: my_releaseBundle
+    type: ReleaseBundle
     configuration:
-      path: Ranjansingh41/test
-      gitProvider: github
+      name: myRel
+      version: v1.0
+      isSigned: false  
+
+
+#   - name: git2
+#     type: GitRepo
+#     configuration:
+#       path: Ranjansingh41/test
+#       gitProvider: github
 
 #   - name: S_Bash_0007_propertyBag
 #     type: PropertyBag
@@ -49,7 +58,7 @@ pipelines:
         configuration:
 #           nodePool: ranjan_window
           inputResources:
-            - name: git2
+            - name:  my_releaseBundle
         execution:
           onExecute:
             - echo "Hi"
