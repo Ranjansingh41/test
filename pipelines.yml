@@ -34,7 +34,7 @@ resources:
   - name: image_google
     type: Image
     configuration:
-       registry: google
+       registry: gcp
        imageName: gcr.io/ship-rc/ubuntu
        imageTag: latest
        autoPull: true  
