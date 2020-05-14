@@ -54,8 +54,8 @@
 pipelines:
   - name: pipelines_S_Bash
     steps:
-      - name: test
-        type: PowesShell
+      - name: test_aws
+        type: PowerShell
         configuration:
           nodePool: test_win_aws
 #           inputResources:
