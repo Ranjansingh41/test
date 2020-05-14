@@ -30,14 +30,14 @@
 #             - write-output "executing step..."
 
   
-resources:  
-  - name: image_google
-    type: Image
-    configuration:
-       registry: gcp
-       imageName: gcr.io/ship-rc/ubuntu
-       imageTag: latest
-       autoPull: true  
+# resources:  
+#   - name: image_google
+#     type: Image
+#     configuration:
+#        registry: gcp
+#        imageName: gcr.io/ship-rc/ubuntu
+#        imageTag: latest
+#        autoPull: true  
 
 
 #   - name: git2
@@ -58,8 +58,8 @@ pipelines:
         type: Bash
         configuration:
 #           nodePool: ranjan_window
-          inputResources:
-            - name: image_google
+#           inputResources:
+#             - name: image_google
         execution:
           onExecute:
             - echo "Hi"
