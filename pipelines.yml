@@ -30,10 +30,16 @@
 #             - write-output "executing step..."
 
 resources:
-  - name: S_Bash_0007_propertyBag
-    type: PropertyBag
+  - name: git2
+    type: GitRepo
     configuration:
-      property1: "test"
+      path: Ranjansingh41/test
+      gitProvider: github
+
+#   - name: S_Bash_0007_propertyBag
+#     type: PropertyBag
+#     configuration:
+#       property1: "test"
 
 pipelines:
   - name: pipelines_S_Bash
@@ -43,11 +49,12 @@ pipelines:
         configuration:
 #           nodePool: ranjan_window
           inputResources:
-            - name: S_Bash_0007_propertyBag
+            - name: git2
         execution:
           onExecute:
-            - printenv
-            - echo "$property1"
-            - echo "$property2"
-            - |
-              [ ! -z "$property1" ]
+            - echo "Hi"
+#             - printenv
+#             - echo "$property1"
+#             - echo "$property2"
+#             - |
+#               [ ! -z "$property1" ]
