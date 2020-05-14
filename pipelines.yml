@@ -54,7 +54,7 @@
 pipelines:
   - name: pipelines_S_Bash
     steps:
-      - name: test_aws
+      - name: test
         type: PowesShell
         configuration:
           nodePool: test_win_aws
