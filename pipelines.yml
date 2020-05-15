@@ -57,7 +57,7 @@ pipelines:
       - name: test_aws
         type: PowerShell
         configuration:
-          nodePool: test_win_aws
+          nodePool: ranjan_win_aws
 #           inputResources:
 #             - name: image_google
         execution:
