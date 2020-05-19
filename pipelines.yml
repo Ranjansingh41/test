@@ -55,14 +55,14 @@ pipelines:
   - name: pipelines_S_Bash
     steps:
       - name: test_aws
-        type: PowerShell
-        configuration:
-          nodePool: ranjan_win_aws
+        type:Bash
+#         configuration:
+#           nodePool: ranjan_win_aws
 #           inputResources:
 #             - name: image_google
         execution:
           onExecute:
-            - write-output "executing step..."
+            - echo "executing step..."
 #             - printenv
 #             - echo "$property1"
 #             - echo "$property2"
