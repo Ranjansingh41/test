@@ -61,16 +61,18 @@ pipelines:
         execution:
           onExecute:
             - echo "executing step..."
-            
-#       - name: S_Bash5
-#         type: Bash
-#         configuration:
-#           nodePool: ranjan_azure
-# #            inputSteps:
-# #             - name: S_Bash4
-#         execution:
-#           onExecute:
-#             - echo "executing step..."
+pipelines:
+  - name: pipelines_S_Bash
+    steps:
+      - name: S_Bash5
+        type: Bash
+        configuration:
+          nodePool: ranjan_azure
+#            inputSteps:
+#             - name: S_Bash4
+        execution:
+          onExecute:
+            - echo "executing step..."
 
 
 
