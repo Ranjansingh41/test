@@ -52,7 +52,7 @@ resources:
 #       property1: "test"
 
 pipelines:
-  - name: pipelines_1111
+  - name: pipelinestestbash
     steps:
       - name: test41
         type: Bash
@@ -64,7 +64,7 @@ pipelines:
           onExecute:
             - echo "executing step..."
             
-      - name: 12345
+      - name: test12
         type: Bash
         configuration:
           nodePool: ranjan_azure
