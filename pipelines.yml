@@ -57,7 +57,7 @@ pipelines:
       - name: test41
         type: Bash
         configuration:
-          nodePool: ranjan_azure
+          nodePool: u18-eu-west
           inputResources:
             - name: git2
         execution:
@@ -67,7 +67,7 @@ pipelines:
       - name: test12
         type: Bash
         configuration:
-          nodePool: ranjan_azure
+          nodePool: u18-eu-west
 #           inputSteps:
 #             - name: test_aws
           inputResources:
@@ -79,7 +79,7 @@ pipelines:
       - name: test898
         type: Bash
         configuration:
-          nodePool: ranjan_azure
+          nodePool: u18-eu-west
 #           inputSteps:
 #             - name: test_aws
           inputResources:
