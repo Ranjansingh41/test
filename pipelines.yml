@@ -58,13 +58,20 @@ pipelines:
         type: Bash
         configuration:
           nodePool: ranjan_azure
-#           inputResources:
-#             - name: image_google
         execution:
           onExecute:
             - echo "executing step..."
-#             - printenv
-#             - echo "$property1"
-#             - echo "$property2"
-#             - |
-#               [ ! -z "$property1" ]
+            
+      - name: S_Bash5
+        type: Bash
+        configuration:
+          nodePool: ranjan_azure
+#            inputSteps:
+#             - name: S_Bash4
+        execution:
+          onExecute:
+            - echo "executing step..."
+
+
+
+
