@@ -62,8 +62,6 @@ pipelines:
           onExecute:
             - echo "executing step..."
             
-  - name: pipelines_S
-    steps:
       - name: S_Bash5
         type: Bash
         configuration:
