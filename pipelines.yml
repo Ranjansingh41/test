@@ -56,8 +56,8 @@ pipelines:
     steps:
       - name: test_aws
         type: Bash
-#         configuration:
-#           nodePool: az_ranjan
+        configuration:
+          nodePool: ranjan_azure
 #           inputResources:
 #             - name: image_google
         execution:
