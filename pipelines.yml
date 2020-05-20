@@ -52,9 +52,9 @@ resources:
 #       property1: "test"
 
 pipelines:
-  - name: pipelines_S_Bash
+  - name: pipelines_1111
     steps:
-      - name: test_aws
+      - name: test41
         type: Bash
         configuration:
           nodePool: ranjan_azure
@@ -64,7 +64,7 @@ pipelines:
           onExecute:
             - echo "executing step..."
             
-      - name: S_Bash5
+      - name: 12345
         type: Bash
         configuration:
           nodePool: ranjan_azure
@@ -76,17 +76,17 @@ pipelines:
           onExecute:
             - echo "executing step..."
             
-      - name: S_Bash6
-        type: Bash
-        configuration:
-          nodePool: ranjan_azure
-#           inputSteps:
-#             - name: test_aws
-          inputResources:
-            - name: git2
-        execution:
-          onExecute:
-            - echo "executing step..."
+#       - name: S_Ba
+#         type: Bash
+#         configuration:
+#           nodePool: ranjan_azure
+# #           inputSteps:
+# #             - name: test_aws
+#           inputResources:
+#             - name: git2
+#         execution:
+#           onExecute:
+#             - echo "executing step..."
 
 
 
