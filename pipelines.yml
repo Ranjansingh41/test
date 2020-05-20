@@ -40,11 +40,11 @@
 #        autoPull: true  
 
 
-#   - name: git2
-#     type: GitRepo
-#     configuration:
-#       path: Ranjansingh41/test
-#       gitProvider: github
+  - name: git2
+    type: GitRepo
+    configuration:
+      path: Ranjansingh41/test
+      gitProvider: github
 
 #   - name: S_Bash_0007_propertyBag
 #     type: PropertyBag
@@ -58,6 +58,8 @@ pipelines:
         type: Bash
         configuration:
           nodePool: ranjan_azure
+          inputResources:
+            - name: git2
         execution:
           onExecute:
             - echo "executing step..."
@@ -66,8 +68,8 @@ pipelines:
         type: Bash
         configuration:
           nodePool: ranjan_azure
-#            inputSteps:
-#             - name: S_Bash4
+          inputResources:
+            - name: git2
         execution:
           onExecute:
             - echo "executing step..."
