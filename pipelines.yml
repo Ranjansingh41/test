@@ -68,8 +68,10 @@ pipelines:
         type: Bash
         configuration:
           nodePool: ranjan_azure
-          inputResources:
-            - name: git2
+          inputSteps:
+            - name: test_aws
+#           inputResources:
+#             - name: git2
         execution:
           onExecute:
             - echo "executing step..."
