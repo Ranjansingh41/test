@@ -62,7 +62,7 @@ pipelines:
           onExecute:
             - echo "executing step..."
 pipelines:
-  - name: pipelines_S_Bash
+  - name: pipelines_S
     steps:
       - name: S_Bash5
         type: Bash
