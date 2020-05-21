@@ -131,7 +131,7 @@ pipelines:
 #             - write-output "executing step..."
 
   
-resources:  
+# resources:  
 #   - name: image
 #     type: Image
 #     configuration:
