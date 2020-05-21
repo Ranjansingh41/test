@@ -57,7 +57,7 @@ pipelines:
       - name: test41
         type: Bash
         configuration:
-          nodePool: ranjan_azure
+#           nodePool: ranjan_azure
           inputResources:
             - name: git2
         execution:
