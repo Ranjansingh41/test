@@ -64,6 +64,7 @@ pipelines:
           onExecute:
             - echo "executing step..."
             - echo "executing step2..."
+            - echo "executing step3..."
             
 #       - name: test12
 #         type: Bash
