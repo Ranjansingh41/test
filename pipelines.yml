@@ -115,7 +115,7 @@ pipelines:
 #            - printenv
        configuration:
 #          nodePool: ubuntu16       
-         targetRepository: test-gradle-local
+         targetRepository: test-generic-local
          copy: true
          integrations:
            - name: varsha_art
