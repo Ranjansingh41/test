@@ -1,9 +1,42 @@
 resources:
-  - name: myHelmChart
+  - name: git
+    type: GitRepo
+    configuration:
+      gitProvider: git_v
+      path: Ranjansingh41/test
+      
+  - name: helm_repo
     type: HelmChart
-    configuration: 
-      sourceArtifactory: deepika_art
-      repository: helm-remote1
-      #chart: consul
-      version: 1.0.3
+    configuration:
+      sourceArtifactory: varsha_art
+      repository: helm-local/
+      chart: test
+      version: 1.0.0
+      
+pipelines:
+ name: test_helm
+ configuration:
+  nodePool: win_2019
+        steps:
+          - name: helm_pub
+            type: HelmPublish
+            configuration:
+              chartPath: stable/tomcat
+              inputResources:
+                - name: git
+              outputResources:
+                - name: helm_repo
+            execution:
+              onStart:
+                - write-output "executing step..."
+                - Get-Variable | format-table
+              onSuccess:
+                - write-output "executing step..."
+                - Get-Variable | format-table
+              onFailure:
+                - write-output "executing step..."
+                - Get-Variable | format-table
+              onComplete:
+                - write-output "executing step..."
+                - Get-Variable | format-table      
   
