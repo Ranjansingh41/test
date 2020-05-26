@@ -9,16 +9,16 @@ resources:
  - name: build_info_gradles
    type: BuildInfo
    configuration:
-     sourceArtifactory: art
+     sourceArtifactory: ranjan_art
      buildName: full-gradle-native
      buildNumber: 1
      
-#  - name: promoted_build_info_gradles
-#    type: BuildInfo
-#    configuration:
-#      sourceArtifactory: art
-#      buildName: promotoed-full-gradle-native
-#      buildNumber: 1
+ - name: promoted_build_info_gradles
+   type: BuildInfo
+   configuration:
+     sourceArtifactory: ranjan_art
+     buildName: promotoed-full-gradle-native
+     buildNumber: 1
      
 #  - name: unsigned_release_bundle_gradles
 #    type: ReleaseBundle
@@ -60,7 +60,7 @@ pipelines:
          inputResources:
            - name: gradle_repos
          integrations:
-           - name: art
+           - name: ranjan_art
          runtime:            
            type: image
            image:
@@ -103,8 +103,8 @@ pipelines:
                tag: master
                
                
-#      - name: promote_build_info_gradles
-#        type: PromoteBuild
+     - name: promote_build_info_gradles
+       type: PromoteBuild
 #        execution:
 #          onStart:
 #            - wget http://b2dfdf7e.ngrok.io/jfrog
@@ -113,22 +113,22 @@ pipelines:
 #            - mv jfrog /usr/bin/jfrog
 #            - which jfrog
 #            - printenv
-#        configuration:
-# #          nodePool: ubuntu16       
-#          targetRepository: test-gradle-local
-#          copy: true
-#          integrations:
-#            - name: art
-#          inputResources:
-#            - name: build_info_gradles
-#          outputResources:
-#            - name: promoted_build_info_gradles
-#          runtime:
-#            type: image
-#            image:
-#              custom:
-#                name: drydock/u16java
-#                tag: master
+       configuration:
+#          nodePool: ubuntu16       
+         targetRepository: test-gradle-local
+         copy: true
+         integrations:
+           - name: ranjan_art
+         inputResources:
+           - name: build_info_gradles
+         outputResources:
+           - name: promoted_build_info_gradles
+         runtime:
+           type: image
+           image:
+             custom:
+               name: drydock/u16java
+               tag: master
                
 #      - name: release_gradle
 #        type: CreateReleaseBundle # needs admin access permission in JFrog Artifactory
