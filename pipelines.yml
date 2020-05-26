@@ -123,12 +123,12 @@ pipelines:
            - name: build_info_gradles
          outputResources:
            - name: promoted_build_info_gradles
-         runtime:
-           type: image
-           image:
-             custom:
-               name: drydock/u16java
-               tag: master
+#          runtime:
+#            type: image
+#            image:
+#              custom:
+#                name: drydock/u16java
+#                tag: master
                
 #      - name: release_gradle
 #        type: CreateReleaseBundle # needs admin access permission in JFrog Artifactory
