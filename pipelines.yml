@@ -9,14 +9,14 @@ resources:
  - name: build_info_gradles
    type: BuildInfo
    configuration:
-     sourceArtifactory: ranjan_art
+     sourceArtifactory: varsha_art
      buildName: full-gradle-native
      buildNumber: 1
      
  - name: promoted_build_info_gradles
    type: BuildInfo
    configuration:
-     sourceArtifactory: ranjan_art
+     sourceArtifactory: varsha_art
      buildName: promotoed-full-gradle-native
      buildNumber: 1
      
@@ -60,7 +60,7 @@ pipelines:
          inputResources:
            - name: gradle_repos
          integrations:
-           - name: ranjan_art
+           - name: varsha_art
          runtime:            
            type: image
            image:
@@ -118,7 +118,7 @@ pipelines:
          targetRepository: test-gradle-local
          copy: true
          integrations:
-           - name: ranjan_art
+           - name: varsha_art
          inputResources:
            - name: build_info_gradles
          outputResources:
