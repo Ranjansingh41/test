@@ -70,7 +70,7 @@ pipelines:
           inputResources:
             - name: mvn_repo04
           integrations:
-            - name: varsha_art
+            - name: ranjan_github
 #             - name: varsha_slack
 #           runtime:            
 #             type: image
@@ -103,8 +103,8 @@ pipelines:
         type: PublishBuildInfo
         configuration:
 #           nodePool: ubuntu16
-          integrations:
-            - name: varsha_slack
+#           integrations:
+#             - name: varsha_slack
           inputSteps:
             - name: mvnBuild_sample
           outputResources:
