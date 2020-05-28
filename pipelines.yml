@@ -4,50 +4,50 @@ resources:
     configuration:
       path: ranjansingh41/test
       gitProvider: ranjan_github
-#       branches:
-#         include: docker
-      buildOn:
-         commit: false
-      sha: master
+      branches:
+        include: docker
+#       buildOn:
+#          commit: false
+#       sha: master
       
   - name: docker_Builds
     type: BuildInfo
     configuration:
-      sourceArtifactory: art
+      sourceArtifactory: varsha_art
       buildNumber: 1
       buildName: dockertest  
       
   - name: docker_build_promotes
     type: BuildInfo
     configuration:
-      sourceArtifactory: art
+      sourceArtifactory: varsha_art
       buildNumber: 1
       buildName: dockertest
       
-  - name: docker_release_Bundles
-    type: ReleaseBundle
-    configuration:
-      sourceDistribution: dist
-      name: test-docker-local
-      version: v1.0  
+#   - name: docker_release_Bundles
+#     type: ReleaseBundle
+#     configuration:
+#       sourceDistribution: dist
+#       name: test-docker-local
+#       version: v1.0  
       
-  - name: docker_release_Bundles
-    type: ReleaseBundle
-    configuration:
-      sourceDistribution: dist
-      name: test-docker-local
-      version: v1.0
-      isSigned: false     
+#   - name: docker_release_Bundles
+#     type: ReleaseBundle
+#     configuration:
+#       sourceDistribution: dist
+#       name: test-docker-local
+#       version: v1.0
+#       isSigned: false     
 
-  - name: docker_distributions
-    type: DistributionRule
-    configuration:
-      sourceDistribution: dist
-      cityName: "*"
-      serviceName: "*"
-      siteName: "*"
-      countryCodes:
-        - IN
+#   - name: docker_distributions
+#     type: DistributionRule
+#     configuration:
+#       sourceDistribution: dist
+#       cityName: "*"
+#       serviceName: "*"
+#       siteName: "*"
+#       countryCodes:
+#         - IN
 
 pipelines: 
   - name: docker
@@ -59,10 +59,10 @@ pipelines:
           # for docker:
           dockerFileLocation: . # required
           dockerFileName: Dockerfile     # required
-          dockerImageName: '34.66.107.45:8081/docker-stage-local/vijay'  # required 
-          dockerImageTag: myImg_$pipeline_name.$run_number #myimage_$pipeline_name.$run_number   # required
+          dockerImageName: 'ec2-18-232-118-117.compute-1.amazonaws.com:8082/docker-local/node'  # required 
+          dockerImageTag: latest #myImg_$pipeline_name.$run_number #myimage_$pipeline_name.$run_number   # required
           integrations:
-            - name: art
+            - name: varsha_art
           inputResources:
             - name: dockerbuild    # required
 #             - artifactoryFileSpec      # optional
@@ -82,9 +82,10 @@ pipelines:
         type: DockerPush
         configuration:
 #           nodePool: ubuntu16
-          targetRepository: test-docker-local  #required
+          autoPublishBuildInfo: false
+          targetRepository: docker-local  #required
           integrations:
-            - name: art    # required
+            - name: varsha_art    # required
           inputSteps:
             - name: dockerBuilds     # required
 #           outputResources:
@@ -95,7 +96,7 @@ pipelines:
       - name: dockerPublish
         type: PublishBuildInfo
         configuration:
-          nodePool: ubuntu16
+#           nodePool: ubuntu16
           #inherits from bash
 #           integrations:
           inputSteps:
@@ -106,47 +107,51 @@ pipelines:
       - name: dockerPromote
         type: PromoteBuild
         configuration:
-          nodePool: ubuntu16
-          targetRepository: test-docker-local
+#           nodePool: ubuntu16
+          targetRepository: test-generic-local
+          inputSteps:
+            - name: dockerPublish
+          integrations:
+            - name: varsha_art
           inputResources:
             - name: docker_Builds
           outputResources:
             - name: docker_build_promotes
             
-      - name: dockerCreatebundle
-        type: CreateReleaseBundle
-        configuration:
-          nodePool: ubuntu16
-          releaseBundleName: test-docker-local
-          releaseBundleVersion: v2.0.20
-          dryRun: false
-          sign: false
-          description: "testdocker description"
-          inputResources:
-            - name: docker_build_promotes
-          outputResources:
-            - name: docker_release_Bundles
-          releaseNotes:
-            syntax: markdown
-            content: |
-              ## Heading
-                * Bullet
-                * Points       
+#       - name: dockerCreatebundle
+#         type: CreateReleaseBundle
+#         configuration:
+#           nodePool: ubuntu16
+#           releaseBundleName: test-docker-local
+#           releaseBundleVersion: v2.0.20
+#           dryRun: false
+#           sign: false
+#           description: "testdocker description"
+#           inputResources:
+#             - name: docker_build_promotes
+#           outputResources:
+#             - name: docker_release_Bundles
+#           releaseNotes:
+#             syntax: markdown
+#             content: |
+#               ## Heading
+#                 * Bullet
+#                 * Points       
                  
-      - name: dockerSign
-        type: SignReleaseBundle
-        configuration:
-          inputResources:
-            - name: docker_release_Bundles
-          outputResources:
-            - name: docker_release_Bundles
+#       - name: dockerSign
+#         type: SignReleaseBundle
+#         configuration:
+#           inputResources:
+#             - name: docker_release_Bundles
+#           outputResources:
+#             - name: docker_release_Bundles
             
-      - name: dockerDistribute
-        type: DistributeReleaseBundle
-        configuration:
-          dryRun: false
-          inputResources:
-            - name: docker_distribution
-            - name: docker_release_Bundles
-          integrations: 
-            - name: dist            
+#       - name: dockerDistribute
+#         type: DistributeReleaseBundle
+#         configuration:
+#           dryRun: false
+#           inputResources:
+#             - name: docker_distribution
+#             - name: docker_release_Bundles
+#           integrations: 
+#             - name: dist            
