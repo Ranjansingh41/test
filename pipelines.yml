@@ -64,7 +64,7 @@ pipelines:
           integrations:
             - name: varsha_art
           inputResources:
-            - name: dockerbuild    # required
+            - name: dockerbuilds    # required
 #             - artifactoryFileSpec      # optional
 #             - my_docker_image      # optional if base image is private
         execution:
@@ -87,7 +87,7 @@ pipelines:
           integrations:
             - name: varsha_art    # required
           inputSteps:
-            - name: dockerBuilds     # required
+            - name: dockerBuild     # required
 #           outputResources:
 #             - name: docker_Buildinfo      # required if autoPublishBuildInfo is true 
 
@@ -100,7 +100,7 @@ pipelines:
           #inherits from bash
 #           integrations:
           inputSteps:
-            - name: dockerPushs     # required
+            - name: dockerPush     # required
           outputResources:
             - name: docker_Builds  
             
