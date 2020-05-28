@@ -10,7 +10,7 @@ resources:
   - name: go_build_infoo
     type: BuildInfo
     configuration:
-      sourceArtifactory: art
+      sourceArtifactory: varsha_art
       buildName: go_example_build
       buildNumber: 1
       
@@ -48,40 +48,40 @@ resources:
 
 pipelines:
   - name: go_builds
-    configuration:   
-      runtime:       
-        type: image
-        image:
-          custom:
-            name: vijaydocker1991/u18node
-            tag: gotesting
-            options: " "   
+#     configuration:   
+#       runtime:       
+#         type: image
+#         image:
+#           custom:
+#             name: vijaydocker1991/u18node
+#             tag: gotesting
+#             options: " "   
     steps:
       - name: build_goo
         type: GoBuild
         configuration:
-          nodePool: ubuntu16
-          sourceLocation: .
+#           nodePool: ubuntu16
+          sourceLocation: golang-example/hello
           repository: test-go-local
-          outputLocation: tmp
-          outputFile: helloranjan
+          outputLocation: /tmp/dist
+          outputFile: helloranjan 
           inputResources:
             - name: artifactory_go
           integrations:
-            - name: art
+            - name: varsha_art
         execution:
           onStart:
-            - wget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz
-            - sudo tar -C /usr/local -xzf go1.12.5.linux-amd64.tar.gz
-            - export PATH=$PATH:/usr/local/go/bin
+#             - wget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz
+#             - sudo tar -C /usr/local -xzf go1.12.5.linux-amd64.tar.gz
+#             - export PATH=$PATH:/usr/local/go/bin
             - go version 
-            - jfrog --version
+#             - jfrog --version
             
             
       - name: publish_go_binary
         type: GoPublishBinary
         configuration:
-          nodePool: ubuntu16        
+#           nodePool: ubuntu16        
           inputSteps:
             - name: build_goo
           targetRepository: test-go-local
