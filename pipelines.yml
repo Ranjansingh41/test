@@ -73,8 +73,8 @@ pipelines:
             - docker images 
             - printenv
             - ls -la
-            - pushd $res_dockerbuild_resourcePath
-            - ls -la
+#             - pushd $res_dockerbuild_resourcePath
+#             - ls -la
           onSuccess:
             - docker images  
 
