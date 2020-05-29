@@ -1,26 +1,18 @@
 resources:
-  - name: artifactory_goo
-    type: GitRepo
-    configuration:
-      path: Ranjansingh41/artifactory-go-example
-      branches:
-        include: master
-      gitProvider: ranjan_github
-  
-  - name: artifactory_goooo
-    type: GitRepo
-    configuration:
-      path: Ranjansingh41/project-examples
-      branches:
-        include: master
-      gitProvider: ranjan_github
-      
   - name: go_build_infoo
     type: BuildInfo
     configuration:
       sourceArtifactory: varsha_art
       buildName: go_example_build_publish_varsha
       buildNumber: 10
+      
+  - name: artifactory_goo
+    type: GitRepo
+    configuration:
+      path: Ranjansingh41/artifactory-go-example
+      branches:
+        include: master
+      gitProvider: ranjan_github    
       
 #   - name: unsigned_release_bundle_goo
 #     type: ReleaseBundle
@@ -48,7 +40,15 @@ resources:
      configuration:
        sourceArtifactory: varsha_art
        buildName: promote_go_build_info_publish
-       buildNumber: 40   
+       buildNumber: 40 
+       
+   - name: artifactory_goooo
+     type: GitRepo
+     configuration:
+       path: Ranjansingh41/project-examples
+       branches:
+         include: master
+       gitProvider: ranjan_github    
       
 #   - name: distribution_rule_goo
 #     type: DistributionRule
