@@ -12,7 +12,7 @@ resources:
     configuration:
       path: ranjansingh41/project-examples
       branches:
-        include: master
+        include: gonative
       gitProvider: ranjan_github
       
   - name: go_build_infoo
