@@ -149,7 +149,7 @@ pipelines:
           integrations:
             - name: varsha_art
           inputResources:
-            - name: go_build_infoo
+            - name: promoted_go_buildo
           outputResources:
             - name: promoted_goooo      
 #       - name: bundle_go_publisho
