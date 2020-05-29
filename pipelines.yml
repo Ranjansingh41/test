@@ -43,12 +43,12 @@ resources:
       buildName: go_example_module_publish_varsha
       buildNumber: 500
       
-   - name: promoted_goooo
-     type: BuildInfo
-     configuration:
-       sourceArtifactory: varsha_art
-       buildName: promote_go_build_info_publish
-       buildNumber: 40   
+  - name: promoted_goooo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: varsha_art
+      buildName: promote_go_build_info_publish
+      buildNumber: 40   
       
 #   - name: distribution_rule_goo
 #     type: DistributionRule
