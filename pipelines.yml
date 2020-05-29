@@ -2,7 +2,7 @@ resources:
   - name: artifactory_goo
     type: GitRepo
     configuration:
-      path: ranjansingh41/artifactory-go-example
+      path: Ranjansingh41/artifactory-go-example
       branches:
         include: master
       gitProvider: ranjan_github
@@ -10,7 +10,7 @@ resources:
   - name: artifactory_goooo
     type: GitRepo
     configuration:
-      path: ranjansingh41/project-examples
+      path: Ranjansingh41/project-examples
       branches:
         include: master
       gitProvider: ranjan_github
