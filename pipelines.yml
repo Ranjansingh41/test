@@ -101,29 +101,57 @@ pipelines:
             - name: build_goo
           targetRepository: test-go-local
           integrations:
-            - name: art    
+            - name: varsha_art 
 
       - name: publish_build
         type: PublishBuildInfo
         configuration:
-          nodePool: ubuntu16        
+#           nodePool: ubuntu16        
           inputSteps:
             - name: publish_go_binary
           outputResources:
             - name: go_build_infoo
             
-      - name: promote_build_goo
+      - name: publish_go_moduletest
+        type: GoPublishModule
+        execution:
+          onStart:
+            - go version
+        configuration:
+          sourceLocation: .
+          version: v0.0.0
+          targetRepository: test-go-local
+          autoPublishBuildInfo: true
+          integrations:
+            - name: varsha_art
+          inputResources:
+            - name: artifactory_goo
+          outputResources:
+            - name: promoted_go_buildo
+      
+      - name: promote_build_goo_binary
         type: PromoteBuild
         configuration:
           nodePool: ubuntu16        
           targetRepository: test-go-local
           integrations:
-            - name: art
+            - name: varsha_art
           inputResources:
             - name: go_build_infoo
           outputResources:
-            - name: promoted_go_buildo
+            - name: promoted_goooo
             
+       - name: promote_build_goo
+         type: PromoteBuild
+         configuration:
+#            nodePool: ubuntu16        
+           targetRepository: test-go-local
+           integrations:
+             - name: varsha_art
+           inputResources:
+             - name: go_build_infoo
+           outputResources:
+             - name: promoted_goooo      
 #       - name: bundle_go_publisho
 #         type: CreateReleaseBundle
 #         configuration:
