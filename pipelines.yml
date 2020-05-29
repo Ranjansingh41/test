@@ -99,7 +99,7 @@ pipelines:
            - name: gradle_build_steps
          outputResources:
            - name: build_info_gradles
-          runtime:            
+         runtime:            
            type: image
            image:
              auto:
