@@ -72,13 +72,13 @@ pipelines:
           integrations:
             - name: varsha_art
 #             - name: varsha_slack
-#           runtime:            
-#             type: image
-#             image:
-#               auto:
-#                 language: java
-#                 versions: 
-#                   - openjdk8
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: java
+                versions: 
+                  - 13
 #              custom:
 #                name: drydock/u16java
 #                tag: master
@@ -109,6 +109,13 @@ pipelines:
             - name: mvnBuild_sample
           outputResources:
             - name: mvnBuild_infoo
+        runtime:            
+            type: image
+            image:
+              auto:
+                language: java
+                versions: 
+                  - 13    
 #         execution:
 #           onSuccess:
 #             - send_notification varsha_slack
@@ -136,7 +143,13 @@ pipelines:
             - name: mvnBuild_infoo #required
           outputResources:
             - name: mvnBuild_infopromoted01 #required
-
+        runtime:            
+            type: image
+            image:
+              auto:
+                language: java
+                versions: 
+                  - 13
 #       - name: mvn_release_bundle_unsigned
 #         type: CreateReleaseBundle
 #         configuration:
