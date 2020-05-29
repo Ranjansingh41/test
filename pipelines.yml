@@ -3,7 +3,7 @@ resources:
     type: GitRepo
     configuration:
       gitProvider: ranjan_github
-      path: Ranjansingh41/test
+      path: Ranjansingh41/charts
    
   - name: helm_repooo
     type: HelmChart
