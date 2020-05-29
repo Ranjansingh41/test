@@ -4,7 +4,7 @@ resources:
     configuration:
       path: ranjansingh41/artifactory-go-example
       branches:
-        include: master
+        include: gonative
       gitProvider: ranjan_github
   
   - name: artifactory_goooo
