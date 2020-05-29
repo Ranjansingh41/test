@@ -145,7 +145,7 @@ pipelines:
             - name: mvnBuild_infopromoted01 #required
           runtime:            
             type: image
-              image:
+            image:
               auto:
                 language: java
                 versions: 
