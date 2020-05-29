@@ -61,12 +61,12 @@ pipelines:
            - name: gradle_repos
          integrations:
            - name: varsha_art
-#          runtime:            
-#            type: image
-#            image:
-#              custom:
-#                name: drydock/u16java
-#                tag: master
+         runtime:            
+           type: image
+           image:
+             custom:
+               name: u16java
+               tag: 13
        execution:
          onStart:
            - javac -version
@@ -95,12 +95,12 @@ pipelines:
            - name: gradle_build_steps
          outputResources:
            - name: build_info_gradles
-#          runtime:
-#            type: image
-#            image:
-#              custom:
-#                name: drydock/u16java
-#                tag: master
+         runtime:
+           type: image
+           image:
+             custom:
+               name: u16java
+               tag: 13
                
                
      - name: promote_build_info_gradles
@@ -123,12 +123,12 @@ pipelines:
            - name: build_info_gradles
          outputResources:
            - name: promoted_build_info_gradles
-#          runtime:
-#            type: image
-#            image:
-#              custom:
-#                name: drydock/u16java
-#                tag: master
+         runtime:
+           type: image
+           image:
+             custom:
+               name: u16java
+               tag: 13
                
 #      - name: release_gradle
 #        type: CreateReleaseBundle # needs admin access permission in JFrog Artifactory
