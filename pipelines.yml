@@ -61,9 +61,12 @@ pipelines:
            - name: gradle_repos
          integrations:
            - name: varsha_art
-#          runtime:            
-#            type: image
-#            image:
+         runtime:            
+           type: image
+           image:
+             auto:
+                language: java
+                versions: 13
 #              custom:
 #                name: drydock/u16java
 #                tag: master
@@ -95,9 +98,12 @@ pipelines:
            - name: gradle_build_steps
          outputResources:
            - name: build_info_gradles
-#          runtime:
-#            type: image
-#            image:
+          runtime:            
+           type: image
+           image:
+             auto:
+                language: java
+                versions: 13
 #              custom:
 #                name: drydock/u16java
 #                tag: master
@@ -123,9 +129,12 @@ pipelines:
            - name: build_info_gradles
          outputResources:
            - name: promoted_build_info_gradles
-#          runtime:
-#            type: image
-#            image:
+         runtime:            
+           type: image
+           image:
+             auto:
+                language: java
+                versions: 13
 #              custom:
 #                name: drydock/u16java
 #                tag: master
