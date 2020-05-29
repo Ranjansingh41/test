@@ -65,8 +65,8 @@ pipelines:
            type: image
            image:
              custom:
-               name: u16java
-               tag: 13
+               name: drydock/u16java
+               tag: master
        execution:
          onStart:
            - javac -version
@@ -99,8 +99,8 @@ pipelines:
            type: image
            image:
              custom:
-               name: u16java
-               tag: 13
+               name: drydock/u16java
+               tag: master
                
                
      - name: promote_build_info_gradles
@@ -127,8 +127,8 @@ pipelines:
            type: image
            image:
              custom:
-               name: u16java
-               tag: 13
+               name: drydock/u16java
+               tag: master
                
 #      - name: release_gradle
 #        type: CreateReleaseBundle # needs admin access permission in JFrog Artifactory
