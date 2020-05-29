@@ -81,7 +81,7 @@ pipelines:
           outputLocation: /tmp/dist
           outputFile: helloranjan 
           inputResources:
-            - name: artifactory_go
+            - name: artifactory_goo
           integrations:
             - name: varsha_art
         execution:
@@ -132,7 +132,7 @@ pipelines:
       - name: promote_build_goo_binary
         type: PromoteBuild
         configuration:
-          nodePool: ubuntu16        
+#           nodePool: ubuntu16        
           targetRepository: test-go-local
           integrations:
             - name: varsha_art
