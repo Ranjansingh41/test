@@ -124,34 +124,34 @@ pipelines:
           outputResources:
             - name: promoted_go_buildo
             
-      - name: bundle_go_publisho
-        type: CreateReleaseBundle
-        configuration:
-          nodePool: ubuntu16        
-          dryRun: false
-          description: "This is to test GoBuild -> PushArtifactoryPackage -> PublishBuildInfo -> Promote -> CreateRelease -> Sign -> Distribute pipeline chain"
-          releaseBundleName: test-go-local
-          releaseBundleVersion: v4.1.$run_number
-          sign: false
-          inputResources:
-            - name: promoted_go_buildo
-          outputResources:
-            - name: unsigned_release_bundle_goo
+#       - name: bundle_go_publisho
+#         type: CreateReleaseBundle
+#         configuration:
+#           nodePool: ubuntu16        
+#           dryRun: false
+#           description: "This is to test GoBuild -> PushArtifactoryPackage -> PublishBuildInfo -> Promote -> CreateRelease -> Sign -> Distribute pipeline chain"
+#           releaseBundleName: test-go-local
+#           releaseBundleVersion: v4.1.$run_number
+#           sign: false
+#           inputResources:
+#             - name: promoted_go_buildo
+#           outputResources:
+#             - name: unsigned_release_bundle_goo
             
-      - name: sign_release_bundle_goo
-        type: SignReleaseBundle
-        configuration:
-          inputResources:
-            - name: unsigned_release_bundle_goo
-          outputResources:
-            - name: signed_release_bundle_goo
+#       - name: sign_release_bundle_goo
+#         type: SignReleaseBundle
+#         configuration:
+#           inputResources:
+#             - name: unsigned_release_bundle_goo
+#           outputResources:
+#             - name: signed_release_bundle_goo
             
-      - name: distribute_signed_release_bundleo
-        type: DistributeReleaseBundle
-        configuration:
-          dryRun: false
-          inputResources:
-            - name: signed_release_bundle_goo
-            - name: distribution_rule_goo
-          integrations: 
-            - name: dist
+#       - name: distribute_signed_release_bundleo
+#         type: DistributeReleaseBundle
+#         configuration:
+#           dryRun: false
+#           inputResources:
+#             - name: signed_release_bundle_goo
+#             - name: distribution_rule_goo
+#           integrations: 
+#             - name: dist
