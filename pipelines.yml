@@ -1,11 +1,11 @@
 resources:
-  - name: git_vijay
+  - name: test_native
     type: GitRepo
     configuration:
       gitProvider: ranjan_github
       path: Ranjansingh41/test
    
-  - name: helm_repo
+  - name: helm_repooo
     type: HelmChart
     configuration: 
       sourceArtifactory: varsha_art
@@ -23,9 +23,9 @@ pipelines:
           chartPath: stable/tomcat
  
           inputResources:
-            - name: ranjan_github                   
+            - name: test_native               
           outputResources:
-            - name: helm_repo                  # required
+            - name: helm_repooo             # required
  
         execution:
           onStart:
