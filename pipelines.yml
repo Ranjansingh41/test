@@ -73,9 +73,9 @@ pipelines:
             - name: varsha_art
 #             - name: varsha_slack
           runtime:            
-           type: image
-           image:
-             auto:
+            type: image
+            image:
+              auto:
                 language: java
                 versions: 
                   - 13
@@ -106,13 +106,13 @@ pipelines:
             - name: mvnBuild_sample
           outputResources:
             - name: mvnBuild_infoo
-         runtime:            
-           type: image
-           image:
-             auto:
-                language: java
-                versions: 
-                  - 13
+          runtime:            
+            type: image
+            image:
+              auto:
+                 language: java
+                 versions: 
+                   - 13
 #               custom:
 #                 name: drydock/u16java
 #                 tag: master   
@@ -144,9 +144,9 @@ pipelines:
           outputResources:
             - name: mvnBuild_infopromoted01 #required
           runtime:            
-           type: image
-           image:
-             auto:
+            type: image
+              image:
+              auto:
                 language: java
                 versions: 
                   - 13
