@@ -66,7 +66,7 @@ pipelines:
           outputLocation: /tmp/dist
           outputFile: helloranjan 
           inputResources:
-            - name: artifactory_go
+            - name: artifactory_goooo
           integrations:
             - name: varsha_art
         execution:
@@ -86,57 +86,84 @@ pipelines:
             - name: build_goo
           targetRepository: test-go-local
           integrations:
-            - name: art    
+            - name: varsha_art
 
       - name: publish_build
         type: PublishBuildInfo
         configuration:
-          nodePool: ubuntu16        
+#           nodePool: ubuntu16        
           inputSteps:
             - name: publish_go_binary
           outputResources:
             - name: go_build_infoo
             
+      - name: publish_goooooo
+        type: GoPublishModule
+        execution:
+          onStart:
+            - go version
+        configuration:
+          sourceLocation: .
+          version: v0.0.0
+          targetRepository: test-go-local
+          autoPublishBuildInfo: true
+          integrations:
+            - name: varsha_art
+          inputResources:
+            - name: artifactory_goo
+          outputResources:
+            - name: promoted_go_buildo     
+            
       - name: promote_build_goo
         type: PromoteBuild
         configuration:
-          nodePool: ubuntu16        
+#           nodePool: ubuntu16        
           targetRepository: test-go-local
           integrations:
-            - name: art
+            - name: varsha_art
           inputResources:
             - name: go_build_infoo
           outputResources:
-            - name: promoted_go_buildo
+            - name: promoted_goooo
             
-      - name: bundle_go_publisho
-        type: CreateReleaseBundle
+      - name: promote_build_gooooo
+        type: PromoteBuild
         configuration:
-          nodePool: ubuntu16        
-          dryRun: false
-          description: "This is to test GoBuild -> PushArtifactoryPackage -> PublishBuildInfo -> Promote -> CreateRelease -> Sign -> Distribute pipeline chain"
-          releaseBundleName: test-go-local
-          releaseBundleVersion: v4.1.$run_number
-          sign: false
+          targetRepository: test-generic-local
+          integrations:
+            - name: varsha_art
           inputResources:
             - name: promoted_go_buildo
           outputResources:
-            - name: unsigned_release_bundle_goo
+            - name: promoted_goooo      
+#       - name: bundle_go_publisho
+#         type: CreateReleaseBundle
+#         configuration:
+#           nodePool: ubuntu16        
+#           dryRun: false
+#           description: "This is to test GoBuild -> PushArtifactoryPackage -> PublishBuildInfo -> Promote -> CreateRelease -> Sign -> Distribute pipeline chain"
+#           releaseBundleName: test-go-local
+#           releaseBundleVersion: v4.1.$run_number
+#           sign: false
+#           inputResources:
+#             - name: promoted_go_buildo
+#           outputResources:
+#             - name: unsigned_release_bundle_goo
             
-      - name: sign_release_bundle_goo
-        type: SignReleaseBundle
-        configuration:
-          inputResources:
-            - name: unsigned_release_bundle_goo
-          outputResources:
-            - name: signed_release_bundle_goo
+#       - name: sign_release_bundle_goo
+#         type: SignReleaseBundle
+#         configuration:
+#           inputResources:
+#             - name: unsigned_release_bundle_goo
+#           outputResources:
+#             - name: signed_release_bundle_goo
             
-      - name: distribute_signed_release_bundleo
-        type: DistributeReleaseBundle
-        configuration:
-          dryRun: false
-          inputResources:
-            - name: signed_release_bundle_goo
-            - name: distribution_rule_goo
-          integrations: 
-            - name: dist
+#       - name: distribute_signed_release_bundleo
+#         type: DistributeReleaseBundle
+#         configuration:
+#           dryRun: false
+#           inputResources:
+#             - name: signed_release_bundle_goo
+#             - name: distribution_rule_goo
+#           integrations: 
+#             - name: dist
