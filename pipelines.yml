@@ -1,116 +1,75 @@
 resources:
-  - name: go_build_infoo
+  - name: ranjan_go_build_publish
     type: BuildInfo
     configuration:
       sourceArtifactory: varsha_art
       buildName: go_example_build_publish_varsha
-      buildNumber: 10
+      buildNumber: 32
       
-  - name: artifactory_goo
+  - name: ranjan_artifactory_go_module_example
     type: GitRepo
     configuration:
       path: Ranjansingh41/artifactory-go-example
       branches:
         include: master
-      gitProvider: ranjan_github    
+      gitProvider: ranjan_github
       
-#   - name: unsigned_release_bundle_goo
-#     type: ReleaseBundle
-#     configuration:
-#       sourceDistribution: dist 
-#       name: test-go-local
-#       version: v1.16
-      
-#   - name: signed_release_bundle_goo
-#     type: ReleaseBundle
-#     configuration:
-#       sourceDistribution: dist 
-#       name: test-go-local
-#       version: v1.16
-      
-  - name: promoted_go_buildo
+  - name: go_build_info_publish_moduletestss
     type: BuildInfo
     configuration:
       sourceArtifactory: varsha_art
       buildName: go_example_module_publish_varsha
-      buildNumber: 500
+      buildNumber: 332
+  - name: promoted_go_build_info_go_publishtestss
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: varsha_art
+      buildName: promote_go_build_info_publish
+      buildNumber: 35
+  - name: artifactory_go_exampletestss
+    type: GitRepo
+    configuration:
+      path: Ranjansingh41/project-examples
+      branches:
+        include: master
+      gitProvider: ranjan_github
       
-   - name: promoted_goooo
-     type: BuildInfo
-     configuration:
-       sourceArtifactory: varsha_art
-       buildName: promote_go_build_info_publish
-       buildNumber: 40 
-       
-   - name: artifactory_goooo
-     type: GitRepo
-     configuration:
-       path: Ranjansingh41/project-examples
-       branches:
-         include: master
-       gitProvider: ranjan_github    
-      
-#   - name: distribution_rule_goo
-#     type: DistributionRule
+pipelines:      
+  - name: ranjna_goBuildtest
 #     configuration:
-#       sourceDistribution: dist
-#       cityName: "*"
-#       serviceName: "*"
-#       siteName: "*"
-#       countryCodes:
-#         - CN      
-
-
-pipelines:
-  - name: go_builds
-#     configuration:   
-#       runtime:       
-#         type: image
-#         image:
-#           custom:
-#             name: vijaydocker1991/u18node
-#             tag: gotesting
-#             options: " "   
+#       nodePool: win_2019
     steps:
-      - name: build_goo
+      - name: build_gotest
         type: GoBuild
         configuration:
-#           nodePool: ubuntu16
           sourceLocation: golang-example/hello
           repository: test-go-local
           outputLocation: /tmp/dist
-          outputFile: helloranjan 
+          outputFile: hello_varsha
           inputResources:
-            - name: artifactory_goo
+            - name: artifactory_go_exampletestss
           integrations:
             - name: varsha_art
         execution:
           onStart:
-#             - wget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz
-#             - sudo tar -C /usr/local -xzf go1.12.5.linux-amd64.tar.gz
-#             - export PATH=$PATH:/usr/local/go/bin
-            - go version 
-#             - jfrog --version
+            - go version
             
-            
-      - name: publish_go_binary
+      - name: publish_go_binarytest
         type: GoPublishBinary
         configuration:
-#           nodePool: ubuntu16        
           inputSteps:
-            - name: build_goo
+            - name: build_gotest
           targetRepository: test-go-local
           integrations:
-            - name: varsha_art 
-
-      - name: publish_build
+            - name: varsha_art
+            
+      - name: publish_buildtest
         type: PublishBuildInfo
         configuration:
-#           nodePool: ubuntu16        
           inputSteps:
-            - name: publish_go_binary
+            - name: publish_go_binarytest
           outputResources:
-            - name: go_build_infoo
+            - name: ranjan_go_build_publish
             
       - name: publish_go_moduletest
         type: GoPublishModule
@@ -125,33 +84,185 @@ pipelines:
           integrations:
             - name: varsha_art
           inputResources:
-            - name: artifactory_goo
+            - name: ranjan_artifactory_go_module_example
           outputResources:
-            - name: promoted_go_buildo
-      
-      - name: promote_build_goo_binary
+            - name: go_build_info_publish_moduletestss
+            
+      - name: promote_build_gotest_binary
         type: PromoteBuild
         configuration:
-#           nodePool: ubuntu16        
-          targetRepository: test-go-local
+          targetRepository: test-generic-local
           integrations:
             - name: varsha_art
           inputResources:
-            - name: go_build_infoo
+            - name: ranjan_go_build_publish
           outputResources:
-            - name: promoted_goooo
+            - name: promoted_go_build_info_go_publishtestss
+
+      - name: promote_build_gotest_module
+        type: PromoteBuild
+        configuration:
+          targetRepository: test-generic-local
+          integrations:
+            - name: varsha_art
+          inputResources:
+            - name: go_build_info_publish_moduletestss
+          outputResources:
+            - name: promoted_go_build_info_go_publishtestss 
+# resources:
+#   - name: go_build_infoo
+#     type: BuildInfo
+#     configuration:
+#       sourceArtifactory: varsha_art
+#       buildName: go_example_build_publish_varsha
+#       buildNumber: 10
+      
+#   - name: artifactory_goo
+#     type: GitRepo
+#     configuration:
+#       path: Ranjansingh41/artifactory-go-example
+#       branches:
+#         include: master
+#       gitProvider: ranjan_github    
+      
+# #   - name: unsigned_release_bundle_goo
+# #     type: ReleaseBundle
+# #     configuration:
+# #       sourceDistribution: dist 
+# #       name: test-go-local
+# #       version: v1.16
+      
+# #   - name: signed_release_bundle_goo
+# #     type: ReleaseBundle
+# #     configuration:
+# #       sourceDistribution: dist 
+# #       name: test-go-local
+# #       version: v1.16
+      
+#   - name: promoted_go_buildo
+#     type: BuildInfo
+#     configuration:
+#       sourceArtifactory: varsha_art
+#       buildName: go_example_module_publish_varsha
+#       buildNumber: 500
+      
+#    - name: promoted_goooo
+#      type: BuildInfo
+#      configuration:
+#        sourceArtifactory: varsha_art
+#        buildName: promote_go_build_info_publish
+#        buildNumber: 40 
+       
+#    - name: artifactory_goooo
+#      type: GitRepo
+#      configuration:
+#        path: Ranjansingh41/project-examples
+#        branches:
+#          include: master
+#        gitProvider: ranjan_github    
+      
+# #   - name: distribution_rule_goo
+# #     type: DistributionRule
+# #     configuration:
+# #       sourceDistribution: dist
+# #       cityName: "*"
+# #       serviceName: "*"
+# #       siteName: "*"
+# #       countryCodes:
+# #         - CN      
+
+
+# pipelines:
+#   - name: go_builds
+# #     configuration:   
+# #       runtime:       
+# #         type: image
+# #         image:
+# #           custom:
+# #             name: vijaydocker1991/u18node
+# #             tag: gotesting
+# #             options: " "   
+#     steps:
+#       - name: build_goo
+#         type: GoBuild
+#         configuration:
+# #           nodePool: ubuntu16
+#           sourceLocation: golang-example/hello
+#           repository: test-go-local
+#           outputLocation: /tmp/dist
+#           outputFile: helloranjan 
+#           inputResources:
+#             - name: artifactory_goo
+#           integrations:
+#             - name: varsha_art
+#         execution:
+#           onStart:
+# #             - wget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz
+# #             - sudo tar -C /usr/local -xzf go1.12.5.linux-amd64.tar.gz
+# #             - export PATH=$PATH:/usr/local/go/bin
+#             - go version 
+# #             - jfrog --version
             
-       - name: promote_build_goo
-         type: PromoteBuild
-         configuration:
-#            nodePool: ubuntu16        
-           targetRepository: test-go-local
-           integrations:
-             - name: varsha_art
-           inputResources:
-             - name: go_build_infoo
-           outputResources:
-             - name: promoted_goooo      
+            
+#       - name: publish_go_binary
+#         type: GoPublishBinary
+#         configuration:
+# #           nodePool: ubuntu16        
+#           inputSteps:
+#             - name: build_goo
+#           targetRepository: test-go-local
+#           integrations:
+#             - name: varsha_art 
+
+#       - name: publish_build
+#         type: PublishBuildInfo
+#         configuration:
+# #           nodePool: ubuntu16        
+#           inputSteps:
+#             - name: publish_go_binary
+#           outputResources:
+#             - name: go_build_infoo
+            
+#       - name: publish_go_moduletest
+#         type: GoPublishModule
+#         execution:
+#           onStart:
+#             - go version
+#         configuration:
+#           sourceLocation: .
+#           version: v0.0.0
+#           targetRepository: test-go-local
+#           autoPublishBuildInfo: true
+#           integrations:
+#             - name: varsha_art
+#           inputResources:
+#             - name: artifactory_goo
+#           outputResources:
+#             - name: promoted_go_buildo
+      
+#       - name: promote_build_goo_binary
+#         type: PromoteBuild
+#         configuration:
+# #           nodePool: ubuntu16        
+#           targetRepository: test-go-local
+#           integrations:
+#             - name: varsha_art
+#           inputResources:
+#             - name: go_build_infoo
+#           outputResources:
+#             - name: promoted_goooo
+            
+#        - name: promote_build_goo
+#          type: PromoteBuild
+#          configuration:
+# #            nodePool: ubuntu16        
+#            targetRepository: test-go-local
+#            integrations:
+#              - name: varsha_art
+#            inputResources:
+#              - name: go_build_infoo
+#            outputResources:
+#              - name: promoted_goooo      
 #       - name: bundle_go_publisho
 #         type: CreateReleaseBundle
 #         configuration:
