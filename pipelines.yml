@@ -1,331 +1,344 @@
-resources:
-  - name: ranjan_go_build_publish
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: varsha_art
-      buildName: go_example_build_publish_varsha
-      buildNumber: 32
-      
-  - name: ranjan_artifactory_go_module_example
-    type: GitRepo
-    configuration:
-      path: Ranjansingh41/artifactory-go-example
-      branches:
-        include: master
-      gitProvider: ranjan_github
-      
-  - name: go_build_info_publish_moduletestss
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: varsha_art
-      buildName: go_example_module_publish_varsha
-      buildNumber: 332
-  - name: promoted_go_build_info_go_publishtestss
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: varsha_art
-      buildName: promote_go_build_info_publish
-      buildNumber: 35
-  - name: artifactory_go_exampletestss
-    type: GitRepo
-    configuration:
-      path: Ranjansingh41/project-examples
-      branches:
-        include: master
-      gitProvider: ranjan_github
-      
-pipelines:      
-  - name: ranjna_goBuildtest
-#     configuration:
-#       nodePool: win_2019
+pipelines:
+  - name: pipelineSyncStatus_automation
     steps:
-      - name: build_gotest
-        type: GoBuild
+      - name: api_pipelineSyncStatus
+        type: Bash
         configuration:
-          sourceLocation: golang-example/hello
-          repository: test-go-local
-          outputLocation: /tmp/dist
-          outputFile: hello_varsha
-          inputResources:
-            - name: artifactory_go_exampletestss
           integrations:
-            - name: varsha_art
+            - name: s_gitHub
         execution:
-          onStart:
-            - go version
-            
-      - name: publish_go_binarytest
-        type: GoPublishBinary
-        configuration:
-          inputSteps:
-            - name: build_gotest
-          targetRepository: test-go-local
-          integrations:
-            - name: varsha_art
-            
-      - name: publish_buildtest
-        type: PublishBuildInfo
-        configuration:
-          inputSteps:
-            - name: publish_go_binarytest
-          outputResources:
-            - name: ranjan_go_build_publish
-            
-      - name: publish_go_moduletest
-        type: GoPublishModule
-        execution:
-          onStart:
-            - go version
-        configuration:
-          sourceLocation: .
-          version: v0.0.0
-          targetRepository: test-go-local
-          autoPublishBuildInfo: true
-          integrations:
-            - name: varsha_art
-          inputResources:
-            - name: ranjan_artifactory_go_module_example
-          outputResources:
-            - name: go_build_info_publish_moduletestss
-            
-      - name: promote_build_gotest_binary
-        type: PromoteBuild
-        configuration:
-          targetRepository: test-generic-local
-          integrations:
-            - name: varsha_art
-          inputResources:
-            - name: ranjan_go_build_publish
-          outputResources:
-            - name: promoted_go_build_info_go_publishtestss
-
-      - name: promote_build_gotest_module
-        type: PromoteBuild
-        configuration:
-          targetRepository: test-generic-local
-          integrations:
-            - name: varsha_art
-          inputResources:
-            - name: go_build_info_publish_moduletestss
-          outputResources:
-            - name: promoted_go_build_info_go_publishtestss     
-      
-      
-
-
-# pipelines:
-#   - name: u18nodetest
-#     steps:
-#       - name: test
-#         type: Bash
-# #         configuration: 
-# #           nodePool: u18-gcp-us-east1
-# #           runtime:
-# #             type: host
-#         execution:
-#           onExecute:
-#             - echo "Hi"
-            #images should be in this order it self
-#             - images=(docker.bintray.io/jfrog/pipelines-u18go docker.bintray.io/jfrog/pipelines-u18node docker.bintray.io/jfrog/pipelines-u18java docker.bintray.io/jfrog/pipelines-u18cpp)
-#             - javatags=(8 11 13)
-#             - gotags=(1.13.7 1.12.14 1.11.13)
-#             - nodetags=(10.18.0 12.14.0 10.18.0)
-#             - cpptags=(8.0.0 9.0.0)
-#             - for docker_images in "${images[@]}"; do case "$docker_images" in "${images[0]}") for tags in "${gotags[@]}"; do  docker images | grep $docker_images | grep $tags ; done ;; "${images[1]}") for tags in "${nodetags[@]}"; do  docker images | grep $docker_images | grep $tags ; done ;;  "${images[2]}") for tags in "${javatags[@]}"; do  docker images | grep $docker_images | grep $tags ; done ;; "${images[3]}") for tags in "${cpptags[@]}"; do  docker images | grep $docker_images | grep $tags ; done ;;  esac; done
+          onExecute:
+            - echo "hi"
 
 
 # resources:
-#   - name: MyGitRepo
+#   - name: ranjan_go_build_publish
+#     type: BuildInfo
+#     configuration:
+#       sourceArtifactory: varsha_art
+#       buildName: go_example_build_publish_varsha
+#       buildNumber: 32
+      
+#   - name: ranjan_artifactory_go_module_example
 #     type: GitRepo
 #     configuration:
-#       path: Ranjansingh41/test
-#       gitProvider: github
-#       branches: 
+#       path: Ranjansingh41/artifactory-go-example
+#       branches:
 #         include: master
-#       files:  
-#         include: Affinitygroup.yml
-# pipelines:
-#   - name: sample_AffinitygroupConnections
+#       gitProvider: ranjan_github
+      
+#   - name: go_build_info_publish_moduletestss
+#     type: BuildInfo
+#     configuration:
+#       sourceArtifactory: varsha_art
+#       buildName: go_example_module_publish_varsha
+#       buildNumber: 332
+#   - name: promoted_go_build_info_go_publishtestss
+#     type: BuildInfo
+#     configuration:
+#       sourceArtifactory: varsha_art
+#       buildName: promote_go_build_info_publish
+#       buildNumber: 35
+#   - name: artifactory_go_exampletestss
+#     type: GitRepo
+#     configuration:
+#       path: Ranjansingh41/project-examples
+#       branches:
+#         include: master
+#       gitProvider: ranjan_github
+      
+# pipelines:      
+#   - name: ranjna_goBuildtest
+# #     configuration:
+# #       nodePool: win_2019
 #     steps:
-#       - name: my_StepConnections
-#         type: Bash
+#       - name: build_gotest
+#         type: GoBuild
 #         configuration:
+#           sourceLocation: golang-example/hello
+#           repository: test-go-local
+#           outputLocation: /tmp/dist
+#           outputFile: hello_varsha
 #           inputResources:
-#             - name: MyGitRepo
+#             - name: artifactory_go_exampletestss
+#           integrations:
+#             - name: varsha_art
 #         execution:
-#           onExecute:
-#             - echo "hi"
-#       - name: stepnum_one
-#         type: Bash
-#         configuration: 
+#           onStart:
+#             - go version
+            
+#       - name: publish_go_binarytest
+#         type: GoPublishBinary
+#         configuration:
 #           inputSteps:
-#             - name: my_StepConnections
-#           affinityGroup: new_client
-#           inputResources:
-#             - name: MyGitRepo
+#             - name: build_gotest
+#           targetRepository: test-go-local
+#           integrations:
+#             - name: varsha_art
+            
+#       - name: publish_buildtest
+#         type: PublishBuildInfo
+#         configuration:
+#           inputSteps:
+#             - name: publish_go_binarytest
+#           outputResources:
+#             - name: ranjan_go_build_publish
+            
+#       - name: publish_go_moduletest
+#         type: GoPublishModule
 #         execution:
-#           onExecute:
-#             - echo "hi" 
-# #       - name: stepnum_two
+#           onStart:
+#             - go version
+#         configuration:
+#           sourceLocation: .
+#           version: v0.0.0
+#           targetRepository: test-go-local
+#           autoPublishBuildInfo: true
+#           integrations:
+#             - name: varsha_art
+#           inputResources:
+#             - name: ranjan_artifactory_go_module_example
+#           outputResources:
+#             - name: go_build_info_publish_moduletestss
+            
+#       - name: promote_build_gotest_binary
+#         type: PromoteBuild
+#         configuration:
+#           targetRepository: test-generic-local
+#           integrations:
+#             - name: varsha_art
+#           inputResources:
+#             - name: ranjan_go_build_publish
+#           outputResources:
+#             - name: promoted_go_build_info_go_publishtestss
+
+#       - name: promote_build_gotest_module
+#         type: PromoteBuild
+#         configuration:
+#           targetRepository: test-generic-local
+#           integrations:
+#             - name: varsha_art
+#           inputResources:
+#             - name: go_build_info_publish_moduletestss
+#           outputResources:
+#             - name: promoted_go_build_info_go_publishtestss     
+      
+      
+
+
+# # pipelines:
+# #   - name: u18nodetest
+# #     steps:
+# #       - name: test
+# #         type: Bash
+# # #         configuration: 
+# # #           nodePool: u18-gcp-us-east1
+# # #           runtime:
+# # #             type: host
+# #         execution:
+# #           onExecute:
+# #             - echo "Hi"
+#             #images should be in this order it self
+# #             - images=(docker.bintray.io/jfrog/pipelines-u18go docker.bintray.io/jfrog/pipelines-u18node docker.bintray.io/jfrog/pipelines-u18java docker.bintray.io/jfrog/pipelines-u18cpp)
+# #             - javatags=(8 11 13)
+# #             - gotags=(1.13.7 1.12.14 1.11.13)
+# #             - nodetags=(10.18.0 12.14.0 10.18.0)
+# #             - cpptags=(8.0.0 9.0.0)
+# #             - for docker_images in "${images[@]}"; do case "$docker_images" in "${images[0]}") for tags in "${gotags[@]}"; do  docker images | grep $docker_images | grep $tags ; done ;; "${images[1]}") for tags in "${nodetags[@]}"; do  docker images | grep $docker_images | grep $tags ; done ;;  "${images[2]}") for tags in "${javatags[@]}"; do  docker images | grep $docker_images | grep $tags ; done ;; "${images[3]}") for tags in "${cpptags[@]}"; do  docker images | grep $docker_images | grep $tags ; done ;;  esac; done
+
+
+# # resources:
+# #   - name: MyGitRepo
+# #     type: GitRepo
+# #     configuration:
+# #       path: Ranjansingh41/test
+# #       gitProvider: github
+# #       branches: 
+# #         include: master
+# #       files:  
+# #         include: Affinitygroup.yml
+# # pipelines:
+# #   - name: sample_AffinitygroupConnections
+# #     steps:
+# #       - name: my_StepConnections
+# #         type: Bash
+# #         configuration:
+# #           inputResources:
+# #             - name: MyGitRepo
+# #         execution:
+# #           onExecute:
+# #             - echo "hi"
+# #       - name: stepnum_one
 # #         type: Bash
 # #         configuration: 
 # #           inputSteps:
-# #             - name: stepnum_one
+# #             - name: my_StepConnections
 # #           affinityGroup: new_client
 # #           inputResources:
 # #             - name: MyGitRepo
 # #         execution:
 # #           onExecute:
-# #             - echo "hi"   
-#       - name: stepnum_three
-#         type: Bash
-#         configuration: 
-#           inputSteps:
-#             - name: stepnum_one #stepnum_two 
-#           affinityGroup: new_client
-#           inputResources:
-#             - name: MyGitRepo
-#         execution:
-#           onExecute:
-#             - echo "hi"  
-#       - name: stepnum_four
-#         type: Bash
-#         configuration: 
-#           inputSteps:
-#             - name: stepnum_three
-#           affinityGroup: new_client
-#           inputResources:
-#             - name: MyGitRepo
-#         execution:
-#           onExecute:
-#             - echo "hi"      
-#       - name: auto_one
-#         type: Bash
-#         configuration: 
-#           inputSteps:
-#             - name: my_StepConnections
-#           affinityGroup: my_group
-#           inputResources:
-#             - name: MyGitRepo
-#         execution:
-#           onExecute:
-#             - echo "hi"    
-#       - name: auto_two
-#         type: Bash
-#         configuration: 
-#           inputSteps:
-#             - name: auto_one
-#           affinityGroup: my_group
-#           inputResources:
-#             - name: MyGitRepo
-#         execution:
-#           onExecute:
-#             - echo "hi"  
-#       - name: auto_three
-#         type: Bash
-#         configuration: 
-#           inputSteps:
-#             - name: auto_two
-#           affinityGroup: my_group
-#           inputResources:
-#             - name: MyGitRepo
-#         execution:
-#           onExecute:
-#             - echo "hi"  
-
-
-
-# pipelines:
-#   - name: pipelines_S_Bash
-#     steps:
-#       - name: S_Bash5
-#         type: PowerShell
-#         configuration:
-#           nodePool: ranjan_window
-# #            inputSteps:
-# #             - name: S_Bash4
-#         execution:
-#           onExecute:
-#             - write-output "executing step..."
-# #       - name: S_Bash6
-#         type: PowerShell
-#         configuration:
-#           nodePool: ranjan_window
+# #             - echo "hi" 
+# # #       - name: stepnum_two
+# # #         type: Bash
+# # #         configuration: 
+# # #           inputSteps:
+# # #             - name: stepnum_one
+# # #           affinityGroup: new_client
+# # #           inputResources:
+# # #             - name: MyGitRepo
+# # #         execution:
+# # #           onExecute:
+# # #             - echo "hi"   
+# #       - name: stepnum_three
+# #         type: Bash
+# #         configuration: 
 # #           inputSteps:
-# #             - name: S_Bash5
-#         execution:
-#           onExecute:
-#             - write-output "executing step..."
-#       - name: S_Bash7
-#         type: PowerShell
-#         configuration:
-#           nodePool: ranjan_window
+# #             - name: stepnum_one #stepnum_two 
+# #           affinityGroup: new_client
+# #           inputResources:
+# #             - name: MyGitRepo
+# #         execution:
+# #           onExecute:
+# #             - echo "hi"  
+# #       - name: stepnum_four
+# #         type: Bash
+# #         configuration: 
 # #           inputSteps:
-# #             - name: S_Bash6
-#         execution:
-#           onExecute:
-#             - write-output "executing step..."
+# #             - name: stepnum_three
+# #           affinityGroup: new_client
+# #           inputResources:
+# #             - name: MyGitRepo
+# #         execution:
+# #           onExecute:
+# #             - echo "hi"      
+# #       - name: auto_one
+# #         type: Bash
+# #         configuration: 
+# #           inputSteps:
+# #             - name: my_StepConnections
+# #           affinityGroup: my_group
+# #           inputResources:
+# #             - name: MyGitRepo
+# #         execution:
+# #           onExecute:
+# #             - echo "hi"    
+# #       - name: auto_two
+# #         type: Bash
+# #         configuration: 
+# #           inputSteps:
+# #             - name: auto_one
+# #           affinityGroup: my_group
+# #           inputResources:
+# #             - name: MyGitRepo
+# #         execution:
+# #           onExecute:
+# #             - echo "hi"  
+# #       - name: auto_three
+# #         type: Bash
+# #         configuration: 
+# #           inputSteps:
+# #             - name: auto_two
+# #           affinityGroup: my_group
+# #           inputResources:
+# #             - name: MyGitRepo
+# #         execution:
+# #           onExecute:
+# #             - echo "hi"  
+
+
+
+# # pipelines:
+# #   - name: pipelines_S_Bash
+# #     steps:
+# #       - name: S_Bash5
+# #         type: PowerShell
+# #         configuration:
+# #           nodePool: ranjan_window
+# # #            inputSteps:
+# # #             - name: S_Bash4
+# #         execution:
+# #           onExecute:
+# #             - write-output "executing step..."
+# # #       - name: S_Bash6
+# #         type: PowerShell
+# #         configuration:
+# #           nodePool: ranjan_window
+# # #           inputSteps:
+# # #             - name: S_Bash5
+# #         execution:
+# #           onExecute:
+# #             - write-output "executing step..."
+# #       - name: S_Bash7
+# #         type: PowerShell
+# #         configuration:
+# #           nodePool: ranjan_window
+# # #           inputSteps:
+# # #             - name: S_Bash6
+# #         execution:
+# #           onExecute:
+# #             - write-output "executing step..."
 
   
-# resources:  
-#   - name: image
-#     type: Image
-#     configuration:
-#        registry: gcp
-#        imageName: gcr.io/ship-rc/ubuntu
-#        imageTag: latest
-#        autoPull: true  
-
-
-#   - name: git2
-#     type: GitRepo
-#     configuration:
-#       path: Ranjansingh41/test
-#       gitProvider: github
-
-# #   - name: S_Bash_0007_propertyBag
-# #     type: PropertyBag
+# # resources:  
+# #   - name: image
+# #     type: Image
 # #     configuration:
-# #       property1: "test"
+# #        registry: gcp
+# #        imageName: gcr.io/ship-rc/ubuntu
+# #        imageTag: latest
+# #        autoPull: true  
 
-# pipelines:
-#   - name: pipelinestestbash
-#     steps:
-#       - name: test41
-#         type: Bash
-#         configuration:
+
+# #   - name: git2
+# #     type: GitRepo
+# #     configuration:
+# #       path: Ranjansingh41/test
+# #       gitProvider: github
+
+# # #   - name: S_Bash_0007_propertyBag
+# # #     type: PropertyBag
+# # #     configuration:
+# # #       property1: "test"
+
+# # pipelines:
+# #   - name: pipelinestestbash
+# #     steps:
+# #       - name: test41
+# #         type: Bash
+# #         configuration:
+# # #           nodePool: ranjan_azure
+# #           inputResources:
+# #             - name: git2
+# #         execution:
+# #           onExecute:
+# #             - echo "executing step..."
+# #             - echo "executing step2..."
+# #             - echo "executing step3..."
+            
+# #       - name: test12
+# #         type: Bash
+# #         configuration:
 # #           nodePool: ranjan_azure
-#           inputResources:
-#             - name: git2
-#         execution:
-#           onExecute:
-#             - echo "executing step..."
-#             - echo "executing step2..."
-#             - echo "executing step3..."
+# # #           inputSteps:
+# # #             - name: test_aws
+# #           inputResources:
+# #             - name: git2
+# #         execution:
+# #           onExecute:
+# #             - echo "executing step..."
             
-#       - name: test12
-#         type: Bash
-#         configuration:
-#           nodePool: ranjan_azure
-# #           inputSteps:
-# #             - name: test_aws
-#           inputResources:
-#             - name: git2
-#         execution:
-#           onExecute:
-#             - echo "executing step..."
-            
-#       - name: test898
-#         type: Bash
-#         configuration:
-#           nodePool: ranjan_azure
-# #           inputSteps:
-# #             - name: test_aws
-#           inputResources:
-#             - name: git2
-#         execution:
-#           onExecute:
-#             - echo "executing step..."
+# #       - name: test898
+# #         type: Bash
+# #         configuration:
+# #           nodePool: ranjan_azure
+# # #           inputSteps:
+# # #             - name: test_aws
+# #           inputResources:
+# #             - name: git2
+# #         execution:
+# #           onExecute:
+# #             - echo "executing step..."
 
 
 
