@@ -3,9 +3,9 @@ pipelines:
     steps:
       - name: api_pipelineSyncStatus
         type: Bash
-        configuration:
-          integrations:
-            - name: s_gitHub
+#         configuration:
+#           integrations:
+#             - name: s_gitHub
         execution:
           onExecute:
             - echo "hi"
