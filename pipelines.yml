@@ -50,12 +50,14 @@ pipelines:
             - env1: changed1
               env2: changed2
         runtimes:
-          - image:
+          - type: image
+            image:
               auto:
                 language: java
                 version:
                   - 13
-          - image:
+          - type: image        
+            image:
               auto:
                 language: nodejs
                 version:
