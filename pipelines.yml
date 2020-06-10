@@ -2,7 +2,7 @@ resources:
   - name: test_outgoingWebhookResource #resource name
     type: OutgoingWebhook 
     configuration:
-      webhookName: outgoingWebhookIntegration #integration
+      webhookName: outgoing #integration
       method: POST # optional, defaults to POST
       parameters: name="test" # optional
 #       path: "/api/v1/issues" # optional 
