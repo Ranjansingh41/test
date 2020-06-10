@@ -1,12 +1,13 @@
-- name: test_outgoingWebhookResource #resource name
-  type: OutgoingWebhook 
-  configuration:
-    webhookName: outgoingWebhookIntegration #integration
-    method: POST # optional, defaults to POST
-    parameters: name="test" # optional
+resources:
+  - name: test_outgoingWebhookResource #resource name
+    type: OutgoingWebhook 
+    configuration:
+      webhookName: outgoingWebhookIntegration #integration
+      method: POST # optional, defaults to POST
+      parameters: name="test" # optional
 #       path: "/api/v1/issues" # optional 
-    headers: # optional
-      Content-type: application/json 
+      headers: # optional
+        Content-type: application/json 
 
 pipelines:
   - name: pipelineSyncStatus_automation
