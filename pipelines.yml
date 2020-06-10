@@ -30,7 +30,7 @@ steps:
     stepMode: Bash
     configuration:
       inputSteps:
-        - name: matrix_build_fanout
+        - name: matrix_build_fanout_test
     execution:
       onStart:
         - echo "hello from onStart"
