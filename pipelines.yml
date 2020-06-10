@@ -15,21 +15,23 @@ pipelines:
       - name: api_pipelineSyncStatus
         type: Bash
         configuration:
+          outputResources:
+            - name: test_outgoingWebhookResource
 #            inputResources: # optional
 #              - name: test_outgoingWebhookResource 
-           integrations:
-             - name: outgoing
+          integrations:
+            - name: outgoing
         execution:
           onExecute:
-            - echo "hi"
-          onSuccess:
-            - echo "Job well done!"
-          onFailure:
-            - echo "uh oh, something went wrong"
-          onComplete: #always
-            - echo "Cleaning up some stuff"
-          onCancel: 
-            - echo "Cleaning up intermittent stuff"
+            - set_payload test_outgoingWebhookResource "{\"test\":\"onExecute\"}"
+#           onSuccess:
+#             - echo "Job well done!"
+#           onFailure:
+#             - echo "uh oh, something went wrong"
+#           onComplete: #always
+#             - echo "Cleaning up some stuff"
+#           onCancel: 
+#             - echo "Cleaning up intermittent stuff"
 
 
   
