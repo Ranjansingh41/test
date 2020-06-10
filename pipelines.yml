@@ -1,37 +1,117 @@
 resources:
-  - name: test_outgoingWebhookResource #resource name
-    type: OutgoingWebhook 
+  - name: test
+    type: GitRepo
     configuration:
-      webhookName: outgoing #integration
-      method: GET    #POST # optional, defaults to POST
-      parameters: name="test" # optional
-#       path: "/api/v1/issues" # optional 
-      headers: # optional
-        Content-type: application/json 
+      gitProvider: varsha_github
+      path: Varsha-Arun/pipelines
+      branches:
+        include: matrixSteps
 
-pipelines:
-  - name: pipelineSyncStatus_automation
-    steps:
-      - name: api_pipelineSyncStatus
-        type: Bash
-        configuration:
-          outputResources:
-            - name: test_outgoingWebhookResource
-#            inputResources: # optional
-#              - name: test_outgoingWebhookResource 
-          integrations:
-            - name: outgoing
-        execution:
-          onExecute:
-            - set_payload testS_outgoingWebhookResource "{\"test\":\"onExecute\"}"
-          onSuccess:
-            - set_payload test_outgoingWebhookResource "{\"test\":\"onSuccess\"}"
-          onFailure:
-            - set_payload test_outgoingWebhookResource "{\"test\":\"onFailure\"}"
-#           onComplete: #always
-#             - set_payload test_outgoingWebhookResource "{\"test\":\"onComplete\"}"
-#           onCancel: 
-#             - set_payload test_outgoingWebhookResource "{\"test\":\"onCancel\"}"
+name: pipeline_test
+steps:
+  - name: matrix_build_fanout
+    type: FanOut
+    configuration:
+      inputResources:
+        - name: test
+    execution:
+      onStart:
+        - echo "from onStart"
+      onExecute:
+        - echo "this is a fanout step"
+      onSuccess:
+        - echo "from onSuccess"
+      onFailure:
+        - echo "from onFailure"
+      onComplete:
+        - echo "from onComplete"
+  - name: matrix_var_test
+    type: Matrix
+    stepMode: Bash
+    configuration:
+      inputSteps:
+        - name: matrix_build_fanout
+    execution:
+      onStart:
+        - echo "hello from onStart"
+      onExecute:
+        - echo "hello from onExecute"
+      onSuccess:
+        - echo "hello  from onSuccess"
+      onFailure:
+        - echo "hello from OnFailure"
+      onComplete:
+        - echo "hello from Oncomplete"
+    matrix:
+      environmentVariables:
+         - env1: one
+           env2: two
+           env3: three
+         - env1: changed1
+           env2: changed2
+      runtimes:
+        - image:
+            auto:
+              language: java
+              version:
+                - 13
+        - image:
+            auto:
+              language: nodejs
+              version:
+                - 8.17.0
+  - name: matrix_fanin_var_test
+    type: FanIn
+    configuration:
+      inputSteps:
+        - name: matrix_var_test
+    execution:
+      onStart:
+        - echo "from onStart"
+      onExecute:
+        - echo "this is a fanin step"
+      onSuccess:
+        - echo "from onSuccess"
+      onFailure:
+        - echo "from onFailure"
+      onComplete:
+        - echo "from onComplete"
+
+
+# resources:
+#   - name: test_outgoingWebhookResource #resource name
+#     type: OutgoingWebhook 
+#     configuration:
+#       webhookName: outgoing #integration
+#       method: GET    #POST # optional, defaults to POST
+#       parameters: name="test" # optional
+# #       path: "/api/v1/issues" # optional 
+#       headers: # optional
+#         Content-type: application/json 
+
+# pipelines:
+#   - name: pipelineSyncStatus_automation
+#     steps:
+#       - name: api_pipelineSyncStatus
+#         type: Bash
+#         configuration:
+#           outputResources:
+#             - name: test_outgoingWebhookResource
+# #            inputResources: # optional
+# #              - name: test_outgoingWebhookResource 
+#           integrations:
+#             - name: outgoing
+#         execution:
+#           onExecute:
+#             - set_payload testS_outgoingWebhookResource "{\"test\":\"onExecute\"}"
+#           onSuccess:
+#             - set_payload test_outgoingWebhookResource "{\"test\":\"onSuccess\"}"
+#           onFailure:
+#             - set_payload test_outgoingWebhookResource "{\"test\":\"onFailure\"}"
+# #           onComplete: #always
+# #             - set_payload test_outgoingWebhookResource "{\"test\":\"onComplete\"}"
+# #           onCancel: 
+# #             - set_payload test_outgoingWebhookResource "{\"test\":\"onCancel\"}"
 
 
   
