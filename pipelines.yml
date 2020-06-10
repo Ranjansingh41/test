@@ -28,8 +28,8 @@ pipelines:
             - set_payload test_outgoingWebhookResource "{\"test\":\"onSuccess\"}"
           onFailure:
             - set_payload test_outgoingWebhookResource "{\"test\":\"onFailure\"}"
-          onComplete: #always
-            - set_payload test_outgoingWebhookResource "{\"test\":\"onComplete\"}"
+#           onComplete: #always
+#             - set_payload test_outgoingWebhookResource "{\"test\":\"onComplete\"}"
           onCancel: 
             - set_payload test_outgoingWebhookResource "{\"test\":\"onCancel\"}"
 
