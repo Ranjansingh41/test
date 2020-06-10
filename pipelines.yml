@@ -3,7 +3,7 @@ resources:
     type: OutgoingWebhook 
     configuration:
       webhookName: outgoing #integration
-      method: PUT    #GET    #POST # optional, defaults to POST
+      method: GET    #POST # optional, defaults to POST
       parameters: name="test" # optional
 #       path: "/api/v1/issues" # optional 
       headers: # optional
@@ -23,15 +23,15 @@ pipelines:
             - name: outgoing
         execution:
           onExecute:
-            - set_payload test_outgoingWebhookResource "{\"test\":\"onExecute\"}"
+            - set_payload testS_outgoingWebhookResource "{\"test\":\"onExecute\"}"
           onSuccess:
             - set_payload test_outgoingWebhookResource "{\"test\":\"onSuccess\"}"
           onFailure:
             - set_payload test_outgoingWebhookResource "{\"test\":\"onFailure\"}"
 #           onComplete: #always
 #             - set_payload test_outgoingWebhookResource "{\"test\":\"onComplete\"}"
-          onCancel: 
-            - set_payload test_outgoingWebhookResource "{\"test\":\"onCancel\"}"
+#           onCancel: 
+#             - set_payload test_outgoingWebhookResource "{\"test\":\"onCancel\"}"
 
 
   
