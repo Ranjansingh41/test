@@ -17,11 +17,11 @@ pipelines:
         execution:
           onStart:
             - echo "from onStart"
-           onExecute:
-             - echo "this is a fanout step"
-           onSuccess:
-             - echo "from onSuccess"
-           onFailure:
+          onExecute:
+            - echo "this is a fanout step"
+          onSuccess:
+            - echo "from onSuccess"
+          onFailure:
             - echo "from onFailure"
           onComplete:
             - echo "from onComplete"
