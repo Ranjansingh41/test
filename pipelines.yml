@@ -15,10 +15,10 @@ pipelines:
       - name: api_pipelineSyncStatus
         type: Bash
         configuration:
-           inputResources: # optional
-            - name: test_outgoingWebhookResource 
-#           integrations:
-#             - name: s_gitHub
+#            inputResources: # optional
+#              - name: test_outgoingWebhookResource 
+           integrations:
+             - name: outgoing
         execution:
           onExecute:
             - echo "hi"
