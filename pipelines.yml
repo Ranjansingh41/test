@@ -2,8 +2,8 @@ resources:
   - name: test
     type: GitRepo
     configuration:
-      gitProvider: varsha_github
-      path: Varsha-Arun/pipelines
+      gitProvider: ranjan_github
+      path: Ranjansingh41/test
       branches:
         include: matrixSteps
 
