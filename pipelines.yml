@@ -4,12 +4,12 @@ resources:
     configuration:
       gitProvider: ranjan_github
       path: Ranjansingh41/test
-      branches:
-        include: matrixSteps
+#       branches:
+#         include: matrixSteps
 
 name: pipeline_test
 steps:
-  - name: matrix_build_fanout
+  - name: matrix_build_fanout_test
     type: FanOut
     configuration:
       inputResources:
