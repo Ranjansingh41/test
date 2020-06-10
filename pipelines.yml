@@ -3,7 +3,7 @@ resources:
     type: OutgoingWebhook 
     configuration:
       webhookName: outgoing #integration
-      method: POST # optional, defaults to POST
+      method: GET    #POST # optional, defaults to POST
       parameters: name="test" # optional
 #       path: "/api/v1/issues" # optional 
       headers: # optional
