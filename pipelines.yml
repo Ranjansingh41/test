@@ -62,22 +62,22 @@ pipelines:
 #                 language: nodejs
 #                 version:
 #                   - 8.17.0
-      - name: matrix_fanin_var_test
-        type: FanIn
-        configuration:
-          inputSteps:
-            - name: matrix_var_test
-        execution:
-          onStart:
-            - echo "from onStart"
-          onExecute:
-            - echo "this is a fanin step"
-          onSuccess:
-            - echo "from onSuccess"
-          onFailure:
-            - echo "from onFailure"
-          onComplete:
-            - echo "from onComplete"
+#       - name: matrix_fanin_var_test
+#         type: FanIn
+#         configuration:
+#           inputSteps:
+#             - name: matrix_var_test
+#         execution:
+#           onStart:
+#             - echo "from onStart"
+#           onExecute:
+#             - echo "this is a fanin step"
+#           onSuccess:
+#             - echo "from onSuccess"
+#           onFailure:
+#             - echo "from onFailure"
+#           onComplete:
+#             - echo "from onComplete"
 
 
 # resources:
