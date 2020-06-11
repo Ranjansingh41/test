@@ -49,19 +49,19 @@ pipelines:
               env3: three
             - env1: changed1
               env2: changed2
-        runtimes:
-          - type: image
-            image:
-              auto:
-                language: java
-                version:
-                  - 13
-          - type: image        
-            image:
-              auto:
-                language: nodejs
-                version:
-                  - 8.17.0
+#         runtimes:
+#           - type: image
+#             image:
+#               auto:
+#                 language: java
+#                 version:
+#                   - 13
+#           - type: image        
+#             image:
+#               auto:
+#                 language: nodejs
+#                 version:
+#                   - 8.17.0
       - name: matrix_fanin_var_test
         type: FanIn
         configuration:
