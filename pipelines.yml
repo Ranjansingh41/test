@@ -17,6 +17,10 @@ pipelines:
         configuration:
           inputResources:
             - name: MyGitRepo
+        matrix:
+          environmentVariables:
+            - env1: one
+              env2: two    
         execution:
           onExecute:
             - echo "hi"
@@ -29,6 +33,10 @@ pipelines:
           affinityGroup: new_client
           inputResources:
             - name: MyGitRepo
+        matrix:
+          environmentVariables:
+            - env1: one
+              env2: two     
         execution:
           onExecute:
             - echo "hi" 
@@ -41,6 +49,10 @@ pipelines:
           affinityGroup: new_client
           inputResources:
             - name: MyGitRepo
+        matrix:
+          environmentVariables:
+            - env1: one
+              env2: two     
         execution:
           onExecute:
             - echo "hi"   
@@ -53,6 +65,10 @@ pipelines:
           affinityGroup: new_client
           inputResources:
             - name: MyGitRepo
+        matrix:
+          environmentVariables:
+            - env1: one
+              env2: two     
         execution:
           onExecute:
             - echo "hi"  
@@ -76,6 +92,10 @@ pipelines:
           affinityGroup: my_group
           inputResources:
             - name: MyGitRepo
+        matrix:
+          environmentVariables:
+            - env1: one
+              env2: two     
         execution:
           onExecute:
             - echo "hi"    
@@ -88,6 +108,10 @@ pipelines:
           affinityGroup: my_group
           inputResources:
             - name: MyGitRepo
+        matrix:
+          environmentVariables:
+            - env1: one
+              env2: two     
         execution:
           onExecute:
             - echo "hi"  
@@ -100,6 +124,10 @@ pipelines:
           affinityGroup: my_group
           inputResources:
             - name: MyGitRepo
+        matrix:
+          environmentVariables:
+            - env1: one
+              env2: two     
         execution:
           onExecute:
             - echo "hi"  
