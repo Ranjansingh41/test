@@ -1,29 +1,69 @@
-resources:
-  - name: MyGitRepo
-    type: GitRepo
-    configuration:
-      path: Ranjansingh41/test
-      gitProvider: ranjan_github
-#       branches: 
-#         include: master
-#       files:  
-#         include: Affinitygroup.yml
 pipelines:
-  - name: sample_AffinitygroupConnections
+  - name: Pipelines_PipelineSteplets
     steps:
-      - name: my_StepConnections
-        type: Bash
-#         stepMode: Bash
-        configuration:
-          inputResources:
-            - name: MyGitRepo
-#         matrix:
-#           environmentVariables:
-#             - env1: one
-#               env2: two    
+      - name: api_PipelineMatrixSteps
+        type: Matrix
+        stepMode: Bash
+        stepletMultipliers:
+          environmentVariables:
+            - env1: one
+              env2: two
         execution:
           onExecute:
-            - echo "hi"
+            - echo "executing step..."
+            
+  - name: Pipelines_IdentityF_admin
+    steps:
+      - name: api_PipelineMatrixSteps
+        type: Matrix
+        stepMode: Bash
+        stepletMultipliers:
+          environmentVariables:
+            - env1: one
+              env2: two
+        execution:
+          onExecute:
+            - echo "executing step..."  
+     
+  - name: Pipelines_IdentityF_member
+    steps:
+      - name: api_PipelineMatrixSteps
+        type: Matrix
+        stepMode: Bash
+        stepletMultipliers:
+          environmentVariables:
+            - env1: one
+              env2: two
+        execution:
+          onExecute:
+            - echo "executing step..."    
+
+# resources:
+#   - name: MyGitRepo
+#     type: GitRepo
+#     configuration:
+#       path: Ranjansingh41/test
+#       gitProvider: ranjan_github
+# #       branches: 
+# #         include: master
+# #       files:  
+# #         include: Affinitygroup.yml
+# pipelines:
+#   - name: sample_AffinitygroupConnections
+#     steps:
+#       - name: my_StepConnections
+#         type: Bash
+# #         stepMode: Bash
+#         configuration:
+#           inputResources:
+#             - name: MyGitRepo
+# #         matrix:
+# #           environmentVariables:
+# #             - env1: one
+# #               env2: two    
+#         execution:
+#           onExecute:
+#             - echo "hi"
 #       - name: stepnum_one
 #         type: Matrix
 #         stepMode: Bash
