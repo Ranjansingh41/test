@@ -295,119 +295,119 @@
   
 
 
-resources:
-  - name: ranjan_go_build_publish
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: s_artifactory
-      buildName: go_example_build_publish_varsha
-      buildNumber: 32
-      
-  - name: ranjan_artifactory_go_module_example
-    type: GitRepo
-    configuration:
-      path: Ranjansingh41/artifactory-go-example
-      branches:
-        include: master
-      gitProvider: ranjan_github
-      
-  - name: go_build_info_publish_moduletestss
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: s_artifactory
-      buildName: go_example_module_publish_varsha
-      buildNumber: 332
-  - name: promoted_go_build_info_go_publishtestss
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: s_artifactory
-      buildName: promote_go_build_info_publish
-      buildNumber: 35
-  - name: artifactory_go_exampletestss
-    type: GitRepo
-    configuration:
-      path: Ranjansingh41/project-examples
-      branches:
-        include: master
-      gitProvider: ranjan_github
-      
-pipelines:      
-  - name: ranjna_goBuildtest
+# resources:
+#   - name: ranjan_go_build_publish
+#     type: BuildInfo
 #     configuration:
-#       nodePool: win_2019
-    steps:
-      - name: build_gotest
-        type: GoBuild
-        configuration:
-          sourceLocation: golang-example/hello
-          repository: test-go-local
-          outputLocation: /tmp/dist
-          outputFile: hello_varsha
-          inputResources:
-            - name: artifactory_go_exampletestss
-          integrations:
-            - name: s_artifactory
-        execution:
-          onStart:
-            - go version
+#       sourceArtifactory: s_artifactory
+#       buildName: go_example_build_publish_varsha
+#       buildNumber: 32
+      
+#   - name: ranjan_artifactory_go_module_example
+#     type: GitRepo
+#     configuration:
+#       path: Ranjansingh41/artifactory-go-example
+#       branches:
+#         include: master
+#       gitProvider: ranjan_github
+      
+#   - name: go_build_info_publish_moduletestss
+#     type: BuildInfo
+#     configuration:
+#       sourceArtifactory: s_artifactory
+#       buildName: go_example_module_publish_varsha
+#       buildNumber: 332
+#   - name: promoted_go_build_info_go_publishtestss
+#     type: BuildInfo
+#     configuration:
+#       sourceArtifactory: s_artifactory
+#       buildName: promote_go_build_info_publish
+#       buildNumber: 35
+#   - name: artifactory_go_exampletestss
+#     type: GitRepo
+#     configuration:
+#       path: Ranjansingh41/project-examples
+#       branches:
+#         include: master
+#       gitProvider: ranjan_github
+      
+# pipelines:      
+#   - name: ranjna_goBuildtest
+# #     configuration:
+# #       nodePool: win_2019
+#     steps:
+#       - name: build_gotest
+#         type: GoBuild
+#         configuration:
+#           sourceLocation: golang-example/hello
+#           repository: test-go-local
+#           outputLocation: /tmp/dist
+#           outputFile: hello_varsha
+#           inputResources:
+#             - name: artifactory_go_exampletestss
+#           integrations:
+#             - name: s_artifactory
+#         execution:
+#           onStart:
+#             - go version
             
-      - name: publish_go_binarytest
-        type: GoPublishBinary
-        configuration:
-          inputSteps:
-            - name: build_gotest
-          targetRepository: test-go-local
-          integrations:
-            - name: s_artifactory
-        execution:
-          onStart:
-            - printenv 
-      - name: publish_buildtest
-        type: PublishBuildInfo
-        configuration:
-          inputSteps:
-            - name: publish_go_binarytest
-          outputResources:
-            - name: ranjan_go_build_publish
+#       - name: publish_go_binarytest
+#         type: GoPublishBinary
+#         configuration:
+#           inputSteps:
+#             - name: build_gotest
+#           targetRepository: test-go-local
+#           integrations:
+#             - name: s_artifactory
+#         execution:
+#           onStart:
+#             - printenv 
+#       - name: publish_buildtest
+#         type: PublishBuildInfo
+#         configuration:
+#           inputSteps:
+#             - name: publish_go_binarytest
+#           outputResources:
+#             - name: ranjan_go_build_publish
             
-      - name: publish_go_moduletest
-        type: GoPublishModule
-        execution:
-          onStart:
-            - go version
-        configuration:
-          sourceLocation: .
-          version: v0.0.0
-          targetRepository: test-go-local
-          autoPublishBuildInfo: true
-          integrations:
-            - name: s_artifactory
-          inputResources:
-            - name: ranjan_artifactory_go_module_example
-          outputResources:
-            - name: go_build_info_publish_moduletestss
+#       - name: publish_go_moduletest
+#         type: GoPublishModule
+#         execution:
+#           onStart:
+#             - go version
+#         configuration:
+#           sourceLocation: .
+#           version: v0.0.0
+#           targetRepository: test-go-local
+#           autoPublishBuildInfo: true
+#           integrations:
+#             - name: s_artifactory
+#           inputResources:
+#             - name: ranjan_artifactory_go_module_example
+#           outputResources:
+#             - name: go_build_info_publish_moduletestss
             
-      - name: promote_build_gotest_binary
-        type: PromoteBuild
-        configuration:
-          targetRepository: test-generic-local
-          integrations:
-            - name: s_artifactory
-          inputResources:
-            - name: ranjan_go_build_publish
-          outputResources:
-            - name: promoted_go_build_info_go_publishtestss
+#       - name: promote_build_gotest_binary
+#         type: PromoteBuild
+#         configuration:
+#           targetRepository: test-generic-local
+#           integrations:
+#             - name: s_artifactory
+#           inputResources:
+#             - name: ranjan_go_build_publish
+#           outputResources:
+#             - name: promoted_go_build_info_go_publishtestss
 
-      - name: promote_build_gotest_module
-        type: PromoteBuild
-        configuration:
-          targetRepository: test-generic-local
-          integrations:
-            - name: s_artifactory
-          inputResources:
-            - name: go_build_info_publish_moduletestss
-          outputResources:
-            - name: promoted_go_build_info_go_publishtestss     
+#       - name: promote_build_gotest_module
+#         type: PromoteBuild
+#         configuration:
+#           targetRepository: test-generic-local
+#           integrations:
+#             - name: s_artifactory
+#           inputResources:
+#             - name: go_build_info_publish_moduletestss
+#           outputResources:
+#             - name: promoted_go_build_info_go_publishtestss     
       
       
 
