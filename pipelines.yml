@@ -1,16 +1,42 @@
-# pipelines:
-#   - name: Pipelines_PipelineSteplets
-#     steps:
-#       - name: api_PipelineMatrixSteps
-#         type: Matrix
-#         stepMode: Bash
-#         stepletMultipliers:
-#           environmentVariables:
-#             - env1: one
-#               env2: two
-#         execution:
-#           onExecute:
-#             - echo "executing step..."
+pipelines:
+  - name: Pipelines_PipelineSteplets
+    steps:
+      - name: api_PipelineMatrixSteps
+        type: Matrix
+        stepMode: Bash
+        stepletMultipliers:
+          environmentVariables:
+            - env1: one
+              env2: two
+        execution:
+          onStart:
+            - echo "pipelines state working" >> ${steplet_id}_pipelines_files
+            - add_pipeline_files ${steplet_id}_pipelines_files test_pipelines_files
+            - echo "add_cache_files working" >> ${steplet_id}_cache_file
+            - add_cache_files ${steplet_id}_cache_file test_cache_files
+            - echo "add_run_files working" >> ${steplet_id}_run_file
+            - add_run_files ${steplet_id}_run_file test_run_files
+            - mkdir -p cache_files_dir
+            - mkdir -p pipeline_files_dir
+            - mkdir -p run_files_dir
+            - echo "pipelines state working" >> ./pipeline_files_dir/${steplet_id}_pipelines_files
+            - add_pipeline_files pipeline_files_dir pipeline_files_dir
+            - echo "add_cache_files working" >> ./cache_files_dir/${steplet_id}_cache_file
+            - add_cache_files cache_files_dir cache_files_dir
+            - echo "add_run_files working" >> ./run_files_dir/${steplet_id}_run_file
+            - add_run_files run_files_dir run_files_dir
+          onExecute:
+            - mkdir -p testing
+            - restore_pipeline_files test_pipelines_files ./testing/.
+            - restore_cache_files test_cache_files ./testing/.
+            - restore_run_files test_run_files ./testing/.
+            - ls -l ./testing/. 
+            - mkdir -p temp1
+            - restore_pipeline_files pipeline_files_dir ./temp1/.
+            - restore_cache_files cache_files_dir ./temp1/.
+            - restore_run_files run_files_dir ./temp1/.
+            - ls -l ./temp1/.
+          
             
 #   - name: Pipelines_IdentityF_admin
 #     steps:
