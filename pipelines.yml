@@ -359,7 +359,9 @@ pipelines:
           targetRepository: test-go-local
           integrations:
             - name: s_artifactory
-            
+        execution:
+          onStart:
+            - printenv 
       - name: publish_buildtest
         type: PublishBuildInfo
         configuration:
