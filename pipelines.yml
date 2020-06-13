@@ -299,7 +299,7 @@ resources:
   - name: ranjan_go_build_publish
     type: BuildInfo
     configuration:
-      sourceArtifactory: varsha_art
+      sourceArtifactory: s_artifactory
       buildName: go_example_build_publish_varsha
       buildNumber: 32
       
@@ -314,13 +314,13 @@ resources:
   - name: go_build_info_publish_moduletestss
     type: BuildInfo
     configuration:
-      sourceArtifactory: varsha_art
+      sourceArtifactory: s_artifactory
       buildName: go_example_module_publish_varsha
       buildNumber: 332
   - name: promoted_go_build_info_go_publishtestss
     type: BuildInfo
     configuration:
-      sourceArtifactory: varsha_art
+      sourceArtifactory: s_artifactory
       buildName: promote_go_build_info_publish
       buildNumber: 35
   - name: artifactory_go_exampletestss
@@ -346,7 +346,7 @@ pipelines:
           inputResources:
             - name: artifactory_go_exampletestss
           integrations:
-            - name: varsha_art
+            - name: s_artifactory
         execution:
           onStart:
             - go version
@@ -358,7 +358,7 @@ pipelines:
             - name: build_gotest
           targetRepository: test-go-local
           integrations:
-            - name: varsha_art
+            - name: s_artifactory
             
       - name: publish_buildtest
         type: PublishBuildInfo
@@ -379,7 +379,7 @@ pipelines:
           targetRepository: test-go-local
           autoPublishBuildInfo: true
           integrations:
-            - name: varsha_art
+            - name: s_artifactory
           inputResources:
             - name: ranjan_artifactory_go_module_example
           outputResources:
@@ -390,7 +390,7 @@ pipelines:
         configuration:
           targetRepository: test-generic-local
           integrations:
-            - name: varsha_art
+            - name: s_artifactory
           inputResources:
             - name: ranjan_go_build_publish
           outputResources:
@@ -401,7 +401,7 @@ pipelines:
         configuration:
           targetRepository: test-generic-local
           integrations:
-            - name: varsha_art
+            - name: s_artifactory
           inputResources:
             - name: go_build_info_publish_moduletestss
           outputResources:
