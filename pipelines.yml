@@ -1,13 +1,13 @@
 pipelines:
   - name: Pipelines_PipelineSteplets
     steps:
-      - name: api_PipelineMatrixSteps
-        type: Matrix
-        stepMode: Bash
-        stepletMultipliers:
-          environmentVariables:
-            - env1: one
-              env2: two
+      - name: Pipeline_test
+        type: Bash
+#         stepMode: Bash
+#         stepletMultipliers:
+#           environmentVariables:
+#             - env1: one
+#               env2: two
         execution:
           onStart:
             - echo "pipelines state working" >> ${steplet_id}_pipelines_files
