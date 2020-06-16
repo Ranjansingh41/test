@@ -53,6 +53,17 @@ pipelines:
           onExecute:
             - echo "executing step..."  
      
+      - name: api_Pipeline1
+        type: Matrix
+        stepMode: Bash
+#         stepletMultipliers:
+#           environmentVariables:
+#             - env1: one
+#               env2: two
+        execution:
+          onExecute:
+            - echo "executing step..."  
+     
 #   - name: Pipelines_IdentityF_member
 #     steps:
 #       - name: api_PipelineMatrixSteps
