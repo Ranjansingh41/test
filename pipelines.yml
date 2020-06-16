@@ -57,6 +57,8 @@ pipelines:
 #               env2: two      
         execution:
           onExecute:
+            - echo "Env1=$env1"
+            - echo "Env2=$env2"
             - echo "executing step..."  
      
 #       - name: api_Pipeline1
