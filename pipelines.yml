@@ -51,7 +51,44 @@ pipelines:
               env2: two
             - env1: three
               env2: four
-#         stepletMultipliers:
+          runtimes:
+            - type: image
+              image:
+                auto:
+                  language: java
+                  versions:
+                    - 13
+            - type: image
+              image:
+                auto:
+                  language: java
+                   versions:
+                     - 8
+#           - type: image
+#           image:
+#           auto:
+#             language: java
+#             versions:
+#               - 11 runtimes:
+#           - type: image
+#           image:
+#           auto:
+#             language: java
+#             versions:
+#               - 13
+#           - type: image
+#           image:
+#           auto:
+#             language: java
+#             versions:
+#               - 8
+#           - type: image
+#           image:
+#           auto:
+#             language: java
+#             versions:
+#               - 11
+# #         stepletMultipliers:
 #           environmentVariables:
 #             - env1: one
 #               env2: two      
