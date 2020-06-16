@@ -47,7 +47,7 @@ pipelines:
         stepMode: Bash
         stepletMultipliers:
           environmentVariables:
-            - env1:
+            - env1: one
               env2: two
             - env1: three
               env2: four
