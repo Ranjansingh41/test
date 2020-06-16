@@ -42,7 +42,7 @@ pipelines:
             
   - name: Pipelines_test
     steps:
-      - name: api_Pipeline
+      - name: api_Pipeline@
         type: Matrix
         stepMode: Bash
         stepletMultipliers:
