@@ -45,7 +45,7 @@ pipelines:
       - name: api_Pipeline
         type: Matrix
         stepMode: Bash
-        stepletMultipliers:
+#         stepletMultipliers:
 #           environmentVariables:
 #             - env1: one
 #               env2: two
