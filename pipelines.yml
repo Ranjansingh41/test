@@ -40,7 +40,7 @@ pipelines:
 #             - ls -l ./temp1/.
           
             
-  - name: Pipelines_test&_a_Z*$/
+  - name: Pipelines_test
     steps:
       - name: api_Pipeline
         type: Matrix
