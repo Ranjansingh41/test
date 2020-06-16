@@ -49,9 +49,13 @@ pipelines:
           environmentVariables:
             - env1: one
               env2: two
+        stepletMultipliers:
+          environmentVariables:
+            - env1: one
+              env2: two      
         execution:
-#           onExecute:
-#             - echo "executing step..."  
+          onExecute:
+            - echo "executing step..."  
      
 #       - name: api_Pipeline1
 #         type: Matrix
