@@ -46,11 +46,11 @@ pipelines:
         type: Matrix
         stepMode: Bash
         stepletMultipliers:
-          environmentVariables:
-            - env1: one
-              env2: two
-            - env1: three
-              env2: four
+#           environmentVariables:
+#             - env1: one
+#               env2: two
+#             - env1: three
+#               env2: four
           runtimes:
             - type: image
               image:
