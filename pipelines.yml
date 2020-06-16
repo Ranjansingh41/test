@@ -51,19 +51,19 @@ pipelines:
               env2: two
             - env1: three
               env2: four
-        runtimes:
-          - type: image
-            image:
-              auto:
-                language: java
-                version:
-                  - 13
-          - type: image        
-            image:
-              auto:
-                language: nodejs
-                version:
-                  - 8.17.0     
+          runtimes:
+            - type: image
+              image:
+                auto:
+                  language: java
+                  version:
+                    - 13
+            - type: image        
+              image:
+                auto:
+                  language: nodejs
+                  version:
+                    - 8.17.0     
         execution:
           onExecute:
             - echo "Env1=$env1"
