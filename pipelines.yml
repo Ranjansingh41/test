@@ -61,9 +61,9 @@ pipelines:
             - type: image        
               image:
                 auto:
-                  language: node
+                  language: nodejs
                   versions:
-                    - 8.17.6     
+                    - 8.17.0     
         execution:
           onExecute:
             - set_step_var fan_out value1
