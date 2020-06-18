@@ -47,42 +47,43 @@ pipelines:
         stepMode: Bash
         stepletMultipliers:
           environmentVariables:
-            - env1: one
-              env2: two
-#             - env1: three
-#               env2: four
-#             - env1: five
-          fastFail : true      #env2: six 
-          runtimes:
-            - type: image
-              image:
-                auto:
-                  language: node
-                  versions:
-                    - 10.18.0
-            - type: image        
-              image:
-                auto:
-                  language: node
-                  versions:
-                    - 8.17.0 
-                    
-            - type: image        
-              image:
-                auto:
-                  language: node
-                  versions:
-                    - 12.14.5 
-          allowFailures:             # optional, array of combinations
-            - env1: [one]
-              env2: [two]      
+            - delay: 1
+              fail: 'true'
+            - delay: 10
+              fail: 'true'
+            - delay: 15
+              fail: 'false'
+            - delay: 20
+              fail: 'false'
         execution:
+          onStart:
+            - sleep "$delay"
           onExecute:
-            - set_step_var fan_out value1
-            - echo "Env1=$env1"
-            - echo "Env2=$env2"
-#             - echo "Env3=$env3"
-            - echo "executing step..."  
+            - echo "I am on matrix step"
+            - |
+              [ $fail == 'false' ] 
+          fastFail: true
+          allowFailures:
+            - environmentVariables:
+                delay: 1
+                fail: 'true'
+          exclude:
+            - environmentVariables:
+                delay: 10
+                fail: 'true'
+#   - name: Matrix_Fan_In
+#     type: FanIn
+#     configuration:
+#       inputSteps:
+#         - name: matrix_2
+#     execution:
+#       onExecute:
+#         - echo "Hello World"
+#         - ls -l .
+#         - ls -l ./matrix_2
+#         - ls -l ./matrix_2/Matrix_Fan_Out_1/
+#         - get_step_var matrix_2 test_key
+#         - get_step_var matrix_2 addresses
      
 #       - name: api_Pipeline1
 #         type: Matrix
