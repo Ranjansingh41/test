@@ -1,214 +1,90 @@
-resources:
-  - name: app5
-    type: gitRepo
-    repoPath: ranjansingh41/u16
-    configuration:
-      integrationName: ranjan_github
-#       files:
-#         only: README|install.sh|node
-      branches:
-        only: master
-      tags:
-        only: tagv*
-      buildOn:
-#         commit: false
-          pullRequest: true
-#           pullRequestClose: <Boolean>
-#           release: <Boolean>
-#           tagPush: <Boolean>
-#       shallowDepth: 2
-    initialVersion:
-      sha: master
-
-# resources:
-#   - name: test1
-#     type: file
-#     fileLocation: ranjansingh41/u16
-#     fileName: test  # optional
-#     configuration:      
-#       integrationName: ranjan_Artifactory
-# #     initialVersion:
-# #       fileDtTm: <string>  # optional
-      
-# resources:
-#   - name: node
-#     type: image
-#     imageName: ranjansingh/python
-#     configuration:
-#       integrationName: ranjan_dockerhub
-#     initialVersion:
-#       imageTag: app
-      
-#   - name: app5
-#     type: gitRepo
-#     repoPath: ranjansingh41/test
-#     configuration:
-#       integrationName: ranjan_dockerhub
-#       branches:
-#         only: master
-#     initialVersion:
-#       sha: master    
-
-pipelines:
-  - name: pipeline1
+pipelines:    
+  - name: Pipeline_test_matrix
     steps:
-       - name: step1
-         type: bash
-#          configuration:
-#           affinityGroup: bldGroup 
-#             priority: 1
-         triggeredBy:
-           resources:
-             - app5
-         setup:
-           runtime:
-             type: image
-            # image:
-               #auto:
-#                  language: none            
-         execution:
-           onExecute:
-             - printenv
-             - sudo docker images
-#              - sudo apt-get install tree
-#              - git log
-#              - node -v
-
-#        - name: trigger1
-#          type: bash
-# #          configuration:
-# #           affinityGroup: bldGroup 
-# #             priority: 3
-
-#          triggeredBy:
-#            resources:
-#              - app1
-#          setup:
-#            runtime:
-#              type: image
-#              image:
-#                auto:
-#                  language: nodejs
-#                  versions:
-#                    - 8.16.0                      
-#          execution:
-#            onExecute:
-#              - echo TEST_FOR_SELECTED_VERSION
-#              - node -v
-             
-#        - name: trigger2
-#          type: bash
-#          configuration:
-# #           affinityGroup: bldGroup 
-#             priority: 2
-#          triggeredBy:
-#            steps:
-#              - step1
-#          setup:
-#            runtime:
-#              type: image
-#              image:
-#                auto:
-#                  language: nodejs   
-#          triggeredBy:
-#           resources:
-#             - app1
-#          execution:
-#            onExecute:
-#              - echo - echo TEST_FOR_DEFAULT_VERSION
-#              - node -v
-             
-#        - name: utility_step
-#          type: bash
-#          triggeredBy:
-#            resources:
-#              - app1
-#          requires:
-#            integrations:
-#              - slackNotify
-#          execution:
-#            onExecute:
-#              - update_commit_status app1 --status processing --message "updated in utility step" --context $STEP_NAME
-#              - send_notification slackNotify
-
-
-#   - name: pipeline2
-#     steps:
-#         - name: none_language
-#           type: bash
-#           configuration:
-# #           affinityGroup: bldGroup 
-#             priority: 2
-
-#           setup:
-#             runtime:
-#               type: image
-#              # image:
-#                 #auto:
-#   #                  language: none            
-#           execution:
-#             onExecute:
-#               - echo TEST_FOR_NONE
-#   #              - node -v
-
-#         - name: selected_version
-#           type: bash
-#           triggeredBy:
-#             steps:
-#                - none_language
-# #           requires:
-# #             steps:
-# #               - none_language
-#           setup:
-#             runtime:
-#               type: image
-#               image:
-#                 auto:
-#                   language: nodejs
-#                   versions:
-#                     - 8.16.0                      
-#           execution:
-#             onExecute:
-#               - echo TEST_FOR_SELECTED_VERSION
-#               - node -v
- 
-# #         - name: default_version
-# #           type: bash
-# #            triggeredBy:
-# #            steps:
-# #              - none_language
-# #           requires:
-# #             steps:
-# #               - none_language
-# #           setup:
-# #             runtime:
-# #               type: image
-# #               image:
-# #                 auto:
-# #                   language: nodejs   
-# # #           triggeredBy:
-# #            resources:
-# #              - app1
-# #           execution:
-# #             onExecute:
-# #               - echo - echo TEST_FOR_DEFAULT_VERSION
-# #               - node -v
-
-#   #                     - name: utility_step
-#   #                       type: bash
-#   #                       triggeredBy:
-#   #                         resources:
-#   #                           - app1
-#   #                       requires:
-#   #                         integrations:
-#   #                           - slackNotify
-#   #                       execution:
-#   #                         onExecute:
-#   #                           - update_commit_status app1 --status processing --message "updated in utility step" --context $STEP_NAME
-#   #                           - send_notification slackNotify
-
-             
-             
-             
-             
-             
+#       - name: Normal_Step
+#         type: Bash
+# #         configuration:
+# #           inputResources:
+# #             - name: self_repo
+#         execution:
+#           onExecute:
+#             - pushd "$res_self_repo_resourcePath/"
+#             - save_tests saveTests/empty/temp
+#             - save_tests saveTests/correct
+#             - echo "Passed"
+#             - popd
+      - name: Matrix_Fan_Out_1
+        type: FanOut
+        configuration:
+          inputSteps:
+            - name: Normal_Step
+        execution:
+          onExecute:
+            - sleep 10s
+            - echo "I am on fan out step"
+            - touch fan_out_1.txt
+            - set_step_var fan_out value1
+            - echo "Fan out working" > fan_out_1.txt
+#       - name: Matrix_Fan_Out_2
+#         type: FanOut
+#         configuration:
+#           inputSteps:
+#             - name: Normal_Step
+#         execution:
+#           onExecute:
+#             - sleep 10s
+#             - echo "I am on fan out step "
+#             - touch fan_out_2.txt
+#             - set_step_var fan_out value1
+#             - echo "Fan out working" > fan_out_2.txt
+      - name: matrix_2
+        type: Matrix
+        stepMode: Bash
+        configuration:
+          inputSteps:
+            - name: Matrix_Fan_Out_1
+#             - name: Matrix_Fan_Out_2
+#           inputResources:
+#             - name: self_repo
+        stepletMultipliers:
+          environmentVariables:
+            - env1: one
+              env2: two
+              env3: three
+            - env1: changed1
+              env2: changed2
+            - env1: changed12
+              env2: changed23
+            - env1: one1
+              env2: two2
+              env3: three3
+            - env1: changed14
+              env2: changed25
+            - env1: changed126
+              env2: changed237
+        execution:
+          onExecute:
+            - echo "I am on matrix step"
+#             - ls -l ./Matrix_Fan_Out_1
+#             - 'touch ${steplet_id}_file'
+#             - 'echo "Created file on steplet ${steplet_id}" > ${steplet_id}_file'
+#             - >-
+#               echo "Envs env1 = $env1 , env2 = $env2 , env3 = $env3" >>
+#               ${steplet_id}_file
+#             - set_step_var test_key "$(date)"
+#             - 'set_step_var addresses "https://www.google.com/${env1}/${steplet_id}"'
+#             - get_step_var Matrix_Fan_Out_1 fan_out
+#             - ls -l .
+      - name: Matrix_Fan_In
+        type: FanIn
+        configuration:
+          inputSteps:
+            - name: matrix_2
+        execution:
+          onExecute:
+            - echo "Hello World"
+            - ls -l .
+#             - ls -l ./matrix_2
+#             - ls -l ./matrix_2/Matrix_Fan_Out_1/
+#             - get_step_var matrix_2 test_key
+#             - get_step_var matrix_2 addresses
