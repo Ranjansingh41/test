@@ -70,7 +70,7 @@ pipelines:
           onExecute:
             - echo "I am on matrix step"
             - |
-              [ $fail == 'false' ] 
+              [ $fail == 'true' ] 
 #   - name: Matrix_Fan_In
 #     type: FanIn
 #     configuration:
