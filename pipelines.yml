@@ -72,7 +72,7 @@ pipelines:
                 auto:
                   language: node
                   versions:
-                    - 12.14.0           
+                    - 12.14.5           
         execution:
           onExecute:
             - set_step_var fan_out value1
