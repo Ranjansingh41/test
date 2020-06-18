@@ -64,7 +64,7 @@ pipelines:
             - type: image
               image:
                 custom:
-                  name: shippabledocker/jfreq
+                  name: shippabledocker/jfreq12
                   tag: latest
                   registry: docker_v
                 
