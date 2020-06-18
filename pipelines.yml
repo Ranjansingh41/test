@@ -55,13 +55,6 @@ pipelines:
               fail: 'false'
             - delay: 20
               fail: 'false'
-        execution:
-          onStart:
-            - sleep "$delay"
-          onExecute:
-            - echo "I am on matrix step"
-            - |
-              [ $fail == 'false' ] 
         fastFail: true
         allowFailures:
           - environmentVariables:
@@ -70,7 +63,14 @@ pipelines:
         exclude:
           - environmentVariables:
               delay: 10
-              fail: 'true'
+              fail: 'true'      
+        execution:
+          onStart:
+            - sleep "$delay"
+          onExecute:
+            - echo "I am on matrix step"
+            - |
+              [ $fail == 'false' ] 
 #   - name: Matrix_Fan_In
 #     type: FanIn
 #     configuration:
