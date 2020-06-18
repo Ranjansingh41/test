@@ -95,14 +95,14 @@ pipelines:
             - echo "I am on matrix step"
 #             - |
 #               [ $fail == 'false' ] 
-#   - name: Matrix_Fan_In
-#     type: FanIn
-#     configuration:
-#       inputSteps:
-#         - name: matrix_2
-#     execution:
-#       onExecute:
-#         - echo "Hello World"
+  - name: Matrix_Fan_In_test
+    type: FanIn
+    configuration:
+      inputSteps:
+        - name: api_Pipeline
+    execution:
+      onExecute:
+        - echo "Hello World"
 #         - ls -l .
 #         - ls -l ./matrix_2
 #         - ls -l ./matrix_2/Matrix_Fan_Out_1/
