@@ -47,7 +47,7 @@ pipelines:
         stepMode: Bash
         stepletMultipliers:
           environmentVariables:
-            - delay: one
+            - delay: 1
               fail: 'true'
             - delay: 10
               fail: 'true'
