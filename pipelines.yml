@@ -49,8 +49,8 @@ pipelines:
           environmentVariables:
             - env1: one
               env2: two
-            - env1: three
-              env2: four
+#             - env1: three
+#               env2: four
 #             - env1: five
           fastFail : true      #env2: six 
           runtimes:
@@ -75,8 +75,8 @@ pipelines:
                     - 12.14.5 
           allowFailures:             # optional, array of combinations
             environmentVariables:
-              - env1: [six]
-                env2: [saven]         
+              - env1: one
+                env2: two       
         execution:
           onExecute:
             - set_step_var fan_out value1
