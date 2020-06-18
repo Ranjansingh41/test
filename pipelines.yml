@@ -58,7 +58,7 @@ pipelines:
           fastFail: true
           allowFailures:
             - environmentVariables:
-                delay: one
+                delay: 1
                 fail: 'true'
           exclude:
             - environmentVariables:
