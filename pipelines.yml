@@ -47,7 +47,7 @@ pipelines:
         stepMode: Bash
         stepletMultipliers:
           environmentVariables:
-            - delay: 1
+            - delay: one
               fail: 'true'
             - delay: 10
               fail: 'true'
@@ -58,7 +58,7 @@ pipelines:
           fastFail: true
           allowFailures:
             - environmentVariables:
-                delay: 1
+                delay: one
                 fail: 'true'
           exclude:
             - environmentVariables:
@@ -69,8 +69,8 @@ pipelines:
             - sleep "$delay"
           onExecute:
             - echo "I am on matrix step"
-            - |
-              [ $fail == 'false' ] 
+#             - |
+#               [ $fail == 'false' ] 
 #   - name: Matrix_Fan_In
 #     type: FanIn
 #     configuration:
