@@ -52,7 +52,7 @@ pipelines:
             - env1: three
               env2: four
 #             - env1: five
-#               env2: six 
+          fastFail : true      #env2: six 
           runtimes:
             - type: image
               image:
