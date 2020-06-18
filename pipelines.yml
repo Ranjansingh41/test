@@ -53,13 +53,13 @@ pipelines:
               env2: four
 #             - env1: five
 #               env2: six 
-#           runtimes:
-#             - type: image
-#               image:
-#                 auto:
-#                   language: node
-#                   versions:
-#                     - 10.18.0
+          runtimes:
+            - type: image
+              image:
+                auto:
+                  language: node
+                  versions:
+                    - 10.18.0
 #             - type: image        
 #               image:
 #                 auto:
