@@ -46,11 +46,13 @@ pipelines:
         type: Matrix
         stepMode: Bash
         stepletMultipliers:
-#           environmentVariables:
-#             - env1: one
-#               env2: two
-#             - env1: three
-#               env2: four
+          environmentVariables:
+            - env1: one
+              env2: two
+            - env1: three
+              env2: four
+            - env1: five
+              env2: six 
           runtimes:
             - type: image
               image:
@@ -69,6 +71,7 @@ pipelines:
             - set_step_var fan_out value1
             - echo "Env1=$env1"
             - echo "Env2=$env2"
+            - echo "Env3=$env3"
             - echo "executing step..."  
      
 #       - name: api_Pipeline1
