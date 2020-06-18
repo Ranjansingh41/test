@@ -75,8 +75,8 @@ pipelines:
                     - 12.14.5 
           allowFailures:             # optional, array of combinations
             environmentVariables:
-              - env1: six
-                env2: saven         
+              - env1: [six]
+                env2: [saven]         
         execution:
           onExecute:
             - set_step_var fan_out value1
