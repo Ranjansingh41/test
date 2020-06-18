@@ -15,9 +15,9 @@ pipelines:
 #             - popd
       - name: Matrix_Fan_Out_1
         type: FanOut
-        configuration:
-          inputSteps:
-            - name: Normal_Step
+#         configuration:
+#           inputSteps:
+#             - name: Normal_Step
         execution:
           onExecute:
             - sleep 10s
