@@ -63,7 +63,13 @@ pipelines:
           exclude:
             - environmentVariables:
                 delay: 10
-                fail: 'true'      
+                fail: 'true'
+                delay: 15
+                fail: 'false'
+                delay: 20
+                fail: 'false'
+                delay: 1
+                fail: 'true'
         execution:
           onStart:
             - sleep "$delay"
