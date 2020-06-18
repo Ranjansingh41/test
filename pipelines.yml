@@ -60,10 +60,10 @@ pipelines:
             - environmentVariables:
                 delay: 1
                 fail: 'true'
-          exclude:
-            - environmentVariables:
-                delay: 10
-                fail: 'true'
+#           exclude:
+#             - environmentVariables:
+#                 delay: 10
+#                 fail: 'true'
 #                 - delay: 15
 #                   fail: 'false'
 #                 - delay: 20
